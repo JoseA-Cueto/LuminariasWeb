@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
-using static LuminariasWeb.sln.Enums.ProductCategoryEnum;
+using System.ComponentModel.DataAnnotations;
 
 namespace LuminariasWeb.sln.Models
 {
-    public class Product
+    public class Service
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,7 +16,5 @@ namespace LuminariasWeb.sln.Models
         public decimal Price { get; set; }
 
         public string? Description { get; set; }
-        [EnumDataType(typeof(ProductCategory))]
-        public ProductCategory Category { get; set; }
     }
 }

@@ -9,5 +9,8 @@ public class MappingProfile : Profile
     {
         CreateMap<Product, ProductViewModel>().ReverseMap();
         CreateMap<ProductViewModel, Product>().ReverseMap();
+        CreateMap<Service, ServiceViewModel>().ReverseMap();
+        CreateMap<ServiceViewModel, Service>().ReverseMap();
+
     }
 }
