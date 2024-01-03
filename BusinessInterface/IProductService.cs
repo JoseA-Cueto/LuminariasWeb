@@ -1,14 +1,17 @@
-﻿using LuminariasWeb.sln.Models;
+﻿
+using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.ViewModels;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LuminariasWeb.sln.BusinessInterface
 {
     public interface IProductService
     {
-        List<Product> GetAllProducts();
-        Product GetProductById(int productId);
-        void AddProduct(ProductViewModel productViewModel);
-        void UpdateProduct(ProductViewModel productViewModel);
-        void DeleteProduct(int productId);
+        Task<List<Product>> GetAllProductsAsync();
+        Task<Product> GetProductByIdAsync(int productId);
+        Task AddProductAsync(ProductViewModel productViewModel);
+        Task UpdateProductAsync(ProductViewModel productViewModel);
+        Task DeleteProductAsync(int productId);
     }
 }

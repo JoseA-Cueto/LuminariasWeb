@@ -3,6 +3,8 @@ using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.Interface;
 using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.ViewModels;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public class ProductService : IProductService
 {
@@ -14,33 +16,33 @@ public class ProductService : IProductService
         _repository = repository;
         _mapper = mapper;
     }
-    public List<Product> GetAllProducts()
+
+    public async Task<List<Product>> GetAllProductsAsync()
     {
-        var products = _repository.GetAllProducts();
+        var products = await _repository.GetAllProductsAsync();
         return _mapper.Map<List<Product>>(products);
     }
 
-    public Product GetProductById(int productId)
+    public async Task<Product> GetProductByIdAsync(int productId)
     {
-        var product = _repository.GetProductById(productId);
+        var product = await _repository.GetProductByIdAsync(productId);
         return _mapper.Map<Product>(product);
     }
 
-    public void AddProduct(ProductViewModel productViewModel)
+    public async Task AddProductAsync(ProductViewModel productViewModel)
     {
         var product = _mapper.Map<Product>(productViewModel);
-        _repository.AddProduct(product);
+        await _repository.AddProductAsync(product);
     }
 
-    public void UpdateProduct(ProductViewModel productViewModel)
+    public async Task UpdateProductAsync(ProductViewModel productViewModel)
     {
         var updatedProduct = _mapper.Map<Product>(productViewModel);
-        _repository.UpdateProduct(updatedProduct);
+        await _repository.UpdateProductAsync(updatedProduct);
     }
 
-    public void DeleteProduct(int productId)
+    public async Task DeleteProductAsync(int productId)
     {
-        _repository.DeleteProduct(productId);
+        await _repository.DeleteProductAsync(productId);
     }
-
 }

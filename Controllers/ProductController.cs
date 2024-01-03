@@ -3,6 +3,8 @@ using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LuminariasWeb.sln.Controllers
 {
@@ -20,16 +22,16 @@ namespace LuminariasWeb.sln.Controllers
         }
 
         [HttpGet]
-        public ActionResult GetAllProducts()
+        public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
         {
-            var products = _productService.GetAllProducts();
+            var products = await _productService.GetAllProductsAsync();
             return Ok(products);
         }
 
         [HttpGet("{id}")]
-        public ActionResult GetProductById(int id)
+        public async Task<ActionResult<Product>> GetProductById(int id)
         {
-            var product = _productService.GetProductById(id);
+            var product = await _productService.GetProductByIdAsync(id);
             if (product == null)
             {
                 return NotFound();
@@ -38,36 +40,33 @@ namespace LuminariasWeb.sln.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddProduct(ProductViewModel productViewModel)
+        public async Task<ActionResult> AddProduct(ProductViewModel productViewModel)
         {
-            var product = _mapper.Map<Product>(productViewModel);
-         //   _productService.AddProduct(product);
+            await _productService.AddProductAsync(productViewModel);
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public ActionResult UpdateProduct(int id, ProductViewModel productViewModel)
+        public async Task<ActionResult> UpdateProduct(int id, ProductViewModel productViewModel)
         {
-            var existingProduct = _productService.GetProductById(id);
+            var existingProduct = await _productService.GetProductByIdAsync(id);
             if (existingProduct == null)
             {
                 return NotFound();
             }
-            var updatedProduct = _mapper.Map<Product>(productViewModel);
-            updatedProduct.Id = id;
-          //  _productService.UpdateProduct(updatedProduct);
+            await _productService.UpdateProductAsync(productViewModel);
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public ActionResult DeleteProduct(int id)
+        public async Task<ActionResult> DeleteProduct(int id)
         {
-            var existingProduct = _productService.GetProductById(id);
+            var existingProduct = await _productService.GetProductByIdAsync(id);
             if (existingProduct == null)
             {
                 return NotFound();
             }
-            _productService.DeleteProduct(id);
+            await _productService.DeleteProductAsync(id);
             return Ok();
         }
     }

@@ -1,4 +1,6 @@
-﻿using LuminariasWeb.sln.Interface;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using LuminariasWeb.sln.Interface;
 using LuminariasWeb.sln.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,35 +15,35 @@ namespace LuminariasWeb.sln.Repositories
             _dbContext = dbContext;
         }
 
-        public Product GetProductById(int id)
+        public async Task<Product> GetProductByIdAsync(int id)
         {
-            return _dbContext.Set<Product>().Find(id);
+            return await _dbContext.Set<Product>().FindAsync(id);
         }
 
-        public IEnumerable<Product> GetAllProducts()
+        public async Task<IEnumerable<Product>> GetAllProductsAsync()
         {
-            return _dbContext.Set<Product>().ToList();
+            return await _dbContext.Set<Product>().ToListAsync();
         }
 
-        public void AddProduct(Product product)
+        public async Task AddProductAsync(Product product)
         {
-            _dbContext.Set<Product>().Add(product);
-            _dbContext.SaveChanges();
+            await _dbContext.Set<Product>().AddAsync(product);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public void UpdateProduct(Product product)
+        public async Task UpdateProductAsync(Product product)
         {
             _dbContext.Set<Product>().Update(product);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
         }
 
-        public void DeleteProduct(int id)
+        public async Task DeleteProductAsync(int id)
         {
-            var product = _dbContext.Set<Product>().Find(id);
+            var product = await _dbContext.Set<Product>().FindAsync(id);
             if (product != null)
             {
                 _dbContext.Set<Product>().Remove(product);
-                _dbContext.SaveChanges();
+                await _dbContext.SaveChangesAsync();
             }
         }
     }
