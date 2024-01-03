@@ -4,6 +4,7 @@ using LuminariasWeb.sln.DataBaseInterface;
 using LuminariasWeb.sln.Interface;
 using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -20,30 +21,78 @@ public class ServicesService : IServicesService
 
     public async Task<List<Service>> GetAllServicesAsync()
     {
-        var services = await _repository.GetAllServicesAsync();
-        return _mapper.Map<List<Service>>(services);
+        try
+        {
+            var services = await _repository.GetAllServicesAsync();
+            return _mapper.Map<List<Service>>(services);
+        }
+        catch (Exception ex)
+        {
+             HandleException(ex);
+            throw;
+        }
     }
 
     public async Task<Service> GetServiceByIdAsync(int serviceId)
     {
-        var service = await _repository.GetServiceByIdAsync(serviceId);
-        return _mapper.Map<Service>(service);
+        try
+        {
+            var service = await _repository.GetServiceByIdAsync(serviceId);
+            return _mapper.Map<Service>(service);
+        }
+        catch (Exception ex)
+        {
+            HandleException(ex);
+            throw;
+        }
     }
 
     public async Task AddServiceAsync(ServiceViewModel serviceViewModel)
     {
-        var service = _mapper.Map<Service>(serviceViewModel);
-        await _repository.AddServiceAsync(service);
+        try
+        {
+            var service = _mapper.Map<Service>(serviceViewModel);
+            await _repository.AddServiceAsync(service);
+        }
+        catch (Exception ex)
+        {
+            HandleException(ex);
+            throw;
+        }
     }
 
     public async Task UpdateServiceAsync(ServiceViewModel serviceViewModel)
     {
-        var updatedService = _mapper.Map<Service>(serviceViewModel);
-        await _repository.UpdateServiceAsync(updatedService);
+        try
+        {
+            var updatedService = _mapper.Map<Service>(serviceViewModel);
+            await _repository.UpdateServiceAsync(updatedService);
+        }
+        catch (Exception ex)
+        {
+            HandleException(ex);
+            throw;
+        }
     }
 
     public async Task DeleteServiceAsync(int serviceId)
     {
-        await _repository.DeleteServiceAsync(serviceId);
+        try
+        {
+            await _repository.DeleteServiceAsync(serviceId);
+        }
+        catch (Exception ex)
+        {
+            HandleException(ex);
+            throw;
+        }
+    }
+
+
+    private void HandleException(Exception ex)
+    {
+        Console.WriteLine($"Se produjo una excepción: {ex.Message}");
+       
     }
 }
+
