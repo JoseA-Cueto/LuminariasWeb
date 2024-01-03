@@ -2,7 +2,9 @@
 using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.ViewModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -22,13 +24,21 @@ namespace LuminariasWeb.sln.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<Service>>> GetAllServices()
         {
             var services = await _servicesService.GetAllServicesAsync();
+            if (services == null || services.Count == 0)
+            {
+                return NotFound();
+            }
             return Ok(services);
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Service>> GetServiceById(int id)
         {
             var service = await _servicesService.GetServiceByIdAsync(id);
@@ -40,13 +50,25 @@ namespace LuminariasWeb.sln.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> AddService(ServiceViewModel serviceViewModel)
         {
-            await _servicesService.AddServiceAsync(serviceViewModel);
-            return Ok();
+            try
+            {
+                await _servicesService.AddServiceAsync(serviceViewModel);
+                return StatusCode(201);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500);
+            }
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> UpdateService(int id, ServiceViewModel serviceViewModel)
         {
             var existingService = await _servicesService.GetServiceByIdAsync(id);
@@ -54,11 +76,22 @@ namespace LuminariasWeb.sln.Controllers
             {
                 return NotFound();
             }
-            await _servicesService.UpdateServiceAsync(serviceViewModel);
-            return Ok();
+
+            try
+            {
+                await _servicesService.UpdateServiceAsync(serviceViewModel);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500);
+            }
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> DeleteService(int id)
         {
             var existingService = await _servicesService.GetServiceByIdAsync(id);
@@ -66,8 +99,16 @@ namespace LuminariasWeb.sln.Controllers
             {
                 return NotFound();
             }
-            await _servicesService.DeleteServiceAsync(id);
-            return Ok();
+
+            try
+            {
+                await _servicesService.DeleteServiceAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500);
+            }
         }
     }
 }
