@@ -64,3 +64,8 @@ C:\Users\VPK\Desktop\LuminariasWeb.sln\obj\Debug\net6.0\refint\LuminariasWeb.sln
 C:\Users\VPK\Desktop\LuminariasWeb.sln\obj\Debug\net6.0\LuminariasWeb.sln.pdb
 C:\Users\VPK\Desktop\LuminariasWeb.sln\obj\Debug\net6.0\LuminariasWeb.sln.genruntimeconfig.cache
 C:\Users\VPK\Desktop\LuminariasWeb.sln\obj\Debug\net6.0\ref\LuminariasWeb.sln.dll
+C:\Users\VPK\Desktop\LuminariasWeb.sln\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Users\VPK\Desktop\LuminariasWeb.sln\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\VPK\Desktop\LuminariasWeb.sln\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\VPK\Desktop\LuminariasWeb.sln\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\VPK\Desktop\LuminariasWeb.sln\obj\Debug\net6.0\LuminariasWeb.sln.MvcApplicationPartsAssemblyInfo.cs
