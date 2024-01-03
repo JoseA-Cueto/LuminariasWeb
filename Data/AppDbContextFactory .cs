@@ -8,7 +8,7 @@ namespace LuminariasWeb.sln.Models
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseSqlServer("YourConnectionString");
+            optionsBuilder.UseSqlServer("Server=localhost;Database=LuminariasWeb;Trusted_Connection=True;MultipleActiveResultSets=True");
 
             return new AppDbContext(optionsBuilder.Options);
         }
