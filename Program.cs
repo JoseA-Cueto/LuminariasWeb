@@ -3,6 +3,7 @@ using LuminariasWeb.sln.DataBaseInterface;
 using LuminariasWeb.sln.Interface;
 using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.Repositories;
+using LuminariasWeb.sln.ServiceExtensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -18,10 +19,7 @@ builder.Services.AddSwaggerGen(c =>
 
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IProductService, ProductService>(); // contenedor de dependencias.
-builder.Services.AddScoped<IServicesService, ServicesService>();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
+
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -38,7 +36,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
     options.AddPolicy("Visitor", policy => policy.RequireRole("Visitor"));
 });
-
+builder.Services.AddLuminariasWebServices();
 var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
