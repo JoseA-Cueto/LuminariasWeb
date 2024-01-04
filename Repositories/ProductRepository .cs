@@ -8,9 +8,9 @@ namespace LuminariasWeb.sln.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly DbContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public ProductRepository(DbContext dbContext)
+        public ProductRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
