@@ -7,10 +7,12 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<Product, ProductViewModel>().ReverseMap();
-        CreateMap<ProductViewModel, Product>().ReverseMap();
-        CreateMap<Service, ServiceViewModel>().ReverseMap();
-        CreateMap<ServiceViewModel, Service>().ReverseMap();
+        CreateMap<Product, ProductViewModel>()
+        .ForMember(d => d.CategoryId, opt => opt.MapFrom(source => source.Category));
+        CreateMap<ProductViewModel, Product>()
+        .ForMember(d => d.Category, opt => opt.MapFrom(source => source.CategoryId));
+        CreateMap<Service, ServiceViewModel>();
+        CreateMap<ServiceViewModel, Service>();
 
     }
 }
