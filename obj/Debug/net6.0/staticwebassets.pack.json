@@ -1,6 +1,10 @@
 {
   "Files": [
     {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\LuminariasWeb.sln.bundle.scp.css",
+      "PackagePath": "staticwebassets\\LuminariasWeb.sln.bundle.scp.css"
+    },
+    {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

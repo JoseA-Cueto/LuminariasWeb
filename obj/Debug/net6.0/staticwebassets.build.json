@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Si2fH/FSLsj/cFAD5ORJbraJV/uGBo73PxQ/VMudujE=",
+  "Hash": "D7BINJfnavrO181c9yfZKa/NI+HcYInAkgk1DQ1seQg=",
   "Source": "LuminariasWeb.sln",
   "BasePath": "_content/LuminariasWeb.sln",
   "Mode": "Default",
@@ -16,6 +16,44 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\obj\\Debug\\net6.0\\scopedcss\\bundle\\LuminariasWeb.sln.styles.css",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Computed",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "LuminariasWeb.sln.styles.css",
+      "AssetKind": "All",
+      "AssetMode": "CurrentProject",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ApplicationBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\obj\\Debug\\net6.0\\scopedcss\\bundle\\LuminariasWeb.sln.styles.css"
+    },
+    {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\LuminariasWeb.sln.bundle.scp.css",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Computed",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "LuminariasWeb.sln.bundle.scp.css",
+      "AssetKind": "All",
+      "AssetMode": "Reference",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "ScopedCss",
+      "AssetTraitValue": "ProjectBundle",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\LuminariasWeb.sln.bundle.scp.css"
+    },
     {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\css\\site.css",
       "SourceId": "LuminariasWeb.sln",
