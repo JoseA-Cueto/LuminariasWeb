@@ -220,3 +220,5 @@ E:\Mis Cosas\Proyectos\LuminariasWeb\obj\Debug\net6.0\LuminariasWeb.sln.RazorAss
 E:\Mis Cosas\Proyectos\LuminariasWeb\obj\Debug\net6.0\LuminariasWeb.sln.RazorAssemblyInfo.cs
 E:\Mis Cosas\Proyectos\LuminariasWeb\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 E:\Mis Cosas\Proyectos\LuminariasWeb\obj\Debug\net6.0\scopedcss\projectbundle\LuminariasWeb.sln.bundle.scp.css
+E:\Mis Cosas\Proyectos\LuminariasWeb\bin\Debug\net6.0\package-lock.json
+E:\Mis Cosas\Proyectos\LuminariasWeb\bin\Debug\net6.0\package.json
