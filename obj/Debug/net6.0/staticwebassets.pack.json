@@ -5,24 +5,72 @@
       "PackagePath": "staticwebassets\\LuminariasWeb.sln.bundle.scp.css"
     },
     {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\FAVICON.png",
+      "PackagePath": "staticwebassets\\FAVICON.png"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\Ilumínate.png",
+      "PackagePath": "staticwebassets\\Ilumínate.png"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\TEXTO.png",
+      "PackagePath": "staticwebassets\\TEXTO.png"
+    },
+    {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\FAVICON.png",
+      "PackagePath": "staticwebassets\\dist\\FAVICON.png"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\Ilumínate.png",
+      "PackagePath": "staticwebassets\\dist\\Ilumínate.png"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\TEXTO.png",
+      "PackagePath": "staticwebassets\\dist\\TEXTO.png"
     },
     {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\bundle.js",
       "PackagePath": "staticwebassets\\dist\\bundle.js"
     },
     {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\imgInfo.png",
+      "PackagePath": "staticwebassets\\dist\\imgInfo.png"
+    },
+    {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\imgInfo.png",
+      "PackagePath": "staticwebassets\\imgInfo.png"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\Carousel.vue",
+      "PackagePath": "staticwebassets\\js\\Carousel.vue"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\Footer.vue",
+      "PackagePath": "staticwebassets\\js\\Footer.vue"
     },
     {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\HelloWorld.vue",
       "PackagePath": "staticwebassets\\js\\HelloWorld.vue"
     },
     {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\HomePage.Vue",
+      "PackagePath": "staticwebassets\\js\\HomePage.Vue"
+    },
+    {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\app.js",
       "PackagePath": "staticwebassets\\js\\app.js"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\navBar.vue",
+      "PackagePath": "staticwebassets\\js\\navBar.vue"
     },
     {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\site.js",
