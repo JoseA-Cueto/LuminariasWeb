@@ -3,9 +3,6 @@ using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.Interface;
 using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 public class ProductService : IProductService
 {
@@ -87,9 +84,46 @@ public class ProductService : IProductService
         }
     }
 
+    public async Task AddToCartAsync(int productId, int quantityBd)
+    {
+        try
+        {
+            var product = await _repository.GetProductByIdAsync(productId);
+
+            if (product != null)
+            {
+                // Verificar si hay suficientes productos en stock
+                if (product.Quantity >= quantityBd)
+                {
+                    // Actualizar la cantidad en el carrito
+                    product.Quantity -= quantityBd;
+
+                    // Asegurarse de que la cantidad no sea negativa
+                    if (product.Quantity < 0)
+                    {
+                        product.Quantity = 0;
+                    }
+
+                    await _repository.UpdateProductAsync(product);
+                }
+                else
+                {
+                    // Manejar la situación donde la cantidad en el carrito es mayor que la cantidad disponible
+                    throw new InvalidOperationException("No hay suficientes productos en stock para agregar al carrito.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            HandleException(ex);
+            throw;
+        }
+    }
+
+
     private void HandleException(Exception ex)
     {
         Console.WriteLine($"Se produjo una excepción en ProductService: {ex.Message}");
-      
     }
 }
+

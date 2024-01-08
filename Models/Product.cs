@@ -16,6 +16,7 @@ namespace LuminariasWeb.sln.Models
         public decimal Price { get; set; }
 
         public string? Description { get; set; }
+        public int? Quantity { get; set; }  // para la cantidad en el carrito
         [EnumDataType(typeof(ProductCategory))]
         public ProductCategory Category { get; set; }
     }

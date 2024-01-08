@@ -105,5 +105,29 @@ namespace LuminariasWeb.sln.Controllers
                 return StatusCode(500);
             }
         }
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> AddToCart(int id, int quantity)
+        {
+            try
+            {
+                await _productService.AddToCartAsync(id, quantity);
+                return Ok();
+            }
+            catch (InvalidOperationException ex)
+            {
+               
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500);
+            }
+        }
     }
 }
+    
+
