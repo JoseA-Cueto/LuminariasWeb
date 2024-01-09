@@ -13,6 +13,6 @@ namespace LuminariasWeb.sln.BusinessInterface
         Task AddProductAsync(ProductViewModel productViewModel);
         Task UpdateProductAsync(ProductViewModel productViewModel);
         Task DeleteProductAsync(int productId);
-        Task AddToCartAsync(int productId, int quantityBd);
+       
     }
 }
