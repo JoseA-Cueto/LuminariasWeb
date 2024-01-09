@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿
+using AutoMapper;
 using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.ViewModels;
@@ -24,12 +25,18 @@ namespace LuminariasWeb.sln.Controllers
         }
 
         [HttpGet]
+        [Route("api/Product/GetAllProducts")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
         {
             var products = await _productService.GetAllProductsAsync();
+            Console.WriteLine(products);
+            //konsejo de Willy el sexy: pon punto de ruptura aqui e imprime el retorno, osea products
+            //DPEPDPE
+            //Console.WriteLine(products)
             return Ok(products);
         }
+
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

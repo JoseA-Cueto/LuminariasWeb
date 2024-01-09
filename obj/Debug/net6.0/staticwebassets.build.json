@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XyrmUxZXA0lpbjg1LSqk0OyDY35GMJ743wO+ixLTkZ4=",
+  "Hash": "7WQ/aFJvjbpNCGYVU7pnRrnb1P8MYXX9OhXbQFB4iFk=",
   "Source": "LuminariasWeb.sln",
   "BasePath": "_content/LuminariasWeb.sln",
   "Mode": "Default",
@@ -264,6 +264,25 @@
       "OriginalItemSpec": "wwwroot\\js\\app.js"
     },
     {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CardItem.vue",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "js/CardItem.vue",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\CardItem.vue"
+    },
+    {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\Carousel.vue",
       "SourceId": "LuminariasWeb.sln",
       "SourceType": "Discovered",
@@ -281,6 +300,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Carousel.vue"
+    },
+    {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CatalogPage.vue",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "js/CatalogPage.vue",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\CatalogPage.vue"
     },
     {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\Footer.vue",
@@ -357,6 +395,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\navBar.vue"
+    },
+    {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\pruebaFetch.vue",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "js/pruebaFetch.vue",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\pruebaFetch.vue"
     },
     {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\site.js",

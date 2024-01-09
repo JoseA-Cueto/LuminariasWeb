@@ -12,7 +12,10 @@ export default {
 
 <style>
     .foot{
-       background-color: #3d5e94;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        background-color: #3d5e94;
         display: flex;
         justify-content: center;
         align-items: center;

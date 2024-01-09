@@ -17,7 +17,7 @@
         </p>
             <!--Botonera-->
             <div class="buttons">
-                <button type="button" class="btn btn-warning">Catalogo</button>
+                <router-link to="/catalog" class="btn btn-warning" >Ir al Catálogo</router-link>
 
                 <!--Este no va a pinchar porque la novia de ale puso 2 botones y yo solo se para que es uno solo-->
                 <button type="button" class="btn btn-warning">Contacto</button>
@@ -30,19 +30,19 @@
 
 <script>
 
-import  Carousel  from './Carousel.vue';
-import navBar from './navBar.vue';
-import Footer from './Footer.vue'
+    import  Carousel  from './Carousel.vue';
+    import navBar from './navBar.vue';
+    import Footer from './Footer.vue'
 
-export default {
+    export default {
   
-    components: {
-        Carousel,
-        navBar,
-        Footer
-    }
+            components: {
+                Carousel,
+                navBar,
+                Footer
+             }   
 
-}
+    }   
 </script>
 
 <style scoped>

@@ -22,6 +22,16 @@ public class HomeController : Controller
     {
         return View();
     }
+    //codigo de pruebas de fetch, no tiene que ver con la app
+    [HttpGet]
+    public  IActionResult GetLamps(){
+        var Lamps =  new List<object>{
+            new {Id = 1, Name = "Lamp1", Description = "Description1"},
+            new {Id = 3, Name = "Lamp3", Description = "Description3"},
+            new {Id = 2, Name = "Lamp2", Description = "Description2"}
+        };
+        return Ok(Lamps);
+    }
 
     
 }

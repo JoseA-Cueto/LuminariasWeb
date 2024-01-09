@@ -49,8 +49,16 @@
       "PackagePath": "staticwebassets\\imgInfo.png"
     },
     {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CardItem.vue",
+      "PackagePath": "staticwebassets\\js\\CardItem.vue"
+    },
+    {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\Carousel.vue",
       "PackagePath": "staticwebassets\\js\\Carousel.vue"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CatalogPage.vue",
+      "PackagePath": "staticwebassets\\js\\CatalogPage.vue"
     },
     {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\Footer.vue",
@@ -71,6 +79,10 @@
     {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\navBar.vue",
       "PackagePath": "staticwebassets\\js\\navBar.vue"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\pruebaFetch.vue",
+      "PackagePath": "staticwebassets\\js\\pruebaFetch.vue"
     },
     {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\site.js",
