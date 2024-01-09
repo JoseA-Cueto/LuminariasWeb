@@ -3,9 +3,6 @@ using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.Interface;
 using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 public class ProductService : IProductService
 {
@@ -87,9 +84,12 @@ public class ProductService : IProductService
         }
     }
 
+   
+
+
     private void HandleException(Exception ex)
     {
         Console.WriteLine($"Se produjo una excepción en ProductService: {ex.Message}");
-      
     }
 }
+
