@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LuminariasWeb.sln.Controllers
 {
-    [ApiController]
+    
     [Route("api/services")]
     public class ServicesController : ControllerBase
     {
@@ -23,7 +23,7 @@ namespace LuminariasWeb.sln.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("GetAllServices")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<Service>>> GetAllServices()
@@ -36,7 +36,7 @@ namespace LuminariasWeb.sln.Controllers
             return Ok(services);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetServiceById/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Service>> GetServiceById(int id)
@@ -49,7 +49,7 @@ namespace LuminariasWeb.sln.Controllers
             return Ok(service);
         }
 
-        [HttpPost]
+        [HttpPost("AddService")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> AddService(ServiceViewModel serviceViewModel)
@@ -65,7 +65,7 @@ namespace LuminariasWeb.sln.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("UpdateService/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -88,7 +88,7 @@ namespace LuminariasWeb.sln.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteService/{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
