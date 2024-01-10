@@ -11,8 +11,7 @@ using System.Threading.Tasks;
 
 namespace LuminariasWeb.sln.Controllers
 {
-    [ApiController]
-    [Route("api/products")]
+    [Route("api/Product")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
@@ -24,21 +23,15 @@ namespace LuminariasWeb.sln.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
-        [Route("api/Product/GetAllProducts")]
+        [HttpGet("GetAllProducts")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
         {
             var products = await _productService.GetAllProductsAsync();
-            Console.WriteLine(products);
-            //konsejo de Willy el sexy: pon punto de ruptura aqui e imprime el retorno, osea products
-            //DPEPDPE
-            //Console.WriteLine(products)
             return Ok(products);
         }
 
-
-        [HttpGet("{id}")]
+        [HttpGet("GetProductById/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Product>> GetProductById(int id)
@@ -51,7 +44,7 @@ namespace LuminariasWeb.sln.Controllers
             return Ok(product);
         }
 
-        [HttpPost]
+        [HttpPost("AddProduct")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> AddProduct(ProductViewModel productViewModel)
@@ -67,7 +60,7 @@ namespace LuminariasWeb.sln.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("UpdateProduct/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -90,7 +83,7 @@ namespace LuminariasWeb.sln.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteProduct/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -112,8 +105,8 @@ namespace LuminariasWeb.sln.Controllers
                 return StatusCode(500);
             }
         }
-      
     }
+
 }
-    
+
 

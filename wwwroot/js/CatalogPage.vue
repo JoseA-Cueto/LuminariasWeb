@@ -73,7 +73,7 @@ export default {
     //DPEPDPE QUE NUNCA ESTA DE MAS DECIRLO
     async fetchProducts() {
       try {
-        const response = await fetch('api/Product/GetAllProducts');// Yo creo que el error es este.
+          const response = await fetch('../api/Product/GetAllProducts');// Yo creo que el error es este.
            if (!response.ok) {
             throw new Error('Error en la petición al servidor');
           }
