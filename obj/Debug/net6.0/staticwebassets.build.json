@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7WQ/aFJvjbpNCGYVU7pnRrnb1P8MYXX9OhXbQFB4iFk=",
+  "Hash": "0KoFu2U4p+2UZUWhJUW5YfBgJNB+wKnorRpAZEP3l58=",
   "Source": "LuminariasWeb.sln",
   "BasePath": "_content/LuminariasWeb.sln",
   "Mode": "Default",
@@ -93,6 +93,25 @@
       "OriginalItemSpec": "wwwroot\\dist\\bundle.js"
     },
     {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\ExampleImg.jpg",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "dist/ExampleImg.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\ExampleImg.jpg"
+    },
+    {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\FAVICON.png",
       "SourceId": "LuminariasWeb.sln",
       "SourceType": "Discovered",
@@ -167,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\dist\\TEXTO.png"
+    },
+    {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\ExampleImg.jpg",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "ExampleImg.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\ExampleImg.jpg"
     },
     {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\favicon.ico",

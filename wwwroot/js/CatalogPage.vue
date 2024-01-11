@@ -1,52 +1,24 @@
 <template>
   <div>
     <NavBar></NavBar>
-    <div>
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Categoría</th>
-            <th scope="col">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="product in products" :key="product.id">
-            <th scope="row">{{ product.id }}</th>
-            <td>{{ product.title }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.category }}</td>
-            <td>
-              <!-- Botones no funcionales de momento(no tienen estilos por eso estan feos) -->
-              <button @click="addToCart(product.id)">
-                <i class="material-icons">add_shopping_cart</i> Añadir al carrito
-              </button>
-              <button  @click="editProduct(product.id)">
-                <i class="material-icons">edit</i> Editar
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- Paginacion, que no se si quitarla, no me convence -->
-      <nav aria-label="...">
-        <ul class="pagination">
-          <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item active" aria-current="page">
-            <a class="page-link" href="#">2</a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-        </ul>
-      </nav>
+    
+    <div class="cat" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+      <div v-for="product in products" :key="product.id" class="card" style="with: 60%">
+        <img class="card-img-top" src="../ExampleImg.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.price }}</p>
+          <a href="" class="btn btn-primary"><i class="material-icons">add_shopping_cart</i></a>
+        </div>
+      </div>
     </div>
+
+    <div class="d-flex justify-content-center" >
+      <div v-if="loading" class="spinner-border text-primary" role="status">
+        <span class="sr-only"></span>
+      </div>
+    </div>
+
     <Footer></Footer>
   </div>
 </template>
@@ -63,35 +35,37 @@ export default {
   data() {
     return {
       products: [],
+      loading: false, // Agregamos la variable de carga
     };
   },
   mounted() {
     this.fetchProducts();
   },
   methods: {
-    // EL PINGUERO ESTÁ AQUÍ
-    //DPEPDPE QUE NUNCA ESTA DE MAS DECIRLO
     async fetchProducts() {
       try {
-          const response = await fetch('../api/Product/GetAllProducts');// Yo creo que el error es este.
-           if (!response.ok) {
-            throw new Error('Error en la petición al servidor');
-          }
+        this.loading = true; // Activamos el spinner al inicio de la petición
+        const response = await fetch('../api/Product/GetAllProducts');
+        if (!response.ok) {
+          throw new Error('Error en la petición al servidor');
+        }
 
-      const data = await response.json(); // Parsea la respuesta a JSON
-      this.products = data;  // Le asigna los datos al array products(creo que no se esta llenando, f)
-      }     catch (error) {
-       console.error('Error en la petición:', error);
-    }
-},
+        const data = await response.json();
+        this.products = data;
+      } catch (error) {
+        console.error('Error en la petición:', error);
+      } finally {
+        this.loading = false; // Desactivamos el spinner al finalizar la petición
+      }
+    },
     addToCart(productId) {
-      // aqui va a ir el carrito cuando esto deje de comer pinga
       console.log(`Añadiendo al carrito el producto con ID ${productId}`);
     },
     editProduct(productId) {
-      // esto va a ser para editar(solo admins)(claramente lo voy a hacer cuando el metodo deje de comer pinga)
       console.log(`Editando el producto con ID ${productId}`);
     },
   },
 };
 </script>
+
+

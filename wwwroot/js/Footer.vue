@@ -11,9 +11,7 @@ export default {
 </script>
 
 <style>
-    .foot{
-        position: relative;
-        bottom: 0;
+     .foot {
         width: 100%;
         background-color: #3d5e94;
         display: flex;
@@ -22,6 +20,6 @@ export default {
     }
     .foot h2{
         color: white;
-        padding: 30px;
+        padding: 10px;
     }
 </style>

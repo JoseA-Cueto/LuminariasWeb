@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\LuminariasWeb.sln.bundle.scp.css"
     },
     {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\ExampleImg.jpg",
+      "PackagePath": "staticwebassets\\ExampleImg.jpg"
+    },
+    {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\FAVICON.png",
       "PackagePath": "staticwebassets\\FAVICON.png"
     },
@@ -19,6 +23,10 @@
     {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\ExampleImg.jpg",
+      "PackagePath": "staticwebassets\\dist\\ExampleImg.jpg"
     },
     {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\FAVICON.png",
