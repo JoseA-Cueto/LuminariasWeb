@@ -10,7 +10,8 @@ import HomePage from './HomePage.vue';
 import Footer from './Footer.vue';
 import CardItem from './CardItem.vue';
 import CatalogPage from './CatalogPage.vue';
-import pruebaFetch from './pruebaFetch.vue'
+import pruebaFetch from './pruebaFetch.vue';
+import LogIn from './LogIn.vue';
 
 // Crea la aplicación Vue
 const app = createApp({
@@ -22,7 +23,8 @@ const app = createApp({
     'footer': Footer,
     'card-item': CardItem,
     'catalog-page': CatalogPage,
-    'prueba-fetch': pruebaFetch
+    'prueba-fetch': pruebaFetch,
+    'log-in': LogIn
   }
 });
 
@@ -32,6 +34,7 @@ const router = createRouter({
   routes: [
     { path: '/', component: HomePage },
     { path: '/catalog', component: CatalogPage },
+    { path: '/access', component: LogIn }
   ]
 });
 

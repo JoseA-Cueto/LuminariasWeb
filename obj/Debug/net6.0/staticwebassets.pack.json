@@ -81,6 +81,10 @@
       "PackagePath": "staticwebassets\\js\\HomePage.Vue"
     },
     {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\LogIn.vue",
+      "PackagePath": "staticwebassets\\js\\LogIn.vue"
+    },
+    {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\app.js",
       "PackagePath": "staticwebassets\\js\\app.js"
     },

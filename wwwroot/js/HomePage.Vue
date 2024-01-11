@@ -20,7 +20,7 @@
                 <router-link to="/catalog" class="btn btn-warning" >Ir al Catálogo</router-link>
 
                 <!--Este no va a pinchar porque la novia de ale puso 2 botones y yo solo se para que es uno solo-->
-                <button type="button" class="btn btn-warning">Contacto</button>
+                <router-link to="/access" class="btn btn-warning" >Opciones de Administrador</router-link>
             </div>
         </div>
     </section>

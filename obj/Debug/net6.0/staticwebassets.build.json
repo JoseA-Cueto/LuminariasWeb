@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0KoFu2U4p+2UZUWhJUW5YfBgJNB+wKnorRpAZEP3l58=",
+  "Hash": "CBGeRZx4X9VkpxqbySh8DxMdX+n3dAkh/E9dvNtbUkc=",
   "Source": "LuminariasWeb.sln",
   "BasePath": "_content/LuminariasWeb.sln",
   "Mode": "Default",
@@ -414,6 +414,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\HomePage.Vue"
+    },
+    {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\LogIn.vue",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "js/LogIn.vue",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\LogIn.vue"
     },
     {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\navBar.vue",
