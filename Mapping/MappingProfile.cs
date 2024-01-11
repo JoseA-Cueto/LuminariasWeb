@@ -13,6 +13,9 @@ public class MappingProfile : Profile
         .ForMember(d => d.Category, opt => opt.MapFrom(source => source.CategoryId));
         CreateMap<Service, ServiceViewModel>();
         CreateMap<ServiceViewModel, Service>();
+        CreateMap<User, UserViewModel>();
+        CreateMap<UserViewModel, User>();
+
 
     }
 }
