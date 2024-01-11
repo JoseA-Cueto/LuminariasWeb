@@ -2,6 +2,7 @@
 using LuminariasWeb.sln.DataBaseInterface;
 using LuminariasWeb.sln.Interface;
 using LuminariasWeb.sln.Repositories;
+using LuminariasWeb.sln.Services;
 
 namespace LuminariasWeb.sln.ServiceExtensions
 {
@@ -13,6 +14,8 @@ namespace LuminariasWeb.sln.ServiceExtensions
             services.AddScoped<IServicesService, ServicesService>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
         }
     }
 }
