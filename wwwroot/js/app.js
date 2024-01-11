@@ -12,6 +12,7 @@ import CardItem from './CardItem.vue';
 import CatalogPage from './CatalogPage.vue';
 import pruebaFetch from './pruebaFetch.vue';
 import LogIn from './LogIn.vue';
+import AdminPage from './AdminPage.vue'
 
 // Crea la aplicación Vue
 const app = createApp({
@@ -24,7 +25,8 @@ const app = createApp({
     'card-item': CardItem,
     'catalog-page': CatalogPage,
     'prueba-fetch': pruebaFetch,
-    'log-in': LogIn
+    'log-in': LogIn,
+    'admin-page': AdminPage
   }
 });
 
@@ -34,7 +36,8 @@ const router = createRouter({
   routes: [
     { path: '/', component: HomePage },
     { path: '/catalog', component: CatalogPage },
-    { path: '/access', component: LogIn }
+    { path: '/access', component: LogIn },
+    { path: '/admin', component: AdminPage }
   ]
 });
 

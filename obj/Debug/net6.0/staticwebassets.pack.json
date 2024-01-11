@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\imgInfo.png"
     },
     {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\AdminPage.vue",
+      "PackagePath": "staticwebassets\\js\\AdminPage.vue"
+    },
+    {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CardItem.vue",
       "PackagePath": "staticwebassets\\js\\CardItem.vue"
     },
