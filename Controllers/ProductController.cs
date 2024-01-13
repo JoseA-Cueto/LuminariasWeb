@@ -47,16 +47,20 @@ namespace LuminariasWeb.sln.Controllers
         [HttpPost("AddProduct")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> AddProduct(ProductViewModel productViewModel)
+        public async Task<ActionResult> AddProduct([FromBody]ProductViewModel productViewModel)
         {
             try
             {
+                Console.WriteLine($"Nombre del producto recibido: {productViewModel.Name}");
+                Console.WriteLine($"ID de la categoría recibido: {productViewModel.CategoryId}");
+
                 await _productService.AddProductAsync(productViewModel);
                 return StatusCode(201);
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+              return StatusCode(500);
+              
             }
         }
 

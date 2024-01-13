@@ -5,7 +5,7 @@
     <img src="../FAVICON.png" width="auto" height="50" alt="">
     <h3 style="color: white">Opciones de Administrador</h3>
   
-  <button type="button" class="btn btn-dark">Crear Producto</button>
+  <router-link to="/create" class="btn btn-dark" >Crear Producto</router-link>
 </nav>
 
     <div>
