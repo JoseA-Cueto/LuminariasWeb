@@ -10,10 +10,17 @@ namespace LuminariasWeb.sln.ServiceExtensions
     {
         public static void AddLuminariasWebServices(this IServiceCollection services)
         {
-            services.AddScoped<IProductService, ProductService>();//contenedor Dependencias
-            services.AddScoped<IServicesService, ServicesService>();
+            // Contenedor de dependencias
+
+            // Product
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductService, ProductService>();
+
+            // Service
             services.AddScoped<IServiceRepository, ServiceRepository>();
+            services.AddScoped<IServicesService, ServicesService>();
+
+            // User
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
         }
