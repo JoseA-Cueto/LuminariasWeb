@@ -12,7 +12,6 @@ namespace LuminariasWeb.sln.ViewModels
 
         public string? Description { get; set; }
         public int? Quantity { get; set; }
-        [EnumDataType(typeof(ProductCategory))]
         public int? CategoryId { get; set; }
         public string? Category { get; set; }
     }
