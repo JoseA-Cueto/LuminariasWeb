@@ -8,6 +8,18 @@
   <router-link to="/create" class="btn btn-dark" >Crear Producto</router-link>
 </nav>
 
+     <div v-if="showSuccessAlert" class="position-fixed top-0 start-0 m-3">
+          <div class="alert alert-primary" role="alert">
+            Producto eliminado con éxito.
+          </div>
+        </div>
+
+        <div v-if="showErrorAlert" class="position-fixed top-0 start-0 m-3">
+          <div class="alert alert-danger" role="alert">
+            Error al eliminar el producto. Por favor, inténtalo de nuevo.
+          </div>
+        </div>
+
     <div>
       <table class="table">
         <thead>
@@ -32,8 +44,8 @@
             <button class="btn btn-success" >
                 <i class="material-icons">edit</i> 
             </button>
-            <button class="btn btn-danger" >
-                <i class="material-icons">delete</i> 
+            <button class="btn btn-danger" @click="deleteProduct(product.id)">
+              <i class="material-icons">delete</i> 
             </button>
             <button class="btn btn-primary">
                 <i class="material-icons">info</i> 
@@ -61,7 +73,9 @@ export default {
   data() {
     return {
       products: [],
-      loading: false, // Agregamos la variable de carga
+      loading: false,
+      showSuccessAlert: false,
+      showErrorAlert: false,
     };
   },
   mounted() {
@@ -83,7 +97,33 @@ export default {
       } finally {
         this.loading = false; // Desactivamos el spinner al finalizar la petición
       }
-    }
+    },
+      async deleteProduct(id) {
+      try {
+        this.loading = true; // Activamos el spinner antes de la petición
+        const response = await fetch(`../api/Product/DeleteProduct/${id}`, {
+          method: 'DELETE',
+        });
+
+        if (!response.ok) {
+          throw new Error('Error en la petición al servidor');
+        }
+
+        this.products = this.products.filter((product) => product.id !== id);
+        this.showSuccessAlert = true;
+        setTimeout(() => {
+          this.showSuccessAlert = false;
+        }, 2000);
+      } catch (error) {
+        console.error('Error en la petición:', error);
+        this.showErrorAlert = true;
+        setTimeout(() => {
+          this.showErrorAlert = false;
+        }, 2000);
+      } finally {
+        this.loading = false; 
+      }
+    },
   },
 };
 </script>
