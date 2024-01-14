@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mY1B3bq6tO83Le9iVvLIfu97AcVfnyGt2K3eYaRYVeU=",
+  "Hash": "27co7gGyPH/YFks6iH3LNOl9En104YPKknwZ++dXi3E=",
   "Source": "LuminariasWeb.sln",
   "BasePath": "_content/LuminariasWeb.sln",
   "Mode": "Default",
@@ -395,6 +395,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\CreateProductPage.vue"
+    },
+    {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\EditProductPage.vue",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "js/EditProductPage.vue",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\EditProductPage.vue"
     },
     {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\Footer.vue",

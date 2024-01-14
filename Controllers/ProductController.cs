@@ -68,7 +68,7 @@ namespace LuminariasWeb.sln.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> UpdateProduct(int id, ProductViewModel productViewModel)
+        public async Task<ActionResult> UpdateProduct(int id,[FromBody]ProductViewModel productViewModel)
         {
             var existingProduct = await _productService.GetProductByIdAsync(id);
             if (existingProduct == null)

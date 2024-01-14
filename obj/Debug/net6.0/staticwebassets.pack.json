@@ -77,6 +77,10 @@
       "PackagePath": "staticwebassets\\js\\CreateProductPage.vue"
     },
     {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\EditProductPage.vue",
+      "PackagePath": "staticwebassets\\js\\EditProductPage.vue"
+    },
+    {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\Footer.vue",
       "PackagePath": "staticwebassets\\js\\Footer.vue"
     },

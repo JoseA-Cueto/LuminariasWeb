@@ -41,8 +41,8 @@
             <td>{{ product.quantity }}</td>
             <td>
 
-            <button class="btn btn-success" >
-                <i class="material-icons">edit</i> 
+            <button @click="editProduct(product.id)" class="btn btn-success">
+              <i class="material-icons">edit</i>
             </button>
             <button class="btn btn-danger" @click="deleteProduct(product.id)">
               <i class="material-icons">delete</i> 
@@ -123,6 +123,9 @@ export default {
       } finally {
         this.loading = false; 
       }
+    },
+    editProduct(productId) {
+       this.$router.push({ name: 'EditProduct', params: { id: productId } });
     },
   },
 };

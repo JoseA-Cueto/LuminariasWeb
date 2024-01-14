@@ -13,7 +13,8 @@ import CatalogPage from './CatalogPage.vue';
 import pruebaFetch from './pruebaFetch.vue';
 import LogIn from './LogIn.vue';
 import AdminPage from './AdminPage.vue';
-import CreateProductPage from './CreateProductPage.vue'
+import CreateProductPage from './CreateProductPage.vue';
+import EditProductPage from './EditProductPage.vue';
 
 // Crea la aplicación Vue
 const app = createApp({
@@ -28,7 +29,8 @@ const app = createApp({
     'prueba-fetch': pruebaFetch,
     'log-in': LogIn,
     'admin-page': AdminPage,
-    'create-pruduct': CreateProductPage
+    'create-pruduct': CreateProductPage,
+    'edit-product-page': EditProductPage
   }
 });
 
@@ -40,7 +42,9 @@ const router = createRouter({
     { path: '/catalog', component: CatalogPage },
     { path: '/access', component: LogIn },
     { path: '/admin', component: AdminPage },
-    { path: '/create', component: CreateProductPage }
+    { path: '/create', component: CreateProductPage },
+    { path: '/edit/:id', name: 'EditProduct', component: EditProductPage, props: true }
+
   ]
 });
 
