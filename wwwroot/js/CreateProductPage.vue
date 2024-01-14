@@ -24,7 +24,7 @@
           <div class="form-row">
             <div class="form-group col-md-12">
               <label for="productName">Nombre</label>
-              <input v-model="Name" type="text" class="form-control" id="productName" required />
+              <input v-model="productName" type="text" class="form-control" id="productName" required />
               <div class="invalid-feedback">
                 El nombre es obligatorio.
               </div>
@@ -32,7 +32,7 @@
 
             <div class="form-group col-md-12">
               <label for="productPrice">Precio</label>
-              <input v-model="Price" type="text" class="form-control" id="productPrice" required />
+              <input v-model="productPrice" type="text" class="form-control" id="productPrice" required />
               <div class="invalid-feedback">
                 El precio es obligatorio.
               </div>
@@ -41,33 +41,28 @@
 
           <div class="form-group">
             <label for="productDescription">Descripción</label>
-            <textarea v-model="Description" class="form-control" id="productDescription"></textarea>
+            <textarea v-model="productDescription" class="form-control" id="productDescription"></textarea>
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-12">
               <label for="productQuantity">Cantidad</label>
-              <input v-model="Quantity" type="text" class="form-control" id="productQuantity" />
+              <input v-model="productQuantity" type="text" class="form-control" id="productQuantity" />
+            </div>
             </div>
 
-            <div class="form-group col-md-12">
-              <label for="productCategoryIdInput">CategoryId</label>
-              <input v-model="CategoryId" type="text" class="form-control" id="productCategoryIdInput" required />
-              <div class="invalid-feedback">
-                Ingresa un CategoryId válido.
-              </div>
-            </div>
+           <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="productCategory">Categoría</label>
+          <select v-model="productCategory" class="form-control" id="productCategory" required>
+            <option value="" disabled selected>Selecciona una categoría...</option>
+            <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+          </select>
+          <div class="invalid-feedback">
+            Selecciona una categoría.
           </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-12">
-              <label for="productCategoryInput">Categoría</label>
-              <input v-model="Category" type="text" class="form-control" id="productCategoryInput" required />
-              <div class="invalid-feedback">
-                Ingresa una categoría.
-              </div>
-            </div>
-          </div>
+        </div>
+        </div>
 
           <button type="submit" class="btn btn-dark form-group col-md-12">Crear Producto</button>
           
@@ -84,14 +79,15 @@ export default {
       showSuccessAlert: false,
       showErrorAlert: false,
       showProgressBar: false,
-      productData: {
-        Name: '',
-        Price: 0,
-        Description: '',
-        Quantity: 0,
-        CategoryId: 0,
-        Category: '',
-      },
+      productName: '',
+      productPrice: '',
+      productDescription: '',
+      productCategory: '',
+      productQuantity:'',
+      categories: [
+        { id: 1, name: 'Categoría 1' },
+        { id: 2, name: 'Categoría 2' },
+      ]
     };
   },
   methods: {
@@ -99,18 +95,28 @@ export default {
       try {
         this.showProgressBar = true;
         // Agregamos un console.log para imprimir los datos que se están enviando
-        console.log('Datos que se envían al servidor:', this.productData);
-
-        console.log(this.productData.Name)
+       console.log('Datos que se envían al servidor:', {
+        Name: this.productName,
+        Price: parseFloat(this.productPrice),
+        Description: this.productDescription,
+        Quantity: this.productQuantity,
+        CategoryId: parseInt(this.productCategory),
+        });
         const response = await fetch('../api/Product/AddProduct', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(this.productData)
+          body: JSON.stringify({
+            Name: this.productName,
+            Price: parseFloat(this.productPrice),
+            Description: this.productDescription,
+            Quantity: this.productQuantity,
+            CategoryId: parseInt(this.productCategory),
+          }),
           
         });
-        console.log(this.productData.Name)
+        
         if (response.ok) {
           this.showSuccessAlert = true;
           setTimeout(() => {
@@ -121,6 +127,7 @@ export default {
         }
       } catch (error) {
         this.showErrorAlert = true;
+        console.error('Error en la petición:', error);
       }
        finally {
           this.showProgressBar = false; // Oculta la barra de progreso después de la petición
