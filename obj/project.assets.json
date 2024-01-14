@@ -5876,23 +5876,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Willy\\.nuget\\packages\\": {},
+    "C:\\Users\\VPK\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\LuminariasWeb.sln.csproj",
+      "projectUniqueName": "C:\\Users\\VPK\\source\\repos\\LuminariasWeb\\LuminariasWeb.sln.csproj",
       "projectName": "LuminariasWeb.sln",
-      "projectPath": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\LuminariasWeb.sln.csproj",
-      "packagesPath": "C:\\Users\\Willy\\.nuget\\packages\\",
-      "outputPath": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\obj\\",
+      "projectPath": "C:\\Users\\VPK\\source\\repos\\LuminariasWeb\\LuminariasWeb.sln.csproj",
+      "packagesPath": "C:\\Users\\VPK\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\VPK\\source\\repos\\LuminariasWeb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Willy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\VPK\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5901,6 +5901,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -5965,7 +5966,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
