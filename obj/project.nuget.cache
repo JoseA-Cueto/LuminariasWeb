@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LMZaH/oOEUC/O+HelWLgBSQmJ8pv9lwCXawvz01++SWKntBnO6WvxsbkJKBVv1B2MFf60GUMaoRlfkDV5tYbwA==",
+  "dgSpecHash": "IzTJxC8Giou7JvDpT7a0lilFkdhVegAPD04WUiqTGwKlVlpyr59IXYMp+bd52apGgO9nT5WDDNiDEf8hDMoJ5Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\VPK\\source\\repos\\LuminariasWeb\\LuminariasWeb.sln.csproj",
+  "projectFilePath": "C:\\Users\\VPK\\Source\\Repos\\LuminariasWeb\\LuminariasWeb.sln.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\VPK\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\VPK\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
