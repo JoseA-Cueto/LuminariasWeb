@@ -123,6 +123,9 @@ export default {
             this.$router.push('/admin');
           }, 2000);
         } else {
+          this.showErrorAlert = true;
+          setTimeout(() => {
+          }, 2000);
           console.error('Error al crear el producto.');
         }
       } catch (error) {
