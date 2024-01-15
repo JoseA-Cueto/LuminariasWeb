@@ -5882,11 +5882,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "e:\\Mis Cosas\\Proyectos\\LuminariasWeb\\LuminariasWeb.sln.csproj",
+      "projectUniqueName": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\LuminariasWeb.sln.csproj",
       "projectName": "LuminariasWeb.sln",
-      "projectPath": "e:\\Mis Cosas\\Proyectos\\LuminariasWeb\\LuminariasWeb.sln.csproj",
+      "projectPath": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\LuminariasWeb.sln.csproj",
       "packagesPath": "C:\\Users\\Willy\\.nuget\\packages\\",
-      "outputPath": "e:\\Mis Cosas\\Proyectos\\LuminariasWeb\\obj\\",
+      "outputPath": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
