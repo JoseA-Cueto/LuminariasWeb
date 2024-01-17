@@ -80,6 +80,7 @@ export default {
       showSuccessAlert: false,
       showErrorAlert: false,
       showProgressBar: false,
+      Id: '',
       productName: '',
       productPrice: '',
       productDescription: '',
@@ -108,6 +109,7 @@ methods: {
         }
 
         const productDetails = await response.json();
+        //this.Id = this.$route.params.id;
         this.productName = productDetails.name;
         this.productPrice = productDetails.price;
         this.productDescription = productDetails.description;
@@ -115,10 +117,11 @@ methods: {
         this.productQuantity = productDetails.quantity;
 
         console.log('Datos que se reciben al servidor:', {
+        Id: this.$route.params.id,
         Name: this.productName,
         Price: parseFloat(this.productPrice),
         Description: this.productDescription,
-        Quantity: this.productQuantity,
+        Quantity: parseInt(this.productQuantity),
         CategoryId: parseInt(this.productCategory),
         });
 
@@ -136,7 +139,7 @@ methods: {
         Name: this.productName,
         Price: parseFloat(this.productPrice),
         Description: this.productDescription,
-        Quantity: this.productQuantity,
+        Quantity: parseInt(this.productQuantity),
         CategoryId: parseInt(this.productCategory),
         });
         const response = await fetch(`../api/Product/UpdateProduct/${productId}`, {
@@ -145,10 +148,11 @@ methods: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            Id: this.$route.params.id,
             Name: this.productName,
             Price: parseFloat(this.productPrice),
             Description: this.productDescription,
-            Quantity: this.productQuantity,
+            Quantity: parseInt(this.productQuantity),
             CategoryId: parseInt(this.productCategory),
           }),
         });

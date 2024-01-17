@@ -47,7 +47,7 @@
             <button class="btn btn-danger" @click="deleteProduct(product.id)">
               <i class="material-icons">delete</i> 
             </button>
-            <button class="btn btn-primary">
+            <button class="btn btn-primary" @click="showProduct(product.id)">
                 <i class="material-icons">info</i> 
             </button>
               
@@ -126,6 +126,9 @@ export default {
     },
     editProduct(productId) {
        this.$router.push({ name: 'EditProduct', params: { id: productId } });
+    },
+    showProduct(productId) {
+       this.$router.push({ name: 'ShowProduct', params: { id: productId } });
     },
   },
 };

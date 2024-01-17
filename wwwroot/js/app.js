@@ -15,6 +15,7 @@ import LogIn from './LogIn.vue';
 import AdminPage from './AdminPage.vue';
 import CreateProductPage from './CreateProductPage.vue';
 import EditProductPage from './EditProductPage.vue';
+import ShowProductPage from './ShowProductPage.vue'
 
 // Crea la aplicación Vue
 const app = createApp({
@@ -30,7 +31,8 @@ const app = createApp({
     'log-in': LogIn,
     'admin-page': AdminPage,
     'create-pruduct': CreateProductPage,
-    'edit-product-page': EditProductPage
+    'edit-product-page': EditProductPage,
+    'show-product-page':ShowProductPage
   }
 });
 
@@ -43,7 +45,8 @@ const router = createRouter({
     { path: '/access', component: LogIn },
     { path: '/admin', component: AdminPage },
     { path: '/create', component: CreateProductPage },
-    { path: '/edit/:id', name: 'EditProduct', component: EditProductPage, props: true }
+    { path: '/edit/:id', name: 'EditProduct', component: EditProductPage, props: true },
+    { path: '/show/:id', name: 'ShowProduct', component: ShowProductPage, props: true }
 
   ]
 });

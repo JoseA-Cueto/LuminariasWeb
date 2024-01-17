@@ -22,7 +22,8 @@ public class ProductService : IProductService
             Name = p.Name,
             Price = p.Price,
             Description = p.Description,
-            CategoryId = p.CategoryId
+            CategoryId = p.CategoryId,
+            Quantity = p.Quantity,
         });
     }
 
@@ -35,7 +36,8 @@ public class ProductService : IProductService
             Name = product.Name,
             Price = product.Price,
             Description = product.Description,
-            CategoryId = product.CategoryId
+            CategoryId = product.CategoryId,
+            Quantity = product.Quantity,
         } : null;
     }
 
@@ -46,7 +48,8 @@ public class ProductService : IProductService
             Name = productViewModel.Name,
             Price = productViewModel.Price,
             Description = productViewModel.Description,
-            CategoryId = productViewModel.CategoryId
+            CategoryId = productViewModel.CategoryId,
+            Quantity = productViewModel.Quantity
         };
         await _productRepository.AddProductAsync(product);
     }
@@ -60,6 +63,7 @@ public class ProductService : IProductService
             existingProduct.Price = productViewModel.Price;
             existingProduct.Description = productViewModel.Description;
             existingProduct.CategoryId = productViewModel.CategoryId;
+            existingProduct.Quantity = productViewModel.Quantity;
             await _productRepository.UpdateProductAsync(existingProduct);
         }
     }

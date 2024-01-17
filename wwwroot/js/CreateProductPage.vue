@@ -56,7 +56,7 @@
           <label for="productCategory">Categoría</label>
           <select v-model="productCategory" class="form-control" id="productCategory" required>
             <option value="" disabled selected>Selecciona una categoría...</option>
-            <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+            <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.categoryName }}</option>
           </select>
           <div class="invalid-feedback">
             Selecciona una categoría.
@@ -71,8 +71,11 @@
     
   </div>
 </template>
-
 <script>
+
+
+
+
 export default {
   data() {
     return {
@@ -83,25 +86,44 @@ export default {
       productPrice: '',
       productDescription: '',
       productCategory: '',
-      productQuantity:'',
-      categories: [
-        { id: 1, name: 'Categoría 1' },
-        { id: 2, name: 'Categoría 2' },
-      ]
+      productQuantity: '',
+      categories: []
     };
   },
   methods: {
+    async getCategories() {
+      try {
+        const response = await fetch('../api/Category/GetAllCategories', {
+          method: 'GET', 
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          this.categories = data;
+          console.log(this.categories)
+        } else {
+          console.error('Error al obtener las categorías.');
+        }
+      } catch (error) {
+        console.error('Error en la petición:', error);
+      }
+    },
+
     async createProduct() {
       try {
         this.showProgressBar = true;
-        // Agregamos un console.log para imprimir los datos que se están enviando
-       console.log('Datos que se envían al servidor:', {
-        Name: this.productName,
-        Price: parseFloat(this.productPrice),
-        Description: this.productDescription,
-        Quantity: this.productQuantity,
-        CategoryId: parseInt(this.productCategory),
+
+        console.log('Datos que se envían al servidor:', {
+          Name: this.productName,
+          Price: parseFloat(this.productPrice),
+          Description: this.productDescription,
+          Quantity: parseInt(this.productQuantity),
+          CategoryId: parseInt(this.productCategory),
         });
+
         const response = await fetch('../api/Product/AddProduct', {
           method: 'POST',
           headers: {
@@ -111,12 +133,11 @@ export default {
             Name: this.productName,
             Price: parseFloat(this.productPrice),
             Description: this.productDescription,
-            Quantity: this.productQuantity,
+            Quantity: parseInt(this.productQuantity),
             CategoryId: parseInt(this.productCategory),
           }),
-          
         });
-        
+
         if (response.ok) {
           this.showSuccessAlert = true;
           setTimeout(() => {
@@ -124,19 +145,18 @@ export default {
           }, 2000);
         } else {
           this.showErrorAlert = true;
-          setTimeout(() => {
-          }, 2000);
           console.error('Error al crear el producto.');
         }
       } catch (error) {
         this.showErrorAlert = true;
         console.error('Error en la petición:', error);
+      } finally {
+        this.showProgressBar = false;
       }
-       finally {
-          this.showProgressBar = false; // Oculta la barra de progreso después de la petición
-      }
-    }
-    
-  } 
+    },
+  },
+  mounted() {
+    this.getCategories();
+  },
 };
 </script>
