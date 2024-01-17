@@ -12,17 +12,25 @@ namespace LuminariasWeb.sln.ServiceExtensions
         {
             // Contenedor de dependencias
 
+            // Logger
+            services.AddScoped<ILogger, ConsoleLogger>();
+
             // Product
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
 
             // Service
             services.AddScoped<IServiceRepository, ServiceRepository>();
-            services.AddScoped<IServicesService, ServicesService>();
+            services.AddScoped<IServiceService, ServiceService>();
 
             // User
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+
+            // Category
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<ICategoryService, CategoryService>();
         }
     }
+
 }

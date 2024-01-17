@@ -8,91 +8,67 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-public class ServicesService : IServicesService
+public class ServiceService : IServiceService
 {
-    private readonly IServiceRepository _repository;
-    private readonly IMapper _mapper;
+    private readonly IServiceRepository _serviceRepository;
 
-    public ServicesService(IServiceRepository repository, IMapper mapper)
+    public ServiceService(IServiceRepository serviceRepository)
     {
-        _repository = repository;
-        _mapper = mapper;
+        _serviceRepository = serviceRepository;
     }
 
-    public async Task<List<Service>> GetAllServicesAsync()
+    public async Task<IEnumerable<ServiceViewModel>> GetServicesAsync()
     {
-        try
+        var services = await _serviceRepository.GetServicesAsync();
+        return services.Select(s => new ServiceViewModel
         {
-            var services = await _repository.GetAllServicesAsync();
-            return _mapper.Map<List<Service>>(services);
-        }
-        catch (Exception ex)
-        {
-             HandleException(ex);
-            throw;
-        }
+            Id = s.Id,
+            Name = s.Name,
+            Price = s.Price,
+            Description = s.Description
+        });
     }
 
-    public async Task<Service> GetServiceByIdAsync(int serviceId)
+    public async Task<ServiceViewModel> GetServiceByIdAsync(int serviceId)
     {
-        try
+        var service = await _serviceRepository.GetServiceByIdAsync(serviceId);
+        return service != null ? new ServiceViewModel
         {
-            var service = await _repository.GetServiceByIdAsync(serviceId);
-            return _mapper.Map<Service>(service);
-        }
-        catch (Exception ex)
-        {
-            HandleException(ex);
-            throw;
-        }
+            Id = service.Id,
+            Name = service.Name,
+            Price = service.Price,
+            Description = service.Description
+        } : null;
     }
 
     public async Task AddServiceAsync(ServiceViewModel serviceViewModel)
     {
-        try
+        var service = new Service
         {
-            var service = _mapper.Map<Service>(serviceViewModel);
-            await _repository.AddServiceAsync(service);
-        }
-        catch (Exception ex)
-        {
-            HandleException(ex);
-            throw;
-        }
+            Name = serviceViewModel.Name,
+            Price = serviceViewModel.Price,
+            Description = serviceViewModel.Description
+        };
+        await _serviceRepository.AddServiceAsync(service);
     }
 
     public async Task UpdateServiceAsync(ServiceViewModel serviceViewModel)
     {
-        try
+        var existingService = await _serviceRepository.GetServiceByIdAsync(serviceViewModel.Id);
+        if (existingService != null)
         {
-            var updatedService = _mapper.Map<Service>(serviceViewModel);
-            await _repository.UpdateServiceAsync(updatedService);
-        }
-        catch (Exception ex)
-        {
-            HandleException(ex);
-            throw;
+            existingService.Name = serviceViewModel.Name;
+            existingService.Price = serviceViewModel.Price;
+            existingService.Description = serviceViewModel.Description;
+            await _serviceRepository.UpdateServiceAsync(existingService);
         }
     }
 
     public async Task DeleteServiceAsync(int serviceId)
     {
-        try
-        {
-            await _repository.DeleteServiceAsync(serviceId);
-        }
-        catch (Exception ex)
-        {
-            HandleException(ex);
-            throw;
-        }
-    }
-
-
-    private void HandleException(Exception ex)
-    {
-        Console.WriteLine($"Se produjo una excepción en ServicesService: {ex.Message}");
-       
+        await _serviceRepository.DeleteServiceAsync(serviceId);
     }
 }
+
+
 

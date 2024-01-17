@@ -10,38 +10,31 @@ using System.Threading.Tasks;
 
 namespace LuminariasWeb.sln.Controllers
 {
-    
-    [Route("api/services")]
+
+    [Route("api/Service")]
     public class ServicesController : ControllerBase
     {
-        private readonly IServicesService _servicesService;
-        private readonly IMapper _mapper;
+        private readonly IServiceService _serviceService;
 
-        public ServicesController(IServicesService servicesService, IMapper mapper)
+        public ServicesController(IServiceService serviceService)
         {
-            _servicesService = servicesService;
-            _mapper = mapper;
+            _serviceService = serviceService;
         }
 
         [HttpGet("GetAllServices")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IEnumerable<Service>>> GetAllServices()
+        public async Task<ActionResult<IEnumerable<ServiceViewModel>>> GetAllServices()
         {
-            var services = await _servicesService.GetAllServicesAsync();
-            if (services == null || services.Count == 0)
-            {
-                return NotFound();
-            }
+            var services = await _serviceService.GetServicesAsync();
             return Ok(services);
         }
 
         [HttpGet("GetServiceById/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Service>> GetServiceById(int id)
+        public async Task<ActionResult<ServiceViewModel>> GetServiceById(int id)
         {
-            var service = await _servicesService.GetServiceByIdAsync(id);
+            var service = await _serviceService.GetServiceByIdAsync(id);
             if (service == null)
             {
                 return NotFound();
@@ -52,11 +45,11 @@ namespace LuminariasWeb.sln.Controllers
         [HttpPost("AddService")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> AddService(ServiceViewModel serviceViewModel)
+        public async Task<IActionResult> AddService([FromBody] ServiceViewModel serviceViewModel)
         {
             try
             {
-                await _servicesService.AddServiceAsync(serviceViewModel);
+                await _serviceService.AddServiceAsync(serviceViewModel);
                 return StatusCode(201);
             }
             catch (Exception ex)
@@ -69,9 +62,9 @@ namespace LuminariasWeb.sln.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> UpdateService(int id, ServiceViewModel serviceViewModel)
+        public async Task<IActionResult> UpdateService(int id, [FromBody] ServiceViewModel serviceViewModel)
         {
-            var existingService = await _servicesService.GetServiceByIdAsync(id);
+            var existingService = await _serviceService.GetServiceByIdAsync(id);
             if (existingService == null)
             {
                 return NotFound();
@@ -79,7 +72,7 @@ namespace LuminariasWeb.sln.Controllers
 
             try
             {
-                await _servicesService.UpdateServiceAsync(serviceViewModel);
+                await _serviceService.UpdateServiceAsync(serviceViewModel);
                 return Ok();
             }
             catch (Exception ex)
@@ -89,12 +82,12 @@ namespace LuminariasWeb.sln.Controllers
         }
 
         [HttpDelete("DeleteService/{id}")]
-        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> DeleteService(int id)
+        public async Task<IActionResult> DeleteService(int id)
         {
-            var existingService = await _servicesService.GetServiceByIdAsync(id);
+            var existingService = await _serviceService.GetServiceByIdAsync(id);
             if (existingService == null)
             {
                 return NotFound();
@@ -102,8 +95,8 @@ namespace LuminariasWeb.sln.Controllers
 
             try
             {
-                await _servicesService.DeleteServiceAsync(id);
-                return NoContent();
+                await _serviceService.DeleteServiceAsync(id);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -111,5 +104,6 @@ namespace LuminariasWeb.sln.Controllers
             }
         }
     }
+
 }
 

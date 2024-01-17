@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace LuminariasWeb.sln.BusinessInterface
 {
-    public interface IServicesService
+    public interface IServiceService
     {
-        Task<List<Service>> GetAllServicesAsync();
-        Task<Service> GetServiceByIdAsync(int serviceId);
+        Task<IEnumerable<ServiceViewModel>> GetServicesAsync();
+        Task<ServiceViewModel> GetServiceByIdAsync(int serviceId);
         Task AddServiceAsync(ServiceViewModel serviceViewModel);
         Task UpdateServiceAsync(ServiceViewModel serviceViewModel);
         Task DeleteServiceAsync(int serviceId);

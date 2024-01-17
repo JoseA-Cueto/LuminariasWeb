@@ -4,10 +4,10 @@ namespace LuminariasWeb.sln.DataBaseInterface
 {
     public interface IUserRepository
     {
-        Task<User> GetUserByIdAsync(int id);
-        Task<IEnumerable<User>> GetAllUserAsync();
+        Task<IEnumerable<User>> GetUsersAsync();
+        Task<User> GetUserByIdAsync(int userId);
         Task AddUserAsync(User user);
         Task UpdateUserAsync(User user);
-        Task DeleteUserAsync(int id);
+        Task DeleteUserAsync(int userId);
     }
 }

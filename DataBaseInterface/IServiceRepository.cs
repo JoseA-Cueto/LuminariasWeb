@@ -4,10 +4,10 @@ namespace LuminariasWeb.sln.DataBaseInterface
 {
     public interface IServiceRepository
     {
-        Task<Service> GetServiceByIdAsync(int id);
-        Task<IEnumerable<Service>> GetAllServicesAsync();
+        Task<IEnumerable<Service>> GetServicesAsync();
+        Task<Service> GetServiceByIdAsync(int serviceId);
         Task AddServiceAsync(Service service);
         Task UpdateServiceAsync(Service service);
-        Task DeleteServiceAsync(int id);
+        Task DeleteServiceAsync(int serviceId);
     }
 }

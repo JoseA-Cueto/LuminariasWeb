@@ -6,40 +6,42 @@ namespace LuminariasWeb.sln.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly AppDbContext _dbContext;
-        public UserRepository(AppDbContext dbContext)
+        private readonly AppDbContext _context;
+
+        public UserRepository(AppDbContext context)
         {
-            _dbContext = dbContext;
-        }
-        public async Task<User> GetUserByIdAsync(int id)
-        {
-            return await _dbContext.Set<User>().FindAsync(id);
+            _context = context;
         }
 
-        public async Task<IEnumerable<User>> GetAllUserAsync()
+        public async Task<IEnumerable<User>> GetUsersAsync()
         {
-            return await _dbContext.Set<User>().ToListAsync();
+            return await _context.Users.ToListAsync();
+        }
+
+        public async Task<User> GetUserByIdAsync(int userId)
+        {
+            return await _context.Users.FindAsync(userId);
         }
 
         public async Task AddUserAsync(User user)
         {
-            await _dbContext.Set<User>().AddAsync(user);
-            await _dbContext.SaveChangesAsync();
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateUserAsync(User user)
         {
-            _dbContext.Set<User>().Update(user);
-            await _dbContext.SaveChangesAsync();
+            _context.Entry(user).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteUserAsync(int id)
+        public async Task DeleteUserAsync(int userId)
         {
-            var user = await _dbContext.Set<User>().FindAsync(id);
+            var user = await _context.Users.FindAsync(userId);
             if (user != null)
             {
-                _dbContext.Set<User>().Remove(user);
-                await _dbContext.SaveChangesAsync();
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
             }
         }
     }

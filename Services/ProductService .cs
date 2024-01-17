@@ -6,90 +6,71 @@ using LuminariasWeb.sln.ViewModels;
 
 public class ProductService : IProductService
 {
-    private readonly IProductRepository _repository;
-    private readonly IMapper _mapper;
+    private readonly IProductRepository _productRepository;
 
-    public ProductService(IProductRepository repository, IMapper mapper)
+    public ProductService(IProductRepository productRepository)
     {
-        _repository = repository;
-        _mapper = mapper;
+        _productRepository = productRepository;
     }
 
-    public async Task<List<Product>> GetAllProductsAsync()
+    public async Task<IEnumerable<ProductViewModel>> GetProductsAsync()
     {
-        try
+        var products = await _productRepository.GetProductsAsync();
+        return products.Select(p => new ProductViewModel
         {
-            var products = await _repository.GetAllProductsAsync();
-            return _mapper.Map<List<Product>>(products);
-        }
-        catch (Exception ex)
-        {
-            HandleException(ex);
-            throw;
-        }
+            Id = p.Id,
+            Name = p.Name,
+            Price = p.Price,
+            Description = p.Description,
+            CategoryId = p.CategoryId
+        });
     }
 
-    public async Task<Product> GetProductByIdAsync(int productId)
+    public async Task<ProductViewModel> GetProductByIdAsync(int productId)
     {
-        try
+        var product = await _productRepository.GetProductByIdAsync(productId);
+        return product != null ? new ProductViewModel
         {
-            var product = await _repository.GetProductByIdAsync(productId);
-            return _mapper.Map<Product>(product);
-        }
-        catch (Exception ex)
-        {
-            HandleException(ex);
-            throw;
-        }
+            Id = product.Id,
+            Name = product.Name,
+            Price = product.Price,
+            Description = product.Description,
+            CategoryId = product.CategoryId
+        } : null;
     }
 
     public async Task AddProductAsync(ProductViewModel productViewModel)
     {
-        try
+        var product = new Product
         {
-            var product = _mapper.Map<Product>(productViewModel);
-            await _repository.AddProductAsync(product);
-        }
-        catch (Exception ex)
-        {
-            HandleException(ex);
-            throw;
-        }
+            Name = productViewModel.Name,
+            Price = productViewModel.Price,
+            Description = productViewModel.Description,
+            CategoryId = productViewModel.CategoryId
+        };
+        await _productRepository.AddProductAsync(product);
     }
 
     public async Task UpdateProductAsync(ProductViewModel productViewModel)
     {
-        try
+        var existingProduct = await _productRepository.GetProductByIdAsync(productViewModel.Id);
+        if (existingProduct != null)
         {
-            var updatedProduct = _mapper.Map<Product>(productViewModel);
-            await _repository.UpdateProductAsync(updatedProduct);
-        }
-        catch (Exception ex)
-        {
-            HandleException(ex);
-            throw;
+            existingProduct.Name = productViewModel.Name;
+            existingProduct.Price = productViewModel.Price;
+            existingProduct.Description = productViewModel.Description;
+            existingProduct.CategoryId = productViewModel.CategoryId;
+            await _productRepository.UpdateProductAsync(existingProduct);
         }
     }
 
     public async Task DeleteProductAsync(int productId)
     {
-        try
-        {
-            await _repository.DeleteProductAsync(productId);
-        }
-        catch (Exception ex)
-        {
-            HandleException(ex);
-            throw;
-        }
-    }
-
-   
-
-
-    private void HandleException(Exception ex)
-    {
-        Console.WriteLine($"Se produjo una excepción en ProductService: {ex.Message}");
+        await _productRepository.DeleteProductAsync(productId);
     }
 }
+
+
+
+
 

@@ -8,11 +8,10 @@ namespace LuminariasWeb.sln.BusinessInterface
 {
     public interface IProductService
     {
-        Task<List<Product>> GetAllProductsAsync();
-        Task<Product> GetProductByIdAsync(int productId);
+        Task<IEnumerable<ProductViewModel>> GetProductsAsync();
+        Task<ProductViewModel> GetProductByIdAsync(int productId);
         Task AddProductAsync(ProductViewModel productViewModel);
         Task UpdateProductAsync(ProductViewModel productViewModel);
         Task DeleteProductAsync(int productId);
-       
     }
 }

@@ -7,42 +7,42 @@ namespace LuminariasWeb.sln.Repositories
 {
     public class ServiceRepository : IServiceRepository
     {
-        private readonly AppDbContext _dbContext;
+        private readonly AppDbContext _context;
 
-        public ServiceRepository(AppDbContext dbContext)
+        public ServiceRepository(AppDbContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
 
-        public async Task<Service> GetServiceByIdAsync(int id)
+        public async Task<IEnumerable<Service>> GetServicesAsync()
         {
-            return await _dbContext.Set<Service>().FindAsync(id);
+            return await _context.Services.ToListAsync();
         }
 
-        public async Task<IEnumerable<Service>> GetAllServicesAsync()
+        public async Task<Service> GetServiceByIdAsync(int serviceId)
         {
-            return await _dbContext.Set<Service>().ToListAsync();
+            return await _context.Services.FindAsync(serviceId);
         }
 
         public async Task AddServiceAsync(Service service)
         {
-            await _dbContext.Set<Service>().AddAsync(service);
-            await _dbContext.SaveChangesAsync();
+            _context.Services.Add(service);
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateServiceAsync(Service service)
         {
-            _dbContext.Set<Service>().Update(service);
-            await _dbContext.SaveChangesAsync();
+            _context.Entry(service).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteServiceAsync(int id)
+        public async Task DeleteServiceAsync(int serviceId)
         {
-            var service = await _dbContext.Set<Service>().FindAsync(id);
+            var service = await _context.Services.FindAsync(serviceId);
             if (service != null)
             {
-                _dbContext.Set<Service>().Remove(service);
-                await _dbContext.SaveChangesAsync();
+                _context.Services.Remove(service);
+                await _context.SaveChangesAsync();
             }
         }
     }

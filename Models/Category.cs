@@ -4,11 +4,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace LuminariasWeb.sln.Models
 {
-    public class Service
+    public class Category
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-        public string Description { get; set; }
+        public string CategoryName { get; set; }
+
+        // Relación con la entidad Product
+        public List<Product> Products { get; set; }
     }
 }

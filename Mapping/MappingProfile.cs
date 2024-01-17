@@ -8,14 +8,19 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<Product, ProductViewModel>()
-        .ForMember(d => d.CategoryId, opt => opt.MapFrom(source => source.Category));
+            .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.CategoryId));
+
         CreateMap<ProductViewModel, Product>()
-        .ForMember(d => d.Category, opt => opt.MapFrom(source => source.CategoryId));
+            .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.CategoryId));
+
+        CreateMap<Category, CategoryViewModel>();
+        CreateMap<CategoryViewModel, Category>();
+
         CreateMap<Service, ServiceViewModel>();
         CreateMap<ServiceViewModel, Service>();
+
         CreateMap<User, UserViewModel>();
         CreateMap<UserViewModel, User>();
-
-
     }
 }
+

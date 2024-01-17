@@ -15,26 +15,24 @@ namespace LuminariasWeb.sln.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
-        private readonly IMapper _mapper;
 
-        public ProductController(IProductService productService, IMapper mapper)
+        public ProductController(IProductService productService)
         {
             _productService = productService;
-            _mapper = mapper;
         }
 
         [HttpGet("GetAllProducts")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
+        public async Task<ActionResult<IEnumerable<ProductViewModel>>> GetAllProducts()
         {
-            var products = await _productService.GetAllProductsAsync();
+            var products = await _productService.GetProductsAsync();
             return Ok(products);
         }
 
         [HttpGet("GetProductById/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Product>> GetProductById(int id)
+        public async Task<ActionResult<ProductViewModel>> GetProductById(int id)
         {
             var product = await _productService.GetProductByIdAsync(id);
             if (product == null)
@@ -47,7 +45,7 @@ namespace LuminariasWeb.sln.Controllers
         [HttpPost("AddProduct")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> AddProduct([FromBody]ProductViewModel productViewModel)
+        public async Task<ActionResult> AddProduct([FromBody] ProductViewModel productViewModel)
         {
             try
             {
@@ -59,8 +57,7 @@ namespace LuminariasWeb.sln.Controllers
             }
             catch (Exception ex)
             {
-              return StatusCode(500);
-              
+                return StatusCode(500);
             }
         }
 
@@ -68,7 +65,7 @@ namespace LuminariasWeb.sln.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> UpdateProduct(int id,[FromBody]ProductViewModel productViewModel)
+        public async Task<ActionResult> UpdateProduct(int id, [FromBody] ProductViewModel productViewModel)
         {
             var existingProduct = await _productService.GetProductByIdAsync(id);
             if (existingProduct == null)
@@ -110,6 +107,7 @@ namespace LuminariasWeb.sln.Controllers
             }
         }
     }
+
 
 }
 
