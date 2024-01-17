@@ -57,7 +57,7 @@
           <label for="productCategory">Categoría</label>
           <select v-model="productCategory" class="form-control" id="productCategory" required>
             <option value="" disabled selected>Selecciona una categoría...</option>
-            <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+            <option v-for="category in categories" :key="category.id" :value="category.id">{{ category.categoryName }}</option>
           </select>
           <div class="invalid-feedback">
             Selecciona una categoría.
@@ -86,16 +86,34 @@ export default {
       productDescription: '',
       productCategory: '',
       productQuantity:'',
-      categories: [
-        { id: 1, name: 'Categoría 1' },
-        { id: 2, name: 'Categoría 2' },
-      ]
+      categories: []
     };
   },
   mounted() {
     this.fetchProductDetails();
+    this.getCategories();
     },
 methods: {
+  async getCategories() {
+      try {
+        const response = await fetch('../api/Category/GetAllCategories', {
+          method: 'GET', 
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          this.categories = data;
+          console.log(this.categories)
+        } else {
+          console.error('Error al obtener las categorías.');
+        }
+      } catch (error) {
+        console.error('Error en la petición:', error);
+      }
+    },
     async fetchProductDetails() {
       try {
         this.showProgressBar = true;

@@ -69,16 +69,34 @@ export default {
       productDescription: '',
       productCategory: '',
       productQuantity:'',
-      categories: [
-        { id: 1, name: 'Categoría 1' },
-        { id: 2, name: 'Categoría 2' },
-      ]
+      
     };
   },
   mounted() {
     this.fetchProductDetails();
     },
 methods: {
+  async getCategory() {
+      try {
+        const productId = this.$route.params.id;
+        const response = await fetch('../api/Category/GetCategoryById/${productId}', {
+          method: 'GET', 
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          this.productCategory = data;
+          console.log(this.this.productCategory)
+        } else {
+          console.error('Error al obtener las categorías.');
+        }
+      } catch (error) {
+        console.error('Error en la petición:', error);
+      }
+    },
     async fetchProductDetails() {
       try {
         this.showProgressBar = true;
@@ -95,7 +113,6 @@ methods: {
         this.productName = productDetails.name;
         this.productPrice = productDetails.price;
         this.productDescription = productDetails.description;
-        this.productCategory = productDetails.category;
         this.productQuantity = productDetails.quantity;
 
         console.log('Datos que se reciben al servidor:', {
