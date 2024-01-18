@@ -67,6 +67,7 @@ export default {
       productName: '',
       productPrice: '',
       productDescription: '',
+      productCategoryID: 0,
       productCategory: '',
       productQuantity:'',
       
@@ -76,27 +77,27 @@ export default {
     this.fetchProductDetails();
     },
 methods: {
-  async getCategory() {
-      try {
-        const productId = this.$route.params.id;
-        const response = await fetch('../api/Category/GetCategoryById/${productId}', {
-          method: 'GET', 
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+  async getCategory(productCategoryID) {
+  try {
+    const productId = this.$route.params.id;
+    const response = await fetch(`../api/Category/GetCategoryById/${productCategoryID}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-        if (response.ok) {
-          const data = await response.json();
-          this.productCategory = data;
-          console.log(this.this.productCategory)
-        } else {
-          console.error('Error al obtener las categorías.');
-        }
-      } catch (error) {
-        console.error('Error en la petición:', error);
-      }
-    },
+    if (response.ok) {
+      const data = await response.json();
+      this.productCategory = data.categoryName;
+      console.log(this.productCategory);  // Cambiado de `this.this.productCategory` a `this.productCategory`
+    } else {
+      console.error('Error al obtener las categorías.');
+    }
+  } catch (error) {
+    console.error('Error en la petición:', error);
+  }
+},
     async fetchProductDetails() {
       try {
         this.showProgressBar = true;
@@ -114,15 +115,10 @@ methods: {
         this.productPrice = productDetails.price;
         this.productDescription = productDetails.description;
         this.productQuantity = productDetails.quantity;
+        this.productCategoryID = productDetails.categoryId
 
-        console.log('Datos que se reciben al servidor:', {
-        Name: this.productName,
-        Price: parseFloat(this.productPrice),
-        Description: this.productDescription,
-        Quantity: this.productQuantity,
-        CategoryId: parseInt(this.productCategory),
-        });
-
+        console.log('Datos que se reciben al servidor:',productDetails);
+       await this.getCategory(this.productCategoryID);
       } catch (error) {
         console.error('Error en la petición:', error);
       } finally {
