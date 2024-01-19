@@ -16,5 +16,5 @@
     {
         _logger.LogError(ex, message);
     }
-    // Implementa otros métodos según tus necesidades
+   
 }
