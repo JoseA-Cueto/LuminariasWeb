@@ -75,6 +75,12 @@ namespace LuminariasWeb.sln.Controllers
 
             try
             {
+                // Si se proporciona una nueva imagen, actualiza la propiedad ImagePath
+                if (!string.IsNullOrEmpty(productViewModel.ImagePath))
+                {
+                    existingProduct.ImagePath = productViewModel.ImagePath;
+                }
+
                 await _productService.UpdateProductAsync(productViewModel);
                 return Ok();
             }
@@ -107,6 +113,7 @@ namespace LuminariasWeb.sln.Controllers
             }
         }
     }
+
 
 
 }

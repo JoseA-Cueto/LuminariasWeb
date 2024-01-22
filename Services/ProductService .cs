@@ -1,8 +1,6 @@
-﻿using AutoMapper;
-using LuminariasWeb.sln.BusinessInterface;
+﻿using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.Interface;
 using LuminariasWeb.sln.Models;
-using LuminariasWeb.sln.ViewModels;
 
 public class ProductService : IProductService
 {
@@ -24,6 +22,7 @@ public class ProductService : IProductService
             Description = p.Description,
             CategoryId = p.CategoryId,
             Quantity = p.Quantity,
+            ImagePath = p.ImagePath  // Agrega la propiedad ImagePath
         });
     }
 
@@ -38,6 +37,7 @@ public class ProductService : IProductService
             Description = product.Description,
             CategoryId = product.CategoryId,
             Quantity = product.Quantity,
+            ImagePath = product.ImagePath  // Agrega la propiedad ImagePath
         } : null;
     }
 
@@ -49,7 +49,8 @@ public class ProductService : IProductService
             Price = productViewModel.Price,
             Description = productViewModel.Description,
             CategoryId = productViewModel.CategoryId,
-            Quantity = productViewModel.Quantity
+            Quantity = productViewModel.Quantity,
+            ImagePath = productViewModel.ImagePath  // Agrega la propiedad ImagePath
         };
         await _productRepository.AddProductAsync(product);
     }
@@ -64,6 +65,7 @@ public class ProductService : IProductService
             existingProduct.Description = productViewModel.Description;
             existingProduct.CategoryId = productViewModel.CategoryId;
             existingProduct.Quantity = productViewModel.Quantity;
+            existingProduct.ImagePath = productViewModel.ImagePath;  // Agrega la propiedad ImagePath
             await _productRepository.UpdateProductAsync(existingProduct);
         }
     }
@@ -73,6 +75,7 @@ public class ProductService : IProductService
         await _productRepository.DeleteProductAsync(productId);
     }
 }
+
 
 
 
