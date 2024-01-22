@@ -49,9 +49,6 @@ namespace LuminariasWeb.sln.Controllers
         {
             try
             {
-                Console.WriteLine($"Nombre del producto recibido: {productViewModel.Name}");
-                Console.WriteLine($"ID de la categoría recibido: {productViewModel.CategoryId}");
-
                 await _productService.AddProductAsync(productViewModel);
                 return StatusCode(201);
             }
