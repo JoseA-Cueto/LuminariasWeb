@@ -49,16 +49,16 @@
         </div>
 
         <div class="form-group">
-          <label for="productImage">URL de la Imagen</label>
+          <label for="productImage">Imagen</label>
           <input
-            v-model="productImage"
-            type="text"
+            type="file"
+            @change="handleImageUpload"
             class="form-control"
             id="productImage"
-            placeholder="Ingrese la URL de la imagen"
+            accept="image/*"
           />
           <div class="invalid-feedback">
-            Por favor, ingrese la URL de la imagen.
+            Por favor, selecciona una imagen.
           </div>
         </div>
 
@@ -130,19 +130,17 @@ export default {
       try {
         this.showProgressBar = true;
 
+        const formData = new FormData();
+        formData.append('Name', this.productName);
+        formData.append('Price', parseFloat(this.productPrice));
+        formData.append('Description', this.productDescription);
+        formData.append('Quantity', parseInt(this.productQuantity));
+        formData.append('CategoryId', parseInt(this.productCategory));
+        formData.append('Image', this.productImage);
+
         const response = await fetch('../api/Product/AddProduct', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            Name: this.productName,
-            Price: parseFloat(this.productPrice),
-            Description: this.productDescription,
-            Quantity: parseInt(this.productQuantity),
-            CategoryId: parseInt(this.productCategory),
-            ImageUrl: this.productImage, // Utiliza el campo de la URL
-          }),
+          body: formData,
         });
 
         if (response.ok) {
@@ -161,9 +159,17 @@ export default {
         this.showProgressBar = false;
       }
     },
+
+    handleImageUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+        this.productImage = file;
+      }
+    },
   },
+
   mounted() {
     this.getCategories();
-  },
+  },
 };
 </script>
