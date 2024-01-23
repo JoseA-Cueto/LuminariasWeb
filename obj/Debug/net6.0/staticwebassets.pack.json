@@ -57,8 +57,16 @@
       "PackagePath": "staticwebassets\\imgInfo.png"
     },
     {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\AdminCategoriesPage.vue",
+      "PackagePath": "staticwebassets\\js\\AdminCategoriesPage.vue"
+    },
+    {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\AdminPage.vue",
       "PackagePath": "staticwebassets\\js\\AdminPage.vue"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\AdminProductsPage.vue",
+      "PackagePath": "staticwebassets\\js\\AdminProductsPage.vue"
     },
     {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CardItem.vue",
@@ -73,8 +81,16 @@
       "PackagePath": "staticwebassets\\js\\CatalogPage.vue"
     },
     {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CreateCategoryPage.vue",
+      "PackagePath": "staticwebassets\\js\\CreateCategoryPage.vue"
+    },
+    {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CreateProductPage.vue",
       "PackagePath": "staticwebassets\\js\\CreateProductPage.vue"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\EditCategoryPage.vue",
+      "PackagePath": "staticwebassets\\js\\EditCategoryPage.vue"
     },
     {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\EditProductPage.vue",
@@ -95,6 +111,10 @@
     {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\LogIn.vue",
       "PackagePath": "staticwebassets\\js\\LogIn.vue"
+    },
+    {
+      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\ShowCategoryPage.vue",
+      "PackagePath": "staticwebassets\\js\\ShowCategoryPage.vue"
     },
     {
       "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\ShowProductPage.vue",

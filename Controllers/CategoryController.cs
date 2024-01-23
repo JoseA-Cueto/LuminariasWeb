@@ -38,7 +38,7 @@ namespace LuminariasWeb.sln.Controllers
         [HttpPost("AddCategory")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AddCategory([FromBody] CategoryViewModel categoryViewModel)
+        public async Task<IActionResult> AddCategory( CategoryViewModel categoryViewModel)
         {
             try
             {

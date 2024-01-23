@@ -15,7 +15,12 @@ import LogIn from './LogIn.vue';
 import AdminPage from './AdminPage.vue';
 import CreateProductPage from './CreateProductPage.vue';
 import EditProductPage from './EditProductPage.vue';
-import ShowProductPage from './ShowProductPage.vue'
+import ShowProductPage from './ShowProductPage.vue';
+import AdminCategoriesPage from './AdminCategoriesPage.vue';
+import AdminProductsPage from './AdminProductsPage.vue'
+import EditCategoryPage from './EditCategoryPage.vue'
+import ShowCategoryPage from './ShowCategoryPage.vue'
+import CreateCategoryPage from './CreateCategoryPage.vue'
 
 // Crea la aplicación Vue
 const app = createApp({
@@ -31,8 +36,13 @@ const app = createApp({
     'log-in': LogIn,
     'admin-page': AdminPage,
     'create-pruduct': CreateProductPage,
+    'create-category': CreateCategoryPage,
     'edit-product-page': EditProductPage,
-    'show-product-page':ShowProductPage
+    'show-product-page':ShowProductPage,
+    'admin-products-page': AdminProductsPage,
+    'edit-category-page': EditCategoryPage,
+    'show-category-page': ShowCategoryPage
+
   }
 });
 
@@ -44,9 +54,13 @@ const router = createRouter({
     { path: '/catalog', component: CatalogPage },
     { path: '/access', component: LogIn },
     { path: '/admin', component: AdminPage },
-    { path: '/create', component: CreateProductPage },
-    { path: '/edit/:id', name: 'EditProduct', component: EditProductPage, props: true },
-    { path: '/show/:id', name: 'ShowProduct', component: ShowProductPage, props: true }
+    { path: '/admin/categories', component: AdminCategoriesPage },
+    { path: '/createproduct', component: CreateProductPage },
+    { path: '/createcategory', component: CreateCategoryPage },
+    { path: '/editproduct/:id', name: 'EditProduct', component: EditProductPage, props: true },
+    { path: '/editcategory/:id', name: 'EditCategory', component: EditCategoryPage, props: true },
+    { path: '/showproduct/:id', name: 'ShowProduct', component: ShowProductPage, props: true },
+    { path: '/showcategory/:id', name: 'ShowCategory', component: ShowCategoryPage, props: true }
 
   ]
 });

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "GtzEWGpd1oze8lccfcMj+7yS4/HZd7dEYAMr46XReI0=",
+  "Hash": "1oZNGpjGG/27AD39aNdpkupP3h+3grD4DbtwcsiAEf8=",
   "Source": "LuminariasWeb.sln",
   "BasePath": "_content/LuminariasWeb.sln",
   "Mode": "Default",
@@ -283,6 +283,25 @@
       "OriginalItemSpec": "wwwroot\\imgInfo.png"
     },
     {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\AdminCategoriesPage.vue",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "js/AdminCategoriesPage.vue",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\AdminCategoriesPage.vue"
+    },
+    {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\AdminPage.vue",
       "SourceId": "LuminariasWeb.sln",
       "SourceType": "Discovered",
@@ -300,6 +319,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\AdminPage.vue"
+    },
+    {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\AdminProductsPage.vue",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "js/AdminProductsPage.vue",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\AdminProductsPage.vue"
     },
     {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\app.js",
@@ -378,6 +416,25 @@
       "OriginalItemSpec": "wwwroot\\js\\CatalogPage.vue"
     },
     {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CreateCategoryPage.vue",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "js/CreateCategoryPage.vue",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\CreateCategoryPage.vue"
+    },
+    {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CreateProductPage.vue",
       "SourceId": "LuminariasWeb.sln",
       "SourceType": "Discovered",
@@ -395,6 +452,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\CreateProductPage.vue"
+    },
+    {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\EditCategoryPage.vue",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "js/EditCategoryPage.vue",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\EditCategoryPage.vue"
     },
     {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\EditProductPage.vue",
@@ -528,6 +604,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\pruebaFetch.vue"
+    },
+    {
+      "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\ShowCategoryPage.vue",
+      "SourceId": "LuminariasWeb.sln",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\",
+      "BasePath": "_content/LuminariasWeb.sln",
+      "RelativePath": "js/ShowCategoryPage.vue",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ShowCategoryPage.vue"
     },
     {
       "Identity": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\ShowProductPage.vue",
