@@ -1,52 +1,32 @@
-// using AutoMapper;
-// using LuminariasWeb.sln.BusinessInterface;
-// using LuminariasWeb.sln.Interface;
-// using LuminariasWeb.sln.Models;
-// using LuminariasWeb.sln.ViewModels;
+using LuminariasWeb.sln.Models;
 
+public class CartService : ICartService
+{
+    private List<CartViewModel> cartItems = new List<CartViewModel>();
+    private readonly AppDbContext dbContext; 
 
+    public CartService(AppDbContext dbContext)
+    {
+        this.dbContext = dbContext;
+    }
 
-// public class CartService : ICartService
-// {
-//     private List<CartItem> _cartItems;
+    public void AddToCart(CartViewModel item)
+    {
+        
+        Product product = dbContext.Products.Find(item.Product.Id);
 
-//     public CartService()
-//     {
-//         _cartItems = new List<CartItem>();
-//     }
+        
+        item.Product = product;
 
-//     public void AddToCart(int productId, string productName, decimal price, int quantity)
-//     {
-//         var existingItem = _cartItems.FirstOrDefault(item => item.ProductId == productId);
+        
+        cartItems.Add(item);
+    }
 
-//         if (existingItem != null)
-//         {
-//             existingItem.Quantity += 1;
-//         }
-//         else
-//         {
-//             _cartItems.Add(new CartItem
-//             {
-//                 ProductId = productId,
-//                 ProductName = productName,
-//                 Price = price,
-//                 Quantity = quantity
-//             });
-//         }
-//     }
+    public List<CartViewModel> GetCartItems()
+    {
+        
+        return cartItems;
+    }
 
-//     public void RemoveFromCart(int productId)
-//     {
-//         _cartItems.RemoveAll(item => item.ProductId == productId);
-//     }
-
-//     public List<CartItem> GetCartItems()
-//     {
-//         return _cartItems;
-//     }
-
-//     public void ClearCart()
-//     {
-//         _cartItems.Clear();
-//     }
-// }
+   
+}

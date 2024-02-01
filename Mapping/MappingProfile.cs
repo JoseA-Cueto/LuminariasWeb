@@ -21,6 +21,8 @@ public class MappingProfile : Profile
 
         CreateMap<User, UserViewModel>();
         CreateMap<UserViewModel, User>();
+
+       
     }
 }
 

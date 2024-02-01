@@ -30,6 +30,9 @@ namespace LuminariasWeb.sln.ServiceExtensions
             // Category
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICategoryService, CategoryService>();
+            // Cart
+            services.AddScoped<ICartService, CartService>();
+                
         }
     }
 
