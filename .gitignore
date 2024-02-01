@@ -1,0 +1,13 @@
+.vscode/
+.idea/
+*.log
+*.log.*
+*.log-*
+*.pid
+*.seed
+*.pid.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+obj/debug/.net6.0/
+
