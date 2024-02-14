@@ -10,5 +10,6 @@ namespace LuminariasWeb.sln.BusinessInterface
         Task AddUserAsync(UserViewModel userViewModel);
         Task UpdateUserAsync(UserViewModel userViewModel);
         Task DeleteUserAsync(int userId);
+        Task<User> FindUserAsync(UserViewModel userViewModel);
     }
 }

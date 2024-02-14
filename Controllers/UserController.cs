@@ -1,4 +1,5 @@
 ﻿using LuminariasWeb.sln.BusinessInterface;
+using LuminariasWeb.sln.Services;
 using LuminariasWeb.sln.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,30 @@ namespace LuminariasWeb.sln.Controllers
             {
                 var users = await _userService.GetUsersAsync();
                 return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al obtener todos los usuarios");
+                return StatusCode(500);
+            }
+        }
+        [HttpPost("FindUser")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> FindUser([FromBody] UserViewModel userViewModel)
+        {
+            try
+            {
+                var user = await _userService.FindUserAsync(userViewModel);
+
+                if (user != null)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception ex)
             {
