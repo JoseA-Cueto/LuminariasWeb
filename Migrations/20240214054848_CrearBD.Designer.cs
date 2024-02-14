@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LuminariasWeb.sln.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240117020917_Migracion_2")]
-    partial class Migracion_2
+    [Migration("20240214054848_CrearBD")]
+    partial class CrearBD
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,12 +54,19 @@ namespace LuminariasWeb.sln.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
