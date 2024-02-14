@@ -1,13 +1,5 @@
-﻿
-using AutoMapper;
-using LuminariasWeb.sln.BusinessInterface;
-using LuminariasWeb.sln.Models;
-using LuminariasWeb.sln.ViewModels;
-using Microsoft.AspNetCore.Http;
+﻿using LuminariasWeb.sln.BusinessInterface;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace LuminariasWeb.sln.Controllers
 {
@@ -15,18 +7,28 @@ namespace LuminariasWeb.sln.Controllers
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
+        private readonly ILogger _logger;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, ILogger logger) 
         {
             _productService = productService;
+            _logger = logger; 
         }
 
         [HttpGet("GetAllProducts")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<ProductViewModel>>> GetAllProducts()
         {
-            var products = await _productService.GetProductsAsync();
-            return Ok(products);
+            try
+            {
+                var products = await _productService.GetProductsAsync();
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al obtener todos los productos");
+                return StatusCode(500); // Devuelve un código de estado 500 en caso de error
+            }
         }
 
         [HttpGet("GetProductById/{id}")]
@@ -34,12 +36,20 @@ namespace LuminariasWeb.sln.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductViewModel>> GetProductById(int id)
         {
-            var product = await _productService.GetProductByIdAsync(id);
-            if (product == null)
+            try
             {
-                return NotFound();
+                var product = await _productService.GetProductByIdAsync(id);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+                return Ok(product);
             }
-            return Ok(product);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error al obtener el producto con ID: {id}");
+                return StatusCode(500);
+            }
         }
 
         [HttpPost("AddProduct")]
@@ -54,6 +64,7 @@ namespace LuminariasWeb.sln.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error al agregar un nuevo producto");
                 return StatusCode(500);
             }
         }
@@ -64,14 +75,14 @@ namespace LuminariasWeb.sln.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> UpdateProduct(int id, [FromBody] ProductViewModel productViewModel)
         {
-            var existingProduct = await _productService.GetProductByIdAsync(id);
-            if (existingProduct == null)
-            {
-                return NotFound();
-            }
-
             try
             {
+                var existingProduct = await _productService.GetProductByIdAsync(id);
+                if (existingProduct == null)
+                {
+                    return NotFound();
+                }
+
                 // Si se proporciona una nueva imagen, actualiza la propiedad ImagePath
                 if (!string.IsNullOrEmpty(productViewModel.ImagePath))
                 {
@@ -83,6 +94,7 @@ namespace LuminariasWeb.sln.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"Error al actualizar el producto con ID: {id}");
                 return StatusCode(500);
             }
         }
@@ -93,26 +105,25 @@ namespace LuminariasWeb.sln.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> DeleteProduct(int id)
         {
-            var existingProduct = await _productService.GetProductByIdAsync(id);
-            if (existingProduct == null)
-            {
-                return NotFound();
-            }
-
             try
             {
+                var existingProduct = await _productService.GetProductByIdAsync(id);
+                if (existingProduct == null)
+                {
+                    return NotFound();
+                }
+
                 await _productService.DeleteProductAsync(id);
                 return Ok();
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"Error al eliminar el producto con ID: {id}");
                 return StatusCode(500);
             }
         }
     }
-
-
-
 }
+
 
 

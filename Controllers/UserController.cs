@@ -1,31 +1,35 @@
-﻿using AutoMapper;
-using LuminariasWeb.sln.BusinessInterface;
-using LuminariasWeb.sln.Models;
+﻿using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace LuminariasWeb.sln.Controllers
 {
-
     [Route("api/User")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly ILogger _logger; 
 
-        public UsersController(IUserService userService)
+        public UsersController(IUserService userService, ILogger logger) 
         {
             _userService = userService;
+            _logger = logger; 
         }
 
         [HttpGet("GetAllUsers")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<UserViewModel>>> GetAllUsers()
         {
-            var users = await _userService.GetUsersAsync();
-            return Ok(users);
+            try
+            {
+                var users = await _userService.GetUsersAsync();
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al obtener todos los usuarios");
+                return StatusCode(500);
+            }
         }
 
         [HttpGet("GetUserById/{id}")]
@@ -33,12 +37,20 @@ namespace LuminariasWeb.sln.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<UserViewModel>> GetUserById(int id)
         {
-            var user = await _userService.GetUserByIdAsync(id);
-            if (user == null)
+            try
             {
-                return NotFound();
+                var user = await _userService.GetUserByIdAsync(id);
+                if (user == null)
+                {
+                    return NotFound();
+                }
+                return Ok(user);
             }
-            return Ok(user);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error al obtener el usuario con ID: {id}");
+                return StatusCode(500);
+            }
         }
 
         [HttpPost("AddUser")]
@@ -53,6 +65,7 @@ namespace LuminariasWeb.sln.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error al agregar un nuevo usuario");
                 return StatusCode(500);
             }
         }
@@ -63,19 +76,20 @@ namespace LuminariasWeb.sln.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> UpdateUser(int id, [FromBody] UserViewModel userViewModel)
         {
-            var existingUser = await _userService.GetUserByIdAsync(id);
-            if (existingUser == null)
-            {
-                return NotFound();
-            }
-
             try
             {
+                var existingUser = await _userService.GetUserByIdAsync(id);
+                if (existingUser == null)
+                {
+                    return NotFound();
+                }
+
                 await _userService.UpdateUserAsync(userViewModel);
                 return Ok();
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"Error al actualizar el usuario con ID: {id}");
                 return StatusCode(500);
             }
         }
@@ -86,22 +100,23 @@ namespace LuminariasWeb.sln.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var existingUser = await _userService.GetUserByIdAsync(id);
-            if (existingUser == null)
-            {
-                return NotFound();
-            }
-
             try
             {
+                var existingUser = await _userService.GetUserByIdAsync(id);
+                if (existingUser == null)
+                {
+                    return NotFound();
+                }
+
                 await _userService.DeleteUserAsync(id);
                 return Ok();
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, $"Error al eliminar el usuario con ID: {id}");
                 return StatusCode(500);
             }
         }
     }
-
 }
+

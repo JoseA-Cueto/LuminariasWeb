@@ -1,23 +1,31 @@
 using Microsoft.AspNetCore.Mvc;
-using LuminariasWeb.sln.ViewModels;
-using LuminariasWeb.sln.Interface;
 
 [ApiController]
 [Route("api/cart")]
 public class CartController : ControllerBase
 {
     private readonly ICartService _cartService;
+    private readonly ILogger<CartController> _logger; // Utiliza el ILogger inyectado
 
-    public CartController(ICartService cartService)
+    public CartController(ICartService cartService, ILogger<CartController> logger)
     {
         _cartService = cartService;
+        _logger = logger;
     }
 
     [HttpGet("items")]
     public IActionResult GetCartItems()
     {
-        var cartItems = _cartService.GetCartItems();
-        return Ok(cartItems);
+        try
+        {
+            var cartItems = _cartService.GetCartItems();
+            return Ok(cartItems);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error al obtener los elementos del carrito");
+            return StatusCode(500); // Devuelve un código de estado 500 en caso de error
+        }
     }
 
     [HttpPost("add")]
@@ -30,9 +38,9 @@ public class CartController : ControllerBase
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, $"Error al agregar al carrito: {ex.Message}");
             return BadRequest(new { ErrorMessage = $"Error al agregar al carrito: {ex.Message}" });
         }
     }
-
-    
 }
+

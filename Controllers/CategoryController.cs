@@ -8,18 +8,28 @@ namespace LuminariasWeb.sln.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryService _categoryService;
+        private readonly ILogger<CategoriesController> _logger; 
 
-        public CategoriesController(ICategoryService categoryService)
+        public CategoriesController(ICategoryService categoryService, ILogger<CategoriesController> logger)
         {
             _categoryService = categoryService;
+            _logger = logger;
         }
 
         [HttpGet("GetAllCategories")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<CategoryViewModel>>> GetAllCategories()
         {
-            var categories = await _categoryService.GetCategoriesAsync();
-            return Ok(categories);
+            try
+            {
+                var categories = await _categoryService.GetCategoriesAsync();
+                return Ok(categories);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al obtener todas las categorías");
+                return StatusCode(500); // Devuelve un código de estado 500 en caso de error
+            }
         }
 
         [HttpGet("GetCategoryById/{id}")]
@@ -27,18 +37,26 @@ namespace LuminariasWeb.sln.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<CategoryViewModel>> GetCategoryById(int id)
         {
-            var category = await _categoryService.GetCategoryByIdAsync(id);
-            if (category == null)
+            try
             {
-                return NotFound();
+                var category = await _categoryService.GetCategoryByIdAsync(id);
+                if (category == null)
+                {
+                    return NotFound();
+                }
+                return Ok(category);
             }
-            return Ok(category);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"Error al obtener la categoría con ID: {id}");
+                return StatusCode(500); // Devuelve un código de estado 500 en caso de error
+            }
         }
 
         [HttpPost("AddCategory")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AddCategory( CategoryViewModel categoryViewModel)
+        public async Task<IActionResult> AddCategory([FromBody] CategoryViewModel categoryViewModel)
         {
             try
             {
@@ -47,7 +65,8 @@ namespace LuminariasWeb.sln.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                _logger.LogError(ex, "Error al agregar una nueva categoría");
+                return StatusCode(500); // Devuelve un código de estado 500 en caso de error
             }
         }
 
@@ -57,20 +76,21 @@ namespace LuminariasWeb.sln.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> UpdateCategory(int id, [FromBody] CategoryViewModel categoryViewModel)
         {
-            var existingCategory = await _categoryService.GetCategoryByIdAsync(id);
-            if (existingCategory == null)
-            {
-                return NotFound();
-            }
-
             try
             {
+                var existingCategory = await _categoryService.GetCategoryByIdAsync(id);
+                if (existingCategory == null)
+                {
+                    return NotFound();
+                }
+
                 await _categoryService.UpdateCategoryAsync(categoryViewModel);
                 return Ok();
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                _logger.LogError(ex, $"Error al actualizar la categoría con ID: {id}");
+                return StatusCode(500); // Devuelve un código de estado 500 en caso de error
             }
         }
 
@@ -80,22 +100,22 @@ namespace LuminariasWeb.sln.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            var existingCategory = await _categoryService.GetCategoryByIdAsync(id);
-            if (existingCategory == null)
-            {
-                return NotFound();
-            }
-
             try
             {
+                var existingCategory = await _categoryService.GetCategoryByIdAsync(id);
+                if (existingCategory == null)
+                {
+                    return NotFound();
+                }
+
                 await _categoryService.DeleteCategoryAsync(id);
                 return Ok();
             }
             catch (Exception ex)
             {
-                return StatusCode(500);
+                _logger.LogError(ex, $"Error al eliminar la categoría con ID: {id}");
+                return StatusCode(500); // Devuelve un código de estado 500 en caso de error
             }
         }
     }
-
 }
