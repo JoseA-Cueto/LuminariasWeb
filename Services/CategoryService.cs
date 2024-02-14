@@ -1,45 +1,40 @@
-﻿using LuminariasWeb.sln.BusinessInterface;
-using LuminariasWeb.sln.DataBaseInterface;
+﻿using AutoMapper;
 using LuminariasWeb.sln.Models;
+using LuminariasWeb.sln.DataBaseInterface;
+using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LuminariasWeb.sln.Services
 {
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository _categoryRepository;
+        private readonly IMapper _mapper;
 
-        public CategoryService(ICategoryRepository categoryRepository)
+        public CategoryService(ICategoryRepository categoryRepository, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<CategoryViewModel>> GetCategoriesAsync()
         {
             var categories = await _categoryRepository.GetCategoriesAsync();
-            return categories.Select(c => new CategoryViewModel
-            {
-                Id = c.Id,
-                CategoryName = c.CategoryName
-            });
+            return _mapper.Map<IEnumerable<CategoryViewModel>>(categories);
         }
 
         public async Task<CategoryViewModel> GetCategoryByIdAsync(int categoryId)
         {
             var category = await _categoryRepository.GetCategoryByIdAsync(categoryId);
-            return category != null ? new CategoryViewModel
-            {
-                Id = category.Id,
-                CategoryName = category.CategoryName
-            } : null;
+            return _mapper.Map<CategoryViewModel>(category);
         }
 
         public async Task AddCategoryAsync(CategoryViewModel categoryViewModel)
         {
-            var category = new Category
-            {
-                CategoryName = categoryViewModel.CategoryName
-            };
+            var category = _mapper.Map<Category>(categoryViewModel);
             await _categoryRepository.AddCategoryAsync(category);
         }
 
@@ -48,7 +43,7 @@ namespace LuminariasWeb.sln.Services
             var existingCategory = await _categoryRepository.GetCategoryByIdAsync(categoryViewModel.Id);
             if (existingCategory != null)
             {
-                existingCategory.CategoryName = categoryViewModel.CategoryName;
+                _mapper.Map(categoryViewModel, existingCategory);
                 await _categoryRepository.UpdateCategoryAsync(existingCategory);
             }
         }

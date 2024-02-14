@@ -1,57 +1,38 @@
-﻿using LuminariasWeb.sln.BusinessInterface;
-using LuminariasWeb.sln.Interface;
+﻿using AutoMapper;
 using LuminariasWeb.sln.Models;
+using LuminariasWeb.sln.Interface;
+using LuminariasWeb.sln.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using LuminariasWeb.sln.BusinessInterface;
 
 public class ProductService : IProductService
 {
     private readonly IProductRepository _productRepository;
+    private readonly IMapper _mapper;
 
-    public ProductService(IProductRepository productRepository)
+    public ProductService(IProductRepository productRepository, IMapper mapper)
     {
         _productRepository = productRepository;
+        _mapper = mapper;
     }
 
     public async Task<IEnumerable<ProductViewModel>> GetProductsAsync()
     {
         var products = await _productRepository.GetProductsAsync();
-        return products.Select(p => new ProductViewModel
-        {
-            Id = p.Id,
-            Name = p.Name,
-            Price = p.Price,
-            Description = p.Description,
-            CategoryId = p.CategoryId,
-            Quantity = p.Quantity,
-            ImagePath = p.ImagePath  // Agrega la propiedad ImagePath
-        });
+        return _mapper.Map<IEnumerable<ProductViewModel>>(products);
     }
 
     public async Task<ProductViewModel> GetProductByIdAsync(int productId)
     {
         var product = await _productRepository.GetProductByIdAsync(productId);
-        return product != null ? new ProductViewModel
-        {
-            Id = product.Id,
-            Name = product.Name,
-            Price = product.Price,
-            Description = product.Description,
-            CategoryId = product.CategoryId,
-            Quantity = product.Quantity,
-            ImagePath = product.ImagePath  // Agrega la propiedad ImagePath
-        } : null;
+        return _mapper.Map<ProductViewModel>(product);
     }
 
     public async Task AddProductAsync(ProductViewModel productViewModel)
     {
-        var product = new Product
-        {
-            Name = productViewModel.Name,
-            Price = productViewModel.Price,
-            Description = productViewModel.Description,
-            CategoryId = productViewModel.CategoryId,
-            Quantity = productViewModel.Quantity,
-            ImagePath = productViewModel.ImagePath  // Agrega la propiedad ImagePath
-        };
+        var product = _mapper.Map<Product>(productViewModel);
         await _productRepository.AddProductAsync(product);
     }
 
@@ -60,12 +41,7 @@ public class ProductService : IProductService
         var existingProduct = await _productRepository.GetProductByIdAsync(productViewModel.Id);
         if (existingProduct != null)
         {
-            existingProduct.Name = productViewModel.Name;
-            existingProduct.Price = productViewModel.Price;
-            existingProduct.Description = productViewModel.Description;
-            existingProduct.CategoryId = productViewModel.CategoryId;
-            existingProduct.Quantity = productViewModel.Quantity;
-            existingProduct.ImagePath = productViewModel.ImagePath;  // Agrega la propiedad ImagePath
+            _mapper.Map(productViewModel, existingProduct);
             await _productRepository.UpdateProductAsync(existingProduct);
         }
     }
@@ -75,9 +51,3 @@ public class ProductService : IProductService
         await _productRepository.DeleteProductAsync(productId);
     }
 }
-
-
-
-
-
-

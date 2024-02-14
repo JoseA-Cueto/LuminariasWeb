@@ -4,50 +4,37 @@ using LuminariasWeb.sln.DataBaseInterface;
 using LuminariasWeb.sln.Interface;
 using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.ViewModels;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LuminariasWeb.sln.Services
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         public async Task<IEnumerable<UserViewModel>> GetUsersAsync()
         {
             var users = await _userRepository.GetUsersAsync();
-            return users.Select(u => new UserViewModel
-            {
-                Id = u.Id,
-                Name = u.Name,
-                Password = u.Password
-                // Agrega otras propiedades según sea necesario
-            });
+            return _mapper.Map<IEnumerable<UserViewModel>>(users);
         }
 
         public async Task<UserViewModel> GetUserByIdAsync(int userId)
         {
             var user = await _userRepository.GetUserByIdAsync(userId);
-            return user != null ? new UserViewModel
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Password = user.Password
-                // Agrega otras propiedades según sea necesario
-            } : null;
+            return _mapper.Map<UserViewModel>(user);
         }
 
         public async Task AddUserAsync(UserViewModel userViewModel)
         {
-            var user = new User
-            {
-                Name = userViewModel.Name,
-                Password = userViewModel.Password
-                // Agrega otras propiedades según sea necesario
-            };
+            var user = _mapper.Map<User>(userViewModel);
             await _userRepository.AddUserAsync(user);
         }
 
@@ -56,9 +43,7 @@ namespace LuminariasWeb.sln.Services
             var existingUser = await _userRepository.GetUserByIdAsync(userViewModel.Id);
             if (existingUser != null)
             {
-                existingUser.Name = userViewModel.Name;
-                existingUser.Password = userViewModel.Password;
-                // Actualiza otras propiedades según sea necesario
+                _mapper.Map(userViewModel, existingUser);
                 await _userRepository.UpdateUserAsync(existingUser);
             }
         }

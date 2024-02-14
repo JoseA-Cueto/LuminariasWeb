@@ -11,44 +11,29 @@ using System.Threading.Tasks;
 public class ServiceService : IServiceService
 {
     private readonly IServiceRepository _serviceRepository;
+    private readonly IMapper _mapper;
 
-    public ServiceService(IServiceRepository serviceRepository)
+    public ServiceService(IServiceRepository serviceRepository, IMapper mapper)
     {
         _serviceRepository = serviceRepository;
+        _mapper = mapper;
     }
 
     public async Task<IEnumerable<ServiceViewModel>> GetServicesAsync()
     {
         var services = await _serviceRepository.GetServicesAsync();
-        return services.Select(s => new ServiceViewModel
-        {
-            Id = s.Id,
-            Name = s.Name,
-            Price = s.Price,
-            Description = s.Description
-        });
+        return _mapper.Map<IEnumerable<ServiceViewModel>>(services);
     }
 
     public async Task<ServiceViewModel> GetServiceByIdAsync(int serviceId)
     {
         var service = await _serviceRepository.GetServiceByIdAsync(serviceId);
-        return service != null ? new ServiceViewModel
-        {
-            Id = service.Id,
-            Name = service.Name,
-            Price = service.Price,
-            Description = service.Description
-        } : null;
+        return _mapper.Map<ServiceViewModel>(service);
     }
 
     public async Task AddServiceAsync(ServiceViewModel serviceViewModel)
     {
-        var service = new Service
-        {
-            Name = serviceViewModel.Name,
-            Price = serviceViewModel.Price,
-            Description = serviceViewModel.Description
-        };
+        var service = _mapper.Map<Service>(serviceViewModel);
         await _serviceRepository.AddServiceAsync(service);
     }
 
@@ -57,9 +42,7 @@ public class ServiceService : IServiceService
         var existingService = await _serviceRepository.GetServiceByIdAsync(serviceViewModel.Id);
         if (existingService != null)
         {
-            existingService.Name = serviceViewModel.Name;
-            existingService.Price = serviceViewModel.Price;
-            existingService.Description = serviceViewModel.Description;
+            _mapper.Map(serviceViewModel, existingService);
             await _serviceRepository.UpdateServiceAsync(existingService);
         }
     }
@@ -69,6 +52,7 @@ public class ServiceService : IServiceService
         await _serviceRepository.DeleteServiceAsync(serviceId);
     }
 }
+
 
 
 
