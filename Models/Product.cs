@@ -15,5 +15,6 @@ namespace LuminariasWeb.sln.Models
         public int CategoryId { get; set; }
         public Category Category { get; set; }
         public string ImagePath { get; set; }
+        public int? ImageFileId { get; set; }
     }
 }

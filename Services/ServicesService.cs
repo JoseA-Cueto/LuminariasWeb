@@ -7,49 +7,51 @@ using LuminariasWeb.sln.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
-public class ServiceService : IServiceService
+namespace LuminariasWeb.sln.Services
 {
-    private readonly IServiceRepository _serviceRepository;
-    private readonly IMapper _mapper;
-
-    public ServiceService(IServiceRepository serviceRepository, IMapper mapper)
+    public class ServiceService : IServiceService
     {
-        _serviceRepository = serviceRepository;
-        _mapper = mapper;
-    }
+        private readonly IServiceRepository _serviceRepository;
+        private readonly IMapper _mapper;
 
-    public async Task<IEnumerable<ServiceViewModel>> GetServicesAsync()
-    {
-        var services = await _serviceRepository.GetServicesAsync();
-        return _mapper.Map<IEnumerable<ServiceViewModel>>(services);
-    }
-
-    public async Task<ServiceViewModel> GetServiceByIdAsync(int serviceId)
-    {
-        var service = await _serviceRepository.GetServiceByIdAsync(serviceId);
-        return _mapper.Map<ServiceViewModel>(service);
-    }
-
-    public async Task AddServiceAsync(ServiceViewModel serviceViewModel)
-    {
-        var service = _mapper.Map<Service>(serviceViewModel);
-        await _serviceRepository.AddServiceAsync(service);
-    }
-
-    public async Task UpdateServiceAsync(ServiceViewModel serviceViewModel)
-    {
-        var existingService = await _serviceRepository.GetServiceByIdAsync(serviceViewModel.Id);
-        if (existingService != null)
+        public ServiceService(IServiceRepository serviceRepository, IMapper mapper)
         {
-            _mapper.Map(serviceViewModel, existingService);
-            await _serviceRepository.UpdateServiceAsync(existingService);
+            _serviceRepository = serviceRepository;
+            _mapper = mapper;
         }
-    }
 
-    public async Task DeleteServiceAsync(int serviceId)
-    {
-        await _serviceRepository.DeleteServiceAsync(serviceId);
+        public async Task<IEnumerable<ServiceViewModel>> GetServicesAsync()
+        {
+            var services = await _serviceRepository.GetServicesAsync();
+            return _mapper.Map<IEnumerable<ServiceViewModel>>(services);
+        }
+
+        public async Task<ServiceViewModel> GetServiceByIdAsync(int serviceId)
+        {
+            var service = await _serviceRepository.GetServiceByIdAsync(serviceId);
+            return _mapper.Map<ServiceViewModel>(service);
+        }
+
+        public async Task AddServiceAsync(ServiceViewModel serviceViewModel)
+        {
+            var service = _mapper.Map<Service>(serviceViewModel);
+            await _serviceRepository.AddServiceAsync(service);
+        }
+
+        public async Task UpdateServiceAsync(ServiceViewModel serviceViewModel)
+        {
+            var existingService = await _serviceRepository.GetServiceByIdAsync(serviceViewModel.Id);
+            if (existingService != null)
+            {
+                _mapper.Map(serviceViewModel, existingService);
+                await _serviceRepository.UpdateServiceAsync(existingService);
+            }
+        }
+
+        public async Task DeleteServiceAsync(int serviceId)
+        {
+            await _serviceRepository.DeleteServiceAsync(serviceId);
+        }
     }
 }
 

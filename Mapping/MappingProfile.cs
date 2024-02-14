@@ -22,6 +22,9 @@ public class MappingProfile : Profile
         CreateMap<User, UserViewModel>();
         CreateMap<UserViewModel, User>();
 
+        CreateMap<ImageFile, ImageFilesViewModel>();
+        CreateMap<ImageFilesViewModel, ImageFile>();
+
        
     }
 }

@@ -1,4 +1,6 @@
 ﻿using LuminariasWeb.sln.BusinessInterface;
+using LuminariasWeb.sln.Services;
+using LuminariasWeb.sln.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LuminariasWeb.sln.Controllers
@@ -8,11 +10,13 @@ namespace LuminariasWeb.sln.Controllers
     {
         private readonly IProductService _productService;
         private readonly ILogger _logger;
+        private readonly IImageFileService _imageFileService;
 
-        public ProductController(IProductService productService, ILogger logger) 
+        public ProductController(IProductService productService, ILogger logger, IImageFileService imageFileService) 
         {
             _productService = productService;
-            _logger = logger; 
+            _logger = logger;
+            _imageFileService = imageFileService;
         }
 
         [HttpGet("GetAllProducts")]
@@ -54,20 +58,46 @@ namespace LuminariasWeb.sln.Controllers
 
         [HttpPost("AddProduct")]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> AddProduct([FromBody] ProductViewModel productViewModel)
+        public async Task<ActionResult> AddProductWithImage([FromForm] ProductViewModel productViewModel, IFormFile imageFile)
         {
             try
             {
-                await _productService.AddProductAsync(productViewModel);
-                return StatusCode(201);
+                if (imageFile == null || imageFile.Length == 0)
+                {
+                    return BadRequest("No se ha proporcionado ninguna imagen.");
+                }
+
+                // Leer los bytes del archivo de imagen
+                using (var memoryStream = new MemoryStream())
+                {
+                    await imageFile.CopyToAsync(memoryStream);
+                    byte[] imgBytes = memoryStream.ToArray();
+
+                    // Subir la imagen y obtener su información
+                    var imageUploadResult = await _imageFileService.UploadImage(new ImageFilesViewModel
+                    {
+                        Name = imageFile.FileName,
+                        Content = Convert.ToBase64String(imgBytes)
+                    }, "DirectorioDeAlmacenamientoDeImagenes");
+
+                    // Asignar la imagen al producto
+                    productViewModel.ImagePath = imageUploadResult.Path;
+
+                    // Agregar el producto con la imagen
+                    await _productService.AddProductAsync(productViewModel);
+
+                    return StatusCode(201);
+                }
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error al agregar un nuevo producto");
+                _logger.LogError(ex, "Error al agregar un nuevo producto con imagen.");
                 return StatusCode(500);
             }
         }
+
 
         [HttpPut("UpdateProduct/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

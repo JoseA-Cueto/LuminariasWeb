@@ -56,7 +56,7 @@ namespace LuminariasWeb.sln.Controllers
         [HttpPost("AddCategory")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> AddCategory([FromBody] CategoryViewModel categoryViewModel)
+        public async Task<IActionResult> AddCategory([FromForm] CategoryViewModel categoryViewModel)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace LuminariasWeb.sln.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al agregar una nueva categoría");
-                return StatusCode(500); // Devuelve un código de estado 500 en caso de error
+                return StatusCode(500); 
             }
         }
 
