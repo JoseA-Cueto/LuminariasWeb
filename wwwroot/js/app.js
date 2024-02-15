@@ -21,6 +21,7 @@ import AdminProductsPage from './AdminProductsPage.vue'
 import EditCategoryPage from './EditCategoryPage.vue'
 import ShowCategoryPage from './ShowCategoryPage.vue'
 import CreateCategoryPage from './CreateCategoryPage.vue'
+import ImageFile from './ImageFile.vue';
 
 // Crea la aplicación Vue
 const app = createApp({
@@ -41,7 +42,8 @@ const app = createApp({
     'show-product-page':ShowProductPage,
     'admin-products-page': AdminProductsPage,
     'edit-category-page': EditCategoryPage,
-    'show-category-page': ShowCategoryPage
+    'show-category-page': ShowCategoryPage,
+    'Image': ImageFile
 
   }
 });
@@ -60,7 +62,8 @@ const router = createRouter({
     { path: '/editproduct/:id', name: 'EditProduct', component: EditProductPage, props: true },
     { path: '/editcategory/:id', name: 'EditCategory', component: EditCategoryPage, props: true },
     { path: '/showproduct/:id', name: 'ShowProduct', component: ShowProductPage, props: true },
-    { path: '/showcategory/:id', name: 'ShowCategory', component: ShowCategoryPage, props: true }
+      { path: '/showcategory/:id', name: 'ShowCategory', component: ShowCategoryPage, props: true },
+      { path: '/Image', component: ImageFile }
 
   ]
 });

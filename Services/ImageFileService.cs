@@ -1,6 +1,4 @@
-﻿
-
-using AutoMapper;
+﻿using AutoMapper;
 using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.DataBaseInterface;
 using LuminariasWeb.sln.Models;
