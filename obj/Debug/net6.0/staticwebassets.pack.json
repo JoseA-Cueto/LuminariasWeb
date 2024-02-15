@@ -1,367 +1,367 @@
 {
   "Files": [
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\LuminariasWeb.sln.bundle.scp.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\LuminariasWeb.sln.bundle.scp.css",
       "PackagePath": "staticwebassets\\LuminariasWeb.sln.bundle.scp.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\ExampleImg.jpg",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\ExampleImg.jpg",
       "PackagePath": "staticwebassets\\ExampleImg.jpg"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\FAVICON.png",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\FAVICON.png",
       "PackagePath": "staticwebassets\\FAVICON.png"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\Ilumínate.png",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\Ilumínate.png",
       "PackagePath": "staticwebassets\\Ilumínate.png"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\TEXTO.png",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\TEXTO.png",
       "PackagePath": "staticwebassets\\TEXTO.png"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\css\\site.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\ExampleImg.jpg",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\ExampleImg.jpg",
       "PackagePath": "staticwebassets\\dist\\ExampleImg.jpg"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\FAVICON.png",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\FAVICON.png",
       "PackagePath": "staticwebassets\\dist\\FAVICON.png"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\Ilumínate.png",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\Ilumínate.png",
       "PackagePath": "staticwebassets\\dist\\Ilumínate.png"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\TEXTO.png",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\TEXTO.png",
       "PackagePath": "staticwebassets\\dist\\TEXTO.png"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\bundle.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\bundle.js",
       "PackagePath": "staticwebassets\\dist\\bundle.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\dist\\imgInfo.png",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\imgInfo.png",
       "PackagePath": "staticwebassets\\dist\\imgInfo.png"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\imgInfo.png",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\imgInfo.png",
       "PackagePath": "staticwebassets\\imgInfo.png"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\AdminCategoriesPage.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\AdminCategoriesPage.vue",
       "PackagePath": "staticwebassets\\js\\AdminCategoriesPage.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\AdminPage.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\AdminPage.vue",
       "PackagePath": "staticwebassets\\js\\AdminPage.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\AdminProductsPage.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\AdminProductsPage.vue",
       "PackagePath": "staticwebassets\\js\\AdminProductsPage.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CardItem.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\CardItem.vue",
       "PackagePath": "staticwebassets\\js\\CardItem.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\Carousel.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\Carousel.vue",
       "PackagePath": "staticwebassets\\js\\Carousel.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CatalogPage.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\CatalogPage.vue",
       "PackagePath": "staticwebassets\\js\\CatalogPage.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CreateCategoryPage.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\CreateCategoryPage.vue",
       "PackagePath": "staticwebassets\\js\\CreateCategoryPage.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\CreateProductPage.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\CreateProductPage.vue",
       "PackagePath": "staticwebassets\\js\\CreateProductPage.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\EditCategoryPage.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\EditCategoryPage.vue",
       "PackagePath": "staticwebassets\\js\\EditCategoryPage.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\EditProductPage.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\EditProductPage.vue",
       "PackagePath": "staticwebassets\\js\\EditProductPage.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\Footer.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\Footer.vue",
       "PackagePath": "staticwebassets\\js\\Footer.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\HelloWorld.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\HelloWorld.vue",
       "PackagePath": "staticwebassets\\js\\HelloWorld.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\HomePage.Vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\HomePage.Vue",
       "PackagePath": "staticwebassets\\js\\HomePage.Vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\LogIn.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\LogIn.vue",
       "PackagePath": "staticwebassets\\js\\LogIn.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\ShowCategoryPage.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\ShowCategoryPage.vue",
       "PackagePath": "staticwebassets\\js\\ShowCategoryPage.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\ShowProductPage.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\ShowProductPage.vue",
       "PackagePath": "staticwebassets\\js\\ShowProductPage.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\app.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\app.js",
       "PackagePath": "staticwebassets\\js\\app.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\navBar.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\navBar.vue",
       "PackagePath": "staticwebassets\\js\\navBar.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\pruebaFetch.vue",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\pruebaFetch.vue",
       "PackagePath": "staticwebassets\\js\\pruebaFetch.vue"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "E:\\Mis Cosas\\Proyectos\\LuminariasWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {

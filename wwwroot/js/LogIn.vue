@@ -8,12 +8,12 @@
 
     <div v-if="showErrorAlert" class="position-fixed top-0 start-0 m-3">
       <div class="alert alert-danger" role="alert">
-        Error al autenticarse, inténtalo de nuevo.
+        {{ errorMessage }}
       </div>
     </div>
 
     <div class="container">
-      <form class="form" @submit="login">
+      <form class="form" @submit.prevent="login">
         <h2>Iniciar sesión</h2>
         <div v-if="showProgressBar" class="progress">
           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
@@ -41,60 +41,54 @@ export default {
       showSuccessAlert: false,
       showErrorAlert: false,
       showProgressBar: false,
+      errorMessage: ''
     };
   },
   methods: {
-    async login(event) {
-      event.preventDefault();
+    async login() {
       this.showProgressBar = true;
       
-      const url = '../api/User/GetUserById'; // Reemplaza con la URL del endpoint de autenticación en tu backend
+      const url = '../api/User/FindUser';
       const data = {
         method: 'POST',
         headers: {
-      'Content-Type': 'application/json'
-      },
-        usuario: this.usuario,
-        contrasena: this.contrasena
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ Name: this.usuario, Password: this.contrasena })
       };
 
       try {
-        const response = await fetch(url, {
-          
-          body: JSON.stringify({usuario: this.usuario, contrasena: this.contrasena })
-        });
+        const response = await fetch(url, data);
 
         if (response.ok) {
-          const responseData = await response.json();
-          const autenticacionExitosa = responseData.autenticacionExitosa; // Reemplaza con el nombre de la propiedad adecuada en la respuesta del servidor
-          if (autenticacionExitosa) {
-            this.showSuccessAlert = true;
-            setTimeout(() => {
-              this.$router.push('/admin');
-            }, 2000);
-          } else {
-            this.showErrorAlert = true;
-            setTimeout(() => {
-              this.showErrorAlert = false;
-            }, 2000);
-          }
-        } else {
+          this.showSuccessAlert = true;
+          setTimeout(() => {
+            this.showSuccessAlert = false;
+            this.$router.push('/admin');
+          }, 2000);
+        } else if (response.status === 404) {
+          this.errorMessage = 'El Usuario no existe';
           this.showErrorAlert = true;
           setTimeout(() => {
             this.showErrorAlert = false;
           }, 2000);
-          console.error('Error al autenticarse.');
+        } else {
+          throw new Error('Error al autenticarse');
         }
       } catch (error) {
-        this.showErrorAlert = true;
         console.error(error);
-        this.showProgressBar = false; 
+        this.errorMessage = 'Error al autenticarse, inténtalo de nuevo';
+        this.showErrorAlert = true;
+        setTimeout(() => {
+          this.showErrorAlert = false;
+        }, 2000);
+      } finally {
+        this.showProgressBar = false;
       }
     }
   }
 }
 </script>
-
 
 <style>
 .container {
@@ -112,7 +106,7 @@ export default {
   width: 100%;
 }
 button {
-  widows: 90%;
+  width: 90%;
   margin-top: 10px;
 }
 input {
