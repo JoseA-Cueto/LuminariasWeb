@@ -2,8 +2,9 @@
 <nav>
     <div class="logo">
         <img src="../FAVICON.png" alt="">
-        <img src="../TEXTO.png" alt="">
+        
     </div>
+    <img clas src="../TEXTO.png" alt="">
     <div class="buys">
        
          <i class="material-icons">shopping_cart</i>
@@ -12,6 +13,7 @@
          <i class="material-icons">account_balance_wallet</i>
     </div>
 </nav>
+
 </template>
 
 <script>
@@ -31,13 +33,19 @@ export default {
         justify-content: space-between;
         align-items: center;
         padding: 10px;
-        box-shadow: 1px 1px 1px 1px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        
     }
     .logo{
         display: flex;
         align-items: center;
     }
     .logo img{
+        max-height: 75px;
+        width: auto;
+        padding: 5px;
+    }
+    img{
         max-height: 75px;
         width: auto;
         padding: 5px;

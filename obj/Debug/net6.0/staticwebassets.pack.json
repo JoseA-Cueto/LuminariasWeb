@@ -17,12 +17,24 @@
       "PackagePath": "staticwebassets\\Ilumínate.png"
     },
     {
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\OIG1.0CB9ZzXs6xTeIr5I.jpeg",
+      "PackagePath": "staticwebassets\\OIG1.0CB9ZzXs6xTeIr5I.jpeg"
+    },
+    {
       "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\TEXTO.png",
       "PackagePath": "staticwebassets\\TEXTO.png"
     },
     {
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\alexander-grey-62vi3TG5EDg-unsplash.jpg",
+      "PackagePath": "staticwebassets\\alexander-grey-62vi3TG5EDg-unsplash.jpg"
+    },
+    {
       "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\1b819de7e7c4b6ea31d9.jpg",
+      "PackagePath": "staticwebassets\\dist\\1b819de7e7c4b6ea31d9.jpg"
     },
     {
       "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\ExampleImg.jpg",
@@ -37,12 +49,24 @@
       "PackagePath": "staticwebassets\\dist\\Ilumínate.png"
     },
     {
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\OIG1.0CB9ZzXs6xTeIr5I.jpeg",
+      "PackagePath": "staticwebassets\\dist\\OIG1.0CB9ZzXs6xTeIr5I.jpeg"
+    },
+    {
       "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\TEXTO.png",
       "PackagePath": "staticwebassets\\dist\\TEXTO.png"
     },
     {
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\alexander-grey-62vi3TG5EDg-unsplash.jpg",
+      "PackagePath": "staticwebassets\\dist\\alexander-grey-62vi3TG5EDg-unsplash.jpg"
+    },
+    {
       "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\bundle.js",
       "PackagePath": "staticwebassets\\dist\\bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\d32eb370a0eddd23ed26.jpeg",
+      "PackagePath": "staticwebassets\\dist\\d32eb370a0eddd23ed26.jpeg"
     },
     {
       "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\dist\\imgInfo.png",
@@ -107,6 +131,10 @@
     {
       "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\HomePage.Vue",
       "PackagePath": "staticwebassets\\js\\HomePage.Vue"
+    },
+    {
+      "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\ImageFile.vue",
+      "PackagePath": "staticwebassets\\js\\ImageFile.vue"
     },
     {
       "Id": "C:\\Users\\Willy\\Documents\\LuminariasWeb\\wwwroot\\js\\LogIn.vue",
