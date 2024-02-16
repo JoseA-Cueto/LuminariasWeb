@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <div v-if="showSuccessAlert" class="position-fixed top-0 start-0 m-3">
                 <div class="alert alert-primary" role="alert">
-                    Imagen cargada con éxito.
+                    Imagen cargada con ï¿½xito.
                 </div>
             </div>
 
@@ -39,56 +39,57 @@
     </div>
 </template>
 
-<script>export default {
-  data() {
-    return {
-      showSuccessAlert: false,
-      showErrorAlert: false,
-      showProgressBar: false,
-      errorMessage: ''
-    };
-  },
-  methods: {
-    async uploadImage() {
-      try {
-        this.showProgressBar = true;
+<script>
+    export default {
+        data() {
+            return {
+                showSuccessAlert: false,
+                showErrorAlert: false,
+                showProgressBar: false,
+                errorMessage: ''
+            };
+        },
+        methods: {
+            async uploadImage() {
+                try {
+                    this.showProgressBar = true;
 
-        const formData = new FormData();
-        formData.append('file', this.$refs.imageFile.files[0]);
+                    const formData = new FormData();
+                    formData.append('file', this.$refs.imageFile.files[0]);
 
-        const response = await fetch('../api/ImageFile/UploadImage', {
-          method: 'POST',
-          body: formData
-        });
+                    const response = await fetch('../api/ImageFile/CreateImageFile', {
+                        method: 'POST',
+                        body: formData
+                    });
 
-        if (response.ok) {
-          this.showSuccessAlert = true;
-          setTimeout(() => {
-            // Redirige a la página de destino deseada después de subir la imagen
-            // Por ejemplo: this.$router.push('/admin');
-          }, 2000);
-        } else {
-          const contentType = response.headers.get('content-type');
-          if (contentType && contentType.includes('application/json')) {
-            const data = await response.json();
-            this.showErrorAlert = true;
-            this.errorMessage = data.message || 'Error desconocido al subir la imagen.';
-            console.error('Error al subir la imagen:', this.errorMessage);
-            console.error('Detalles de la respuesta:', data);
-          } else {
-            this.showErrorAlert = true;
-            this.errorMessage = 'Error desconocido al subir la imagen.';
-            console.error('Error al subir la imagen:', this.errorMessage);
-            console.error('Detalles de la respuesta:', await response.text());
-          }
+                    if (response.ok) {
+                        this.showSuccessAlert = true;
+                        setTimeout(() => {
+                            this.$router.push('/admin');
+                        }, 2000);
+                    } else {
+                        const contentType = response.headers.get('content-type');
+                        if (contentType && contentType.includes('application/json')) {
+                            const data = await response.json();
+                            this.showErrorAlert = true;
+                            this.errorMessage = data.message || 'Error desconocido al subir la imagen.';
+                            console.error('Error al subir la imagen:', this.errorMessage);
+                            console.error('Detalles de la respuesta:', data);
+                        } else {
+                            this.showErrorAlert = true;
+                            this.errorMessage = 'Error desconocido al subir la imagen.';
+                            console.error('Error al subir la imagen:', this.errorMessage);
+                            console.error('Detalles de la respuesta:', await response.text());
+                        }
+                    }
+                } catch (error) {
+                    this.showErrorAlert = true;
+                    this.errorMessage = 'Error desconocido al subir la imagen.';
+                    console.error('Error en la peticiï¿½n:', error);
+                } finally {
+                    this.showProgressBar = false;
+                }
+            }
         }
-      } catch (error) {
-        this.showErrorAlert = true;
-        this.errorMessage = 'Error desconocido al subir la imagen.';
-        console.error('Error en la petición:', error);
-      } finally {
-        this.showProgressBar = false;
-      }
-    }
-  }
-};</script>
+    };
+</script>

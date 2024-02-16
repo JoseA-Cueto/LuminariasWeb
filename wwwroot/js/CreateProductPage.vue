@@ -136,7 +136,7 @@ export default {
         formData.append('Description', this.productDescription);
         formData.append('Quantity', parseInt(this.productQuantity));
         formData.append('CategoryId', parseInt(this.productCategory));
-        formData.append('Image', this.productImage);
+        formData.append('File', this.productImage);
 
         const response = await fetch('../api/Product/AddProduct', {
           method: 'POST',

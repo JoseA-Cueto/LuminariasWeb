@@ -12,11 +12,13 @@ namespace LuminariasWeb.sln.Services
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
+        private readonly IImageFileService _imageFileService;
 
-        public ProductService(IProductRepository productRepository, IMapper mapper)
+        public ProductService(IProductRepository productRepository, IMapper mapper, IImageFileService imageFileService)
         {
             _productRepository = productRepository;
             _mapper = mapper;
+            _imageFileService = imageFileService;
         }
 
         public async Task<IEnumerable<ProductViewModel>> GetProductsAsync()
@@ -31,22 +33,13 @@ namespace LuminariasWeb.sln.Services
             return _mapper.Map<ProductViewModel>(product);
         }
 
-        public async Task AddProductAsync(ProductViewModel productViewModel)
+        public async Task<int> AddProductAsync(ProductViewModel productViewModel)
         {
             var product = _mapper.Map<Product>(productViewModel);
-            await _productRepository.AddProductAsync(product);
+            return await _productRepository.AddProductAsync(product);
         }
 
-        public async Task UpdateProductAsync(ProductViewModel productViewModel)
-        {
-            var existingProduct = await _productRepository.GetProductByIdAsync(productViewModel.Id);
-            if (existingProduct != null)
-            {
-                _mapper.Map(productViewModel, existingProduct);
-                await _productRepository.UpdateProductAsync(existingProduct);
-            }
-        }
-
+       
         public async Task DeleteProductAsync(int productId)
         {
             await _productRepository.DeleteProductAsync(productId);

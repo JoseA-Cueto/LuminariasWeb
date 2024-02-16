@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LuminariasWeb.sln.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240216165007_ImageUpdate")]
+    partial class ImageUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,16 +67,10 @@ namespace LuminariasWeb.sln.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Size")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId")
-                        .IsUnique();
 
                     b.ToTable("ImageFiles");
                 });
@@ -91,6 +87,13 @@ namespace LuminariasWeb.sln.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ImageFileId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -156,17 +159,6 @@ namespace LuminariasWeb.sln.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("LuminariasWeb.sln.Models.ImageFile", b =>
-                {
-                    b.HasOne("LuminariasWeb.sln.Models.Product", "Product")
-                        .WithOne("ImageFile")
-                        .HasForeignKey("LuminariasWeb.sln.Models.ImageFile", "ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("LuminariasWeb.sln.Models.Product", b =>
                 {
                     b.HasOne("LuminariasWeb.sln.Models.Category", "Category")
@@ -181,12 +173,6 @@ namespace LuminariasWeb.sln.Migrations
             modelBuilder.Entity("LuminariasWeb.sln.Models.Category", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("LuminariasWeb.sln.Models.Product", b =>
-                {
-                    b.Navigation("ImageFile")
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
