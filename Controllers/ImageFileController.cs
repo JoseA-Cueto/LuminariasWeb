@@ -1,12 +1,16 @@
 ﻿using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.ViewModels;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Threading.Tasks;
+using System.Web;
+
 
 namespace LuminariasWeb.sln.Controllers
 {
@@ -15,11 +19,13 @@ namespace LuminariasWeb.sln.Controllers
     {
         private readonly IImageFileService _imageFileService;
         private readonly ILogger<ImageFileController> _logger;
+        private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment _hostingEnvironment;
 
-        public ImageFileController(IImageFileService imageFileService, ILogger<ImageFileController> logger)
+        public ImageFileController(IImageFileService imageFileService, ILogger<ImageFileController> logger, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
         {
             _imageFileService = imageFileService;
             _logger = logger;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         [HttpGet("GetAllImageFiles")]
@@ -34,7 +40,7 @@ namespace LuminariasWeb.sln.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error al obtener todos los archivos de imágenes");
-                return StatusCode(500); // Devuelve un código de estado 500 en caso de error
+                return StatusCode(500); 
             }
         }
 
@@ -55,37 +61,50 @@ namespace LuminariasWeb.sln.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error al obtener el archivo de imagen con ID: {id}");
-                return StatusCode(500); // Devuelve un código de estado 500 en caso de error
+                return StatusCode(500); 
             }
         }
-
-        [HttpPost("UploadImage")]
-        [ProducesResponseType(StatusCodes.Status201Created)]
+        [HttpPost("CreateImageFile")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> UploadImage([FromForm] ImageFilesViewModel imageFilesViewModel, IFormFile file)
+        public async Task<IActionResult> CreateImageFile(IFormFile file)
         {
-            try
+            string[] extension = { ".jpg", ".jpeg", ".bmp", ".png", ".tif", ".ico", ".tiff", ".pjpeg" };
+            var fileName = file.FileName;
+
+            if (extension.Any(a => a.ToUpper() == Path.GetExtension(fileName).ToUpper()))
             {
-                if (file == null || file.Length == 0)
+                string pathRoot = Path.Combine(_hostingEnvironment.WebRootPath, "Upload", "ImageFile");
+
+                if (!Directory.Exists(pathRoot))
                 {
-                    return BadRequest("Archivo no proporcionado o vacío");
+                    Directory.CreateDirectory(pathRoot);
+                }
+                var splitedFileName = file.FileName.Split('.');
+                var fileNameResult = $"{String.Join(" ", splitedFileName, 0, splitedFileName.Length - 1)}-D{DateTime.Now.ToString("yyyy-MM-dd HHmm")}{Path.GetExtension(file.FileName)}";
+                var relativePath = "Upload/ImageFile/";
+                var physicalPath = Path.Combine(pathRoot, fileNameResult);
+                using (var stream = new FileStream(physicalPath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
                 }
 
-                using (var memoryStream = new MemoryStream())
+                await _imageFileService.Create(new ImageFilesViewModel
                 {
-                    await file.CopyToAsync(memoryStream);
-                    imageFilesViewModel.Content = Convert.ToBase64String(memoryStream.ToArray());
-                }
+                    CreateDate = DateTime.Now,
+                    Path = $"{relativePath}{fileNameResult}",
+                    PhysicalPath = $"{physicalPath}",
+                    ContentType = "data:" + file.ContentType,
+                    Size = (int)file.Length,
+                    Name = fileNameResult
+                });
 
-                await _imageFileService.UploadImage(imageFilesViewModel, Directory.GetCurrentDirectory());
-                return StatusCode(201);
+                return Ok();
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error al subir una nueva imagen");
-                return StatusCode(500);
-            }
+            return BadRequest();
         }
+
 
         [HttpPut("UpdateImage/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

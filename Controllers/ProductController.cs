@@ -56,47 +56,47 @@ namespace LuminariasWeb.sln.Controllers
             }
         }
 
-        [HttpPost("AddProduct")]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> AddProductWithImage([FromForm] ProductViewModel productViewModel, IFormFile imageFile)
-        {
-            try
-            {
-                if (imageFile == null || imageFile.Length == 0)
-                {
-                    return BadRequest("No se ha proporcionado ninguna imagen.");
-                }
+        //[HttpPost("AddProduct")]
+        //[ProducesResponseType(StatusCodes.Status201Created)]
+        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //public async Task<ActionResult> AddProductWithImage([FromForm] ProductViewModel productViewModel, IFormFile imageFile)
+        //{
+        //    try
+        //    {
+        //        if (imageFile == null || imageFile.Length == 0)
+        //        {
+        //            return BadRequest("No se ha proporcionado ninguna imagen.");
+        //        }
 
-                // Leer los bytes del archivo de imagen
-                using (var memoryStream = new MemoryStream())
-                {
-                    await imageFile.CopyToAsync(memoryStream);
-                    byte[] imgBytes = memoryStream.ToArray();
+        //        // Leer los bytes del archivo de imagen
+        //        using (var memoryStream = new MemoryStream())
+        //        {
+        //            await imageFile.CopyToAsync(memoryStream);
+        //            byte[] imgBytes = memoryStream.ToArray();
 
-                    // Subir la imagen y obtener su información
-                    var imageUploadResult = await _imageFileService.UploadImage(new ImageFilesViewModel
-                    {
-                        Name = imageFile.FileName,
-                        Content = Convert.ToBase64String(imgBytes)
-                    }, "DirectorioDeAlmacenamientoDeImagenes");
+        //            // Subir la imagen y obtener su información
+        //            var imageUploadResult = await _imageFileService.UploadImage(new ImageFilesViewModel
+        //            {
+        //                Name = imageFile.FileName,
+        //                Content = Convert.ToBase64String(imgBytes)
+        //            }, "DirectorioDeAlmacenamientoDeImagenes");
 
-                    // Asignar la imagen al producto
-                    productViewModel.ImagePath = imageUploadResult.Path;
+        //            // Asignar la imagen al producto
+        //            productViewModel.ImagePath = imageUploadResult.Path;
 
-                    // Agregar el producto con la imagen
-                    await _productService.AddProductAsync(productViewModel);
+        //            // Agregar el producto con la imagen
+        //            await _productService.AddProductAsync(productViewModel);
 
-                    return StatusCode(201);
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error al agregar un nuevo producto con imagen.");
-                return StatusCode(500);
-            }
-        }
+        //            return StatusCode(201);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, "Error al agregar un nuevo producto con imagen.");
+        //        return StatusCode(500);
+        //    }
+        //}
 
 
         [HttpPut("UpdateProduct/{id}")]

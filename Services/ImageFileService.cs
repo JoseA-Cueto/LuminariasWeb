@@ -28,40 +28,40 @@ namespace LuminariasWeb.sln.Services
            
         }
 
-        public async Task<ImageFilesViewModel> UploadImage(ImageFilesViewModel entity, string path)
-        {
-            var result = new ImageFile();
-            var fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + entity.Name;
-            entity.Name = fileName;
-            var pathC = Path.Combine(path, @"Upload\\ImageFile\\" + fileName);
+        //public async Task<ImageFilesViewModel> UploadImage(ImageFilesViewModel entity, string path)
+        //{
+        //    var result = new ImageFile();
+        //    var fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + entity.Name;
+        //    entity.Name = fileName;
+        //    var pathC = Path.Combine(path, @"Upload\\ImageFile\\" + fileName);
 
-            if (entity.Content.Contains(","))
-            {
-                entity.Content = entity.Content.Substring(entity.Content.IndexOf(",") + 1);
-                byte[] imgBytes = Convert.FromBase64String(entity.Content);
+        //    if (entity.Content.Contains(","))
+        //    {
+        //        entity.Content = entity.Content.Substring(entity.Content.IndexOf(",") + 1);
+        //        byte[] imgBytes = Convert.FromBase64String(entity.Content);
 
-                entity.CreateDate = DateTime.Now;
-                entity.Path = @"/Upload/ImageFile/" + fileName;
-                entity.PhysicalPath = pathC;
+        //        entity.CreateDate = DateTime.Now;
+        //        entity.Path = @"/Upload/ImageFile/" + fileName;
+        //        entity.PhysicalPath = pathC;
 
-                if (!Directory.Exists(path + @"\\Upload\\ImageFile\\"))
-                {
-                    Directory.CreateDirectory(path + @"\\Upload\\ImageFile\\");
-                }
+        //        if (!Directory.Exists(path + @"\\Upload\\ImageFile\\"))
+        //        {
+        //            Directory.CreateDirectory(path + @"\\Upload\\ImageFile\\");
+        //        }
 
-                if (!System.IO.File.Exists(pathC))
-                {
-                    using (var fs = new FileStream(pathC, FileMode.CreateNew))
-                    {
-                        await fs.WriteAsync(imgBytes, 0, imgBytes.Length);
-                    }
+        //        if (!System.IO.File.Exists(pathC))
+        //        {
+        //            using (var fs = new FileStream(pathC, FileMode.CreateNew))
+        //            {
+        //                await fs.WriteAsync(imgBytes, 0, imgBytes.Length);
+        //            }
 
-                    result = await _repository.CreateImageFile(_mapper.Map<ImageFile>(entity));
-                }
-            }
+        //            result = await _repository.CreateImageFile(_mapper.Map<ImageFile>(entity));
+        //        }
+        //    }
 
-            return _mapper.Map<ImageFilesViewModel>(result);
-        }
+        //    return _mapper.Map<ImageFilesViewModel>(result);
+        //}
 
 
         public async Task Create(ImageFilesViewModel entity)
