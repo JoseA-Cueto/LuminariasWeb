@@ -13,13 +13,13 @@ public class CartController : ControllerBase
         _logger = logger;
     }
 
-    [HttpGet("items")]
-    public IActionResult GetCartItems()
+    [HttpPost("AddToCart")]
+    public IActionResult AddToCart(CartItemViewModel item)
     {
         try
         {
-            var cartItems = _cartService.GetCartItems();
-            return Ok(cartItems);
+            _cartService.AddItemToCartAsync(item);
+            return Ok();
         }
         catch (Exception ex)
         {
@@ -28,13 +28,13 @@ public class CartController : ControllerBase
         }
     }
 
-    [HttpPost("add")]
-    public IActionResult AddToCart([FromBody] CartViewModel cartItem)
+    [HttpGet("GetShoppingCart")]
+    public IActionResult GetShoppingCart()
     {
         try
         {
-            _cartService.AddToCart(cartItem);
-            return Ok();
+            var shoppingCart = _cartService.GetShoppingCartAsync();
+            return Ok(shoppingCart);
         }
         catch (Exception ex)
         {

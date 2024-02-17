@@ -1,32 +1,47 @@
 using LuminariasWeb.sln.Models;
-namespace LuminariasWeb.sln.Services {
+namespace LuminariasWeb.sln.Services
+{
     public class CartService : ICartService
     {
-        private List<CartViewModel> cartItems = new List<CartViewModel>();
-        private readonly AppDbContext dbContext;
+        private readonly List<CartItemViewModel> _cartItems;
 
-        public CartService(AppDbContext dbContext)
+
+        public CartService()
         {
-            this.dbContext = dbContext;
+            _cartItems = new List<CartItemViewModel>();
+        }
+        public Task AddItemToCartAsync(CartItemViewModel item)
+        {
+            return Task.Run(() =>
+            {
+                var existingItem = _cartItems.FirstOrDefault(i => i.ProductId == item.ProductId);
+
+                if (existingItem != null)
+                {
+                    existingItem.Quantity += item.Quantity;
+                }
+                else
+                {
+                    _cartItems.Add(item);
+                }
+            });
         }
 
-        public void AddToCart(CartViewModel item)
+        public Task<ShoppingCartViewModel> GetShoppingCartAsync()
         {
+            return Task.Run(() =>
+            {
+                decimal totalPrice = _cartItems.Sum(item => item.Price * item.Quantity);
 
-            Product product = dbContext.Products.Find(item.Product.Id);
+                var shoppingCart = new ShoppingCartViewModel
+                {
+                    Items = _cartItems,
+                    TotalPrice = totalPrice
+                };
 
-
-            item.Product = product;
-
-
-            cartItems.Add(item);
+                return shoppingCart;
+            });
         }
 
-        public List<CartViewModel> GetCartItems()
-        {
-
-            return cartItems;
-        }
     }
-   
 }
