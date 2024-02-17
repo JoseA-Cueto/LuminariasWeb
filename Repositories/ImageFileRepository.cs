@@ -27,10 +27,11 @@ namespace LuminariasWeb.sln.Repositories
             return await _context.ImageFiles.FindAsync(id);
         }
 
-        public async Task CreateAsync(ImageFile imageFile)
+        public async Task<ImageFile> CreateAsync(ImageFile imageFile)
         {
             _context.ImageFiles.Add(imageFile);
             await _context.SaveChangesAsync();
+            return imageFile;
         }
         public async Task<ImageFile> CreateImageFile(ImageFile entity)
         {

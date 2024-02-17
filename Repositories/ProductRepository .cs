@@ -25,25 +25,26 @@ namespace LuminariasWeb.sln.Repositories
             return await _context.Products.FindAsync(productId);
         }
 
-        public async Task AddProductAsync(Product product)
-        {
+        public async Task<int> AddProductAsync(Product product)
+        {   
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
+            return product.Id;
         }
 
-        public async Task UpdateProductAsync(Product product)
-        {
-            // Si la imagen ha sido actualizada, asegúrate de actualizar la propiedad ImagePath
-            var existingProduct = await _context.Products.FindAsync(product.Id);
-            if (existingProduct != null && !string.IsNullOrEmpty(product.ImagePath))
-            {
-                existingProduct.ImagePath = product.ImagePath;
-            }
+        //public async Task UpdateProductAsync(Product product)
+        //{
+        //    // Si la imagen ha sido actualizada, asegúrate de actualizar la propiedad ImagePath
+        //    var existingProduct = await _context.Products.FindAsync(product.Id);
+        //    if (existingProduct != null && !string.IsNullOrEmpty(product.ImagePath))
+        //    {
+        //        existingProduct.ImagePath = product.ImagePath;
+        //    }
 
-            // Actualiza las demás propiedades y guarda los cambios
-            _context.Entry(existingProduct).CurrentValues.SetValues(product);
-            await _context.SaveChangesAsync();
-        }
+        //    // Actualiza las demás propiedades y guarda los cambios
+        //    _context.Entry(existingProduct).CurrentValues.SetValues(product);
+        //    await _context.SaveChangesAsync();
+        //}
 
         public async Task DeleteProductAsync(int productId)
         {

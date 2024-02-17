@@ -10,9 +10,7 @@ public class ProductViewModel
     public int Quantity { get; set; }
     // Propiedad adicional para la relación con Category
     public int CategoryId { get; set; }
-    public string ImagePath { get; set; }
-    public int? ImageFileId { get; set; }
-    [Display(Name = "Imagen")]
-    public IFormFile ImageFile { get; set; }
+   public string ImagePath { get; set; }
+    public IFormFile File { get; set; }
 }
 

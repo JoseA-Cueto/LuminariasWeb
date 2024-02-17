@@ -9,7 +9,7 @@
         public string PhysicalPath { get; set; }
         public int Size { get; set; }
         public DateTime CreateDate { get; set; }
+        public int ProductId { get; set; }
 
-       
     }
 }

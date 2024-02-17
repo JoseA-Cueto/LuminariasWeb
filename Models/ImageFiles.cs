@@ -18,6 +18,9 @@ namespace LuminariasWeb.sln.Models
         [Required]
         public string PhysicalPath { get; set; }   
         public int Size { get; set; } 
-        public DateTime CreateDate { get; set; }
+        public DateTime CreateDate { get; set; }      
+        public int ProductId { get; set; }
+        [ForeignKey("ProductId")]
+        public Product Product { get; set; }
     }
 }

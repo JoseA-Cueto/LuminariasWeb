@@ -3,6 +3,7 @@ using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.DataBaseInterface;
 using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LuminariasWeb.sln.Services
 {
@@ -10,116 +11,64 @@ namespace LuminariasWeb.sln.Services
     {
         private readonly IImageFileRepository _repository;
         private readonly IMapper _mapper;
+        private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment _hostingEnvironment;
 
 
-        public ImageFileService(IImageFileRepository repository, IMapper mapper)
+        public ImageFileService(IImageFileRepository repository, IMapper mapper, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
         {
             _repository = repository;
             _mapper = mapper;
-           
+            _hostingEnvironment = hostingEnvironment;
         }
 
-        public async Task<ImageFilesViewModel> CreateImageFile(ImageFilesViewModel model)
+        public async Task<ImageFile> CreateImageFile(ProductViewModel product)
         {
-           
-                var entity = _mapper.Map<ImageFilesViewModel>(model);
-                var result = await _repository.CreateImageFile(_mapper.Map<ImageFile>(entity));
-                return _mapper.Map<ImageFilesViewModel>(result);
-           
+            var file = product.File;
+            string[] extension = { ".jpg", ".jpeg", ".bmp", ".png", ".tif", ".ico", ".tiff", ".pjpeg" };
+            var fileName = file.FileName;
+
+            if (extension.Any(a => a.ToUpper() == Path.GetExtension(fileName).ToUpper()))
+            {
+                string pathRoot = Path.Combine(_hostingEnvironment.WebRootPath, "Upload", "ImageFile");
+
+                if (!Directory.Exists(pathRoot))
+                {
+                    Directory.CreateDirectory(pathRoot);
+                }
+                var splitedFileName = file.FileName.Split('.');
+                var fileNameResult = $"{String.Join(" ", splitedFileName, 0, splitedFileName.Length - 1)}-D{DateTime.Now.ToString("yyyy-MM-dd HHmm")}{Path.GetExtension(file.FileName)}";
+                var relativePath = "Upload/ImageFile/";
+                var physicalPath = Path.Combine(pathRoot, fileNameResult);
+                using (var stream = new FileStream(physicalPath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+               var imageFile = await Create(new ImageFilesViewModel
+                {
+                    CreateDate = DateTime.Now,
+                    Path = $"{relativePath}{fileNameResult}",
+                    PhysicalPath = $"{physicalPath}",
+                    ContentType = "data:" + file.ContentType,
+                    Size = (int)file.Length,
+                    Name = fileNameResult,
+                    ProductId = product.Id,
+                });
+
+                return imageFile;
+            }
+            return null;
         }
 
-        //public async Task<ImageFilesViewModel> UploadImage(ImageFilesViewModel entity, string path)
-        //{
-        //    var result = new ImageFile();
-        //    var fileName = DateTime.Now.ToString("yyyyMMddHHmmss") + entity.Name;
-        //    entity.Name = fileName;
-        //    var pathC = Path.Combine(path, @"Upload\\ImageFile\\" + fileName);
 
-        //    if (entity.Content.Contains(","))
-        //    {
-        //        entity.Content = entity.Content.Substring(entity.Content.IndexOf(",") + 1);
-        //        byte[] imgBytes = Convert.FromBase64String(entity.Content);
-
-        //        entity.CreateDate = DateTime.Now;
-        //        entity.Path = @"/Upload/ImageFile/" + fileName;
-        //        entity.PhysicalPath = pathC;
-
-        //        if (!Directory.Exists(path + @"\\Upload\\ImageFile\\"))
-        //        {
-        //            Directory.CreateDirectory(path + @"\\Upload\\ImageFile\\");
-        //        }
-
-        //        if (!System.IO.File.Exists(pathC))
-        //        {
-        //            using (var fs = new FileStream(pathC, FileMode.CreateNew))
-        //            {
-        //                await fs.WriteAsync(imgBytes, 0, imgBytes.Length);
-        //            }
-
-        //            result = await _repository.CreateImageFile(_mapper.Map<ImageFile>(entity));
-        //        }
-        //    }
-
-        //    return _mapper.Map<ImageFilesViewModel>(result);
-        //}
-
-
-        public async Task Create(ImageFilesViewModel entity)
+        public async Task<ImageFile> Create(ImageFilesViewModel entity)
         {
             
-                await _repository.CreateAsync(_mapper.Map<ImageFile>(entity));
+               return await _repository.CreateAsync(_mapper.Map<ImageFile>(entity));
+            
            
             
         }
-        public async Task Delete(int id)
-        {
-           
-                await _repository.DeleteAsync(id);
-         
-        }
-
-        public async Task<ImageFilesViewModel> Find(int id)
-        {
-            
-                var obj = await _repository.GetByIdAsync(id);
-                return _mapper.Map<ImageFilesViewModel>(obj);
-            
-           
-        }
-
-        public async Task<IEnumerable<ImageFilesViewModel>> GetAll()
-        {
-            
-                var imageFile = await _repository.GetAllAsync();
-                return _mapper.Map<IEnumerable<ImageFilesViewModel>>(imageFile);
-            
-            
-        }
-
-        public async Task Update(ImageFilesViewModel entity)
-        {
-            
-                entity.CreateDate = DateTime.Now;
-                await _repository.UpdateAsync(_mapper.Map<ImageFile>(entity));
-            
-           
-        }
-
-        public async Task UpdateImageProduct(ImageFilesViewModel entity, string path)
-        {
-            
-                var fileNameSplited = entity.Name.Split('.');
-                entity.Path = $"{entity.PhysicalPath}.{fileNameSplited[fileNameSplited.Length - 1]}";
-                entity.PhysicalPath = Path.Combine(path, @"Image\\ClientCode\\" + $"{entity.PhysicalPath.Split('/').Last()}.{fileNameSplited[fileNameSplited.Length - 1]}");
-                entity.CreateDate = DateTime.Now;
-                await _repository.UpdateAsync(_mapper.Map<ImageFile>(entity));
-            
-            
-        }
-
-        public async Task<bool> ExistImageByPath(string path)
-        {
-            return File.Exists(path);
-        }
+       
     }
 }

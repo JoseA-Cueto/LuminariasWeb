@@ -56,78 +56,63 @@ namespace LuminariasWeb.sln.Controllers
             }
         }
 
-        //[HttpPost("AddProduct")]
-        //[ProducesResponseType(StatusCodes.Status201Created)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<ActionResult> AddProductWithImage([FromForm] ProductViewModel productViewModel, IFormFile imageFile)
-        //{
-        //    try
-        //    {
-        //        if (imageFile == null || imageFile.Length == 0)
-        //        {
-        //            return BadRequest("No se ha proporcionado ninguna imagen.");
-        //        }
-
-        //        // Leer los bytes del archivo de imagen
-        //        using (var memoryStream = new MemoryStream())
-        //        {
-        //            await imageFile.CopyToAsync(memoryStream);
-        //            byte[] imgBytes = memoryStream.ToArray();
-
-        //            // Subir la imagen y obtener su información
-        //            var imageUploadResult = await _imageFileService.UploadImage(new ImageFilesViewModel
-        //            {
-        //                Name = imageFile.FileName,
-        //                Content = Convert.ToBase64String(imgBytes)
-        //            }, "DirectorioDeAlmacenamientoDeImagenes");
-
-        //            // Asignar la imagen al producto
-        //            productViewModel.ImagePath = imageUploadResult.Path;
-
-        //            // Agregar el producto con la imagen
-        //            await _productService.AddProductAsync(productViewModel);
-
-        //            return StatusCode(201);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex, "Error al agregar un nuevo producto con imagen.");
-        //        return StatusCode(500);
-        //    }
-        //}
-
-
-        [HttpPut("UpdateProduct/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [HttpPost("AddProduct")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> UpdateProduct(int id, [FromBody] ProductViewModel productViewModel)
+        public async Task<ActionResult> AddProductWithImage([FromForm] ProductViewModel productViewModel)
         {
             try
             {
-                var existingProduct = await _productService.GetProductByIdAsync(id);
-                if (existingProduct == null)
+                if (productViewModel.File == null || productViewModel.File.Length == 0)
                 {
-                    return NotFound();
+                    return BadRequest("No se ha proporcionado ninguna imagen.");
                 }
 
-                // Si se proporciona una nueva imagen, actualiza la propiedad ImagePath
-                if (!string.IsNullOrEmpty(productViewModel.ImagePath))
-                {
-                    existingProduct.ImagePath = productViewModel.ImagePath;
-                }
-
-                await _productService.UpdateProductAsync(productViewModel);
-                return Ok();
+                                  
+                var productId = await _productService.AddProductAsync(productViewModel);
+                productViewModel.Id = productId;   
+                await _imageFileService.CreateImageFile(productViewModel);
+                return StatusCode(201);
+                
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Error al actualizar el producto con ID: {id}");
+                _logger.LogError(ex, "Error al agregar un nuevo producto con imagen.");
                 return StatusCode(500);
             }
         }
+
+
+        //[HttpPut("UpdateProduct/{id}")]
+        //[ProducesResponseType(StatusCodes.Status200OK)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        //public async Task<ActionResult> UpdateProduct(int id, [FromBody] ProductViewModel productViewModel)
+        //{
+        //    try
+        //    {
+        //        var existingProduct = await _productService.GetProductByIdAsync(id);
+        //        if (existingProduct == null)
+        //        {
+        //            return NotFound();
+        //        }
+
+        //        // Si se proporciona una nueva imagen, actualiza la propiedad ImagePath
+        //        if (!string.IsNullOrEmpty(productViewModel.ImagePath))
+        //        {
+        //            existingProduct.ImagePath = productViewModel.ImagePath;
+        //        }
+
+        //        await _productService.UpdateProductAsync(productViewModel);
+        //        return Ok();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, $"Error al actualizar el producto con ID: {id}");
+        //        return StatusCode(500);
+        //    }
+        //}
 
         [HttpDelete("DeleteProduct/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

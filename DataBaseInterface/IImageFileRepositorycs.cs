@@ -9,7 +9,7 @@ namespace LuminariasWeb.sln.DataBaseInterface
     {
         Task<IEnumerable<ImageFile>> GetAllAsync();
         Task<ImageFile> GetByIdAsync(int id);
-        Task CreateAsync(ImageFile imageFile);
+        Task<ImageFile> CreateAsync(ImageFile imageFile);
         Task UpdateAsync(ImageFile imageFile);
         Task DeleteAsync(int id);
         Task<ImageFile> CreateImageFile(ImageFile entity);

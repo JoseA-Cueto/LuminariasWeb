@@ -28,42 +28,9 @@ namespace LuminariasWeb.sln.Controllers
             _hostingEnvironment = hostingEnvironment;
         }
 
-        [HttpGet("GetAllImageFiles")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<ImageFilesViewModel>>> GetAllImageFiles()
-        {
-            try
-            {
-                var imageFiles = await _imageFileService.GetAll();
-                return Ok(imageFiles);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error al obtener todos los archivos de imágenes");
-                return StatusCode(500); 
-            }
-        }
+ 
 
-        [HttpGet("GetImageFileById/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ImageFilesViewModel>> GetImageFileById(int id)
-        {
-            try
-            {
-                var imageFile = await _imageFileService.Find(id);
-                if (imageFile == null)
-                {
-                    return NotFound();
-                }
-                return Ok(imageFile);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error al obtener el archivo de imagen con ID: {id}");
-                return StatusCode(500); 
-            }
-        }
+ 
         [HttpPost("CreateImageFile")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -106,53 +73,7 @@ namespace LuminariasWeb.sln.Controllers
         }
 
 
-        [HttpPut("UpdateImage/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> UpdateImage(int id, [FromBody] ImageFilesViewModel imageFilesViewModel)
-        {
-            try
-            {
-                var existingImageFile = await _imageFileService.Find(id);
-                if (existingImageFile == null)
-                {
-                    return NotFound();
-                }
-
-                await _imageFileService.Update(imageFilesViewModel);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error al actualizar el archivo de imagen con ID: {id}");
-                return StatusCode(500); // Devuelve un código de estado 500 en caso de error
-            }
-        }
-
-        [HttpDelete("DeleteImage/{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> DeleteImage(int id)
-        {
-            try
-            {
-                var existingImageFile = await _imageFileService.Find(id);
-                if (existingImageFile == null)
-                {
-                    return NotFound();
-                }
-
-                await _imageFileService.Delete(id);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error al eliminar el archivo de imagen con ID: {id}");
-                return StatusCode(500); // Devuelve un código de estado 500 en caso de error
-            }
-        }
+       
     }
 }
 
