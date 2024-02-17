@@ -1,6 +1,7 @@
 public interface ICartService
 {
-    void AddToCart(CartViewModel item);
-    List<CartViewModel> GetCartItems();
-   
+    public Task AddItemToCartAsync(CartItemViewModel item);
+    public Task<ShoppingCartViewModel> GetShoppingCartAsync();
+
+
 }

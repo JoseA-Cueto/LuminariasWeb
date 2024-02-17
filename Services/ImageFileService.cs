@@ -2,6 +2,7 @@
 using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.DataBaseInterface;
 using LuminariasWeb.sln.Models;
+using LuminariasWeb.sln.Repositories;
 using LuminariasWeb.sln.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -64,11 +65,36 @@ namespace LuminariasWeb.sln.Services
         public async Task<ImageFile> Create(ImageFilesViewModel entity)
         {
             
-               return await _repository.CreateAsync(_mapper.Map<ImageFile>(entity));
-            
-           
-            
+               return await _repository.CreateAsync(_mapper.Map<ImageFile>(entity));          
         }
-       
+        public async Task UpdateImageFile(ProductViewModel productViewModel)
+        {
+            
+            var imageFile = await _repository.GetImageFileByProductIdAsync(productViewModel.Id);
+
+            if (imageFile == null)
+            {
+                throw new Exception("Archivo de imagen no encontrado para el producto.");
+            }
+
+      
+            if (productViewModel.File != null)
+            {
+
+                imageFile.PhysicalPath = productViewModel.ImagePath;
+            }
+
+            try
+            {
+                await _repository.UpdateAsync(imageFile);
+            }
+            catch (Exception ex)
+            {
+           
+                throw new Exception("Error al actualizar el archivo de imagen", ex);
+            }
+        }
+
+
     }
 }
