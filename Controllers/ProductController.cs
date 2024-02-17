@@ -83,36 +83,32 @@ namespace LuminariasWeb.sln.Controllers
             }
         }
 
+        [HttpPut("UpdateProduct")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> UpdateProductWithImage([FromForm] ProductViewModel productViewModel)
+        {
+            try
+            {
+                if (productViewModel.File == null || productViewModel.File.Length == 0)
+                {
+                    return BadRequest("No se ha proporcionado ninguna imagen.");
+                }
 
-        //[HttpPut("UpdateProduct/{id}")]
-        //[ProducesResponseType(StatusCodes.Status200OK)]
-        //[ProducesResponseType(StatusCodes.Status404NotFound)]
-        //[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        //public async Task<ActionResult> UpdateProduct(int id, [FromBody] ProductViewModel productViewModel)
-        //{
-        //    try
-        //    {
-        //        var existingProduct = await _productService.GetProductByIdAsync(id);
-        //        if (existingProduct == null)
-        //        {
-        //            return NotFound();
-        //        }
+                await _productService.UpdateProductAsync(productViewModel);
+                await _imageFileService.UpdateImageFile(productViewModel);
 
-        //        // Si se proporciona una nueva imagen, actualiza la propiedad ImagePath
-        //        if (!string.IsNullOrEmpty(productViewModel.ImagePath))
-        //        {
-        //            existingProduct.ImagePath = productViewModel.ImagePath;
-        //        }
+                return StatusCode(200);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error al actualizar el producto con imagen.");
+                return StatusCode(500);
+            }
+        }
 
-        //        await _productService.UpdateProductAsync(productViewModel);
-        //        return Ok();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.LogError(ex, $"Error al actualizar el producto con ID: {id}");
-        //        return StatusCode(500);
-        //    }
-        //}
+
 
         [HttpDelete("DeleteProduct/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]

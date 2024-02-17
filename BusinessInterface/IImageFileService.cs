@@ -10,6 +10,6 @@ namespace LuminariasWeb.sln.BusinessInterface
         Task<ImageFile> CreateImageFile(ProductViewModel product);
        
         Task <ImageFile>Create(ImageFilesViewModel entity);
-
+        Task UpdateImageFile(ProductViewModel productViewModel);
     }
 }

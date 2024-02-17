@@ -38,8 +38,21 @@ namespace LuminariasWeb.sln.Services
             var product = _mapper.Map<Product>(productViewModel);
             return await _productRepository.AddProductAsync(product);
         }
+        public async Task UpdateProductAsync(ProductViewModel productViewModel)
+        {
+            var existingProduct = await _productRepository.GetProductByIdAsync(productViewModel.Id);
 
-       
+            if (existingProduct == null)
+            {
+                throw new Exception("Producto no encontrado");
+            }
+
+            _mapper.Map(productViewModel, existingProduct);
+
+            await _productRepository.UpdateProductAsync(existingProduct);
+        }
+
+
         public async Task DeleteProductAsync(int productId)
         {
             await _productRepository.DeleteProductAsync(productId);

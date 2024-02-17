@@ -43,6 +43,12 @@ namespace LuminariasWeb.sln.Repositories
             
 
         }
+        public async Task<ImageFile> GetImageFileByProductIdAsync(int productId)
+        {
+           
+            return await _context.ImageFiles.FirstOrDefaultAsync(f => f.ProductId == productId);
+        }
+
 
         public async Task UpdateAsync(ImageFile imageFile)
         {

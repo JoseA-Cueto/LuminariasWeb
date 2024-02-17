@@ -13,6 +13,8 @@ namespace LuminariasWeb.sln.DataBaseInterface
         Task UpdateAsync(ImageFile imageFile);
         Task DeleteAsync(int id);
         Task<ImageFile> CreateImageFile(ImageFile entity);
-    }
+        Task<ImageFile> GetImageFileByProductIdAsync(int productId);
+        
+        }
 }
 
