@@ -61,6 +61,14 @@ namespace LuminariasWeb.sln.Controllers
             try
             {
                 var product = await _productService.GetProductByIdAsync(id);
+                if (product != null)
+                {
+                    var imageFile = await _imageFileService.GetImageByProductIdAsync(product.Id);
+                    if (imageFile != null)
+                    {
+                        product.ImagePath = imageFile.PhysicalPath;
+                    }
+                }
                 if (product == null)
                 {
                     return NotFound();
