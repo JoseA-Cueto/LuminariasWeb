@@ -43,29 +43,27 @@ export default {
   },
   methods: {
     async fetchCategoryDetails() {
-      try {
-        this.showProgressBar = true;
-        const categoryId = this.$route.params.id;
-        const response = await fetch(`../api/Category/GetCategoryById/${categoryId}`);
-        
-        if (!response.ok) {
-          throw new Error('Error en la petición al servidor');
-        }
+  try {
+    this.showProgressBar = true;
+    const categoryId = this.$route.params.id;
+    const response = await fetch(`../api/Category/GetCategoryById/${categoryId}`);
+    
+    if (!response.ok) {
+      throw new Error('Error en la petición al servidor');
+    }
 
-        const categoryDetails = await response.json();
-        this.categoryName = categoryDetails.categoryName;
+    const categoryDetails = await response.json();
+    this.categoryName = categoryDetails.categoryName;
 
-        console.log('Datos que se reciben al servidor:', {
-          Id: this.$route.params.id,
-          CategoryName: this.categoryName,
-        });
+    console.log('Producto recibido del servidor:', categoryDetails);
 
-      } catch (error) {
-        console.error('Error en la petición:', error);
-      } finally {
-        this.showProgressBar = false;
-      }
-    },
+  } catch (error) {
+    console.error('Error en la petición:', error);
+  } finally {
+    this.showProgressBar = false;
+  }
+},
+
     getBack() {
       this.$router.push('/admin');
     },

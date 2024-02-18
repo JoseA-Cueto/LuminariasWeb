@@ -1,82 +1,140 @@
- <<template>
-    
-  <div v-if="showSuccessAlert" class="position-fixed top-0 start-0 m-3">
-          <div class="alert alert-primary" role="alert">
-            Producto eliminado con éxito.
-          </div>
-  </div>
-
-        <div v-if="showErrorAlert" class="position-fixed top-0 start-0 m-3">
-          <div class="alert alert-danger" role="alert">
-            Error al eliminar el producto. Por favor, inténtalo de nuevo.
+<template>
+  <div>
+    <div class="modal fade" id="modalShowProduct" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+          <div class="modal-content">
+              <ShowProductPage/>
           </div>
         </div>
+      </div>
+    <table class="table table-striped table-hover">
+      <!-- Encabezados de la tabla -->
+      <thead class="text-center">
+        <tr>
+          <th scope="col">
+            <button class="btn btn-dark" @click="sortBy('id')">ID</button>
+          </th>
+          <th scope="col">
+            <button class="btn btn-dark" @click="sortBy('name')">Nombre</button>
+          </th>
+          <th scope="col">
+            <button class="btn btn-dark" @click="sortBy('price')">Precio</button>
+          </th>
+          <th scope="col">Descripción</th>
+          <th scope="col">
+            <button class="btn btn-dark" @click="sortBy('quantity')">Cantidad</button>
+          </th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
 
-    <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Descripción</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="product in products" :key="product.id">
-            <th scope="row">{{ product.id }}</th>
-            <td>{{ product.name }}</td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.description }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>
+      <!-- Cuerpo de la tabla -->
+      <tbody>
+        <tr v-for="product in paginatedProducts" :key="product.id">
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>
+            <button class="btn btn-sm btn-dark" type="button" data-bs-toggle="collapse" :data-bs-target="'#actionsCollapse' + product.id" aria-expanded="false" aria-controls="'actionsCollapse' + product.id">
+              <i class="bi bi-three-dots-vertical"></i>
+            </button>
+            <div class="collapse" :id="'actionsCollapse' + product.id">
+              <button class="btn btn-sm btn-success" 
+              @click="editProduct(product.id)">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+              <button class="btn btn-sm btn-primary" 
+              @click="showProduct(product.id)"
+              data-bs-toggle="modal"
+               data-bs-target="#ShowProduct">
+                <i class="bi bi-eye"></i>
+              </button>
+              <button class="btn btn-sm btn-danger" @click="deleteProduct(product.id)">
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-            <button @click="editProduct(product.id)" class="btn btn-success">
-              <i class="material-icons">edit</i>
-            </button>
-            <button class="btn btn-danger" @click="deleteProduct(product.id)">
-              <i class="material-icons">delete</i> 
-            </button>
-            <button class="btn btn-primary" @click="showProduct(product.id)">
-                <i class="material-icons">info</i> 
-            </button>
-              
-            </td>
-          </tr>
-        </tbody>
-      </table>
-     
+    <!-- Barra de carga -->
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" :style="{ width: loading ? '100%' : '0' }"></div>
     </div>
-    <div class="d-flex justify-content-center" >
-      <div v-if="loading" class="spinner-border " role="status">
-        <span class="sr-only"></span>
-    </div>
-    </div>
- 
+
+    <!-- Paginación -->
+    <nav>
+      <ul class="pagination justify-content-end">
+        <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+          <button class="page-link" @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">Anterior</button>
+        </li>
+        <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': page === currentPage }">
+          <button class="page-link" @click="goToPage(page)">{{ page }}</button>
+        </li>
+        <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+          <button class="page-link" @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">Siguiente</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script>
-
-
+import ShowProductPage from './ShowProductPage.vue'
 export default {
-  
+  components:{
+    ShowProductPage
+  },
   data() {
     return {
       products: [],
       loading: false,
       showSuccessAlert: false,
       showErrorAlert: false,
+      searchTerm: '',
+      sortByField: '',
+      sortOrder: 'asc',
+      currentPage: 1,
+      itemsPerPage: 6,
     };
   },
+   
   mounted() {
     this.fetchProducts();
+  },
+  computed: {
+    filteredProducts() {
+      return this.products.filter(product => {
+        return product.name.toLowerCase().includes(this.searchTerm.toLowerCase());
+      });
+    },
+
+    sortedProducts() {
+      const sorted = this.products.slice().sort((a, b) => {
+        if (this.sortOrder === 'asc') {
+          return a[this.sortByField] > b[this.sortByField] ? 1 : -1;
+        } else {
+          return a[this.sortByField] < b[this.sortByField] ? 1 : -1;
+        }
+      });
+      return sorted;
+    },
+    paginatedProducts() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      const end = start + this.itemsPerPage;
+      return this.sortedProducts.slice(start, end);
+    },
+    totalPages() {
+      return Math.ceil(this.sortedProducts.length / this.itemsPerPage);
+    },
   },
   methods: {
     async fetchProducts() {
       try {
-        this.loading = true; // Activamos el spinner al inicio de la petición
+        this.loading = true; // Activamos la barra de carga al inicio de la petición
         const response = await fetch('../api/Product/GetAllProducts');
         if (!response.ok) {
           throw new Error('Error en la petición al servidor');
@@ -87,12 +145,12 @@ export default {
       } catch (error) {
         console.error('Error en la petición:', error);
       } finally {
-        this.loading = false; // Desactivamos el spinner al finalizar la petición
+        this.loading = false; // Desactivamos la barra de carga al finalizar la petición
       }
     },
-      async deleteProduct(id) {
+    async deleteProduct(id) {
       try {
-        this.loading = true; // Activamos el spinner antes de la petición
+        this.loading = true; // Activamos la barra de carga antes de la petición
         const response = await fetch(`../api/Product/DeleteProduct/${id}`, {
           method: 'DELETE',
         });
@@ -122,8 +180,22 @@ export default {
     showProduct(productId) {
        this.$router.push({ name: 'ShowProduct', params: { id: productId } });
     },
+    sortBy(field) {
+      if (this.sortByField === field) {
+        this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+      } else {
+        this.sortByField = field;
+        this.sortOrder = 'asc';
+      }
+    },
+    goToPage(page) {
+      if (page >= 1 && page <= this.totalPages) {
+        this.currentPage = page;
+      }
+    },
+    searchProducts() {
+      this.currentPage = 1; // Reiniciar a la primera página al buscar
+    },
   },
 };
 </script>
-
-
