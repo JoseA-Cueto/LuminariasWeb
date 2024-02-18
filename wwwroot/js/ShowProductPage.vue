@@ -99,7 +99,7 @@ export default {
         this.productDescription = productDetails.description;
         this.productQuantity = productDetails.quantity;
         this.productCategoryID = productDetails.categoryId;
-        this.productImagePath = productDetails.ImagePath;
+        this.productImagePath = productDetails.imagePath;
         await this.getCategory(this.productCategoryID);
       } catch (error) {
         console.error('Error en la petición:', error);
@@ -111,8 +111,9 @@ export default {
       this.$router.push('/admin');
     },
     isEmptyOrSpaces(value) {
-      return value === null || value.match(/^ *$/) !== null;
-    }
+      return !value || value.match(/^ *$/) !== null;
+      }
+
   }
 };
 </script>

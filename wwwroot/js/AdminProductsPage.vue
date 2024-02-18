@@ -6,7 +6,7 @@
       <thead class="text-center">
         <tr>
           <th scope="col">
-            <button class="btn btn-dark" @click="sortBy('id')">ID</button>
+            <button class="btn btn-dark" >Imagen</button>
           </th>
           <th scope="col">
             <button class="btn btn-dark" @click="sortBy('name')">Nombre</button>
@@ -25,7 +25,7 @@
       <!-- Cuerpo de la tabla -->
       <tbody>
         <tr v-for="product in paginatedProducts" :key="product.id">
-          <td class="align-middle text-center" ><img src="{{ product.imagenPath }}" class="img-thumbnail" alt=""></td>
+          <td class="align-middle text-center" ><img :src="product.imagePath" :style="{ width: '120px' }" class="img-thumbnail" alt=""></td>
           <td class="align-middle text-center">{{ product.name }}</td>
           <td class="align-middle text-center">{{ product.price }}</td>
           <td class="align-middle text-center">{{ product.description }}</td>
