@@ -21,6 +21,10 @@ namespace LuminariasWeb.sln.Services
             _mapper = mapper;
             _hostingEnvironment = hostingEnvironment;
         }
+        public async Task<ImageFile> GetImageByProductIdAsync(int productId)
+        {
+            return await _repository.GetImageByProductIdAsync(productId);
+        }
 
         public async Task<ImageFile> CreateImageFile(ProductViewModel product)
         {

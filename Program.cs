@@ -27,15 +27,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
-// Add authentication and authorization
-builder.Services.AddAuthentication("Cookies")
-    .AddCookie("Cookies");
-
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
-    options.AddPolicy("Visitor", policy => policy.RequireRole("Visitor"));
-});
 builder.Services.AddLuminariasWebServices();
 var app = builder.Build();
 app.UseSwagger();
