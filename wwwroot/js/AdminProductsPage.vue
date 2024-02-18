@@ -1,12 +1,6 @@
 <template>
   <div>
-    <div class="modal fade" id="modalShowProduct" data-bs-backdrop="static">
-        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
-          <div class="modal-content">
-              <ShowProductPage/>
-          </div>
-        </div>
-      </div>
+   
     <table class="table table-striped table-hover">
       <!-- Encabezados de la tabla -->
       <thead class="text-center">
@@ -31,12 +25,12 @@
       <!-- Cuerpo de la tabla -->
       <tbody>
         <tr v-for="product in paginatedProducts" :key="product.id">
-          <td>{{ product.id }}</td>
-          <td>{{ product.name }}</td>
-          <td>{{ product.price }}</td>
-          <td>{{ product.description }}</td>
-          <td>{{ product.quantity }}</td>
-          <td>
+          <td class="align-middle text-center" ><img src="{{ product.imagenPath }}" class="img-thumbnail" alt=""></td>
+          <td class="align-middle text-center">{{ product.name }}</td>
+          <td class="align-middle text-center">{{ product.price }}</td>
+          <td class="align-middle text-center">{{ product.description }}</td>
+          <td class="align-middle text-center">{{ product.quantity }}</td>
+          <td class="align-middle text-center">
             <button class="btn btn-sm btn-dark" type="button" data-bs-toggle="collapse" :data-bs-target="'#actionsCollapse' + product.id" aria-expanded="false" aria-controls="'actionsCollapse' + product.id">
               <i class="bi bi-three-dots-vertical"></i>
             </button>
@@ -142,7 +136,7 @@ export default {
 
         const data = await response.json();
         this.products = data;
-        console.log(products)
+        console.log(this.products)
       } catch (error) {
         console.error('Error en la petición:', error);
       } finally {

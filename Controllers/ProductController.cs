@@ -34,7 +34,7 @@ namespace LuminariasWeb.sln.Controllers
                         var imageFile = await _imageFileService.GetImageByProductIdAsync(product.Id);
                         if (imageFile != null)
                         {
-                            product.ImagePath = imageFile.PhysicalPath;
+                            product.ImagePath = imageFile.Path;
                         }
                     }
                     catch (Exception ex)
@@ -66,7 +66,7 @@ namespace LuminariasWeb.sln.Controllers
                     var imageFile = await _imageFileService.GetImageByProductIdAsync(product.Id);
                     if (imageFile != null)
                     {
-                        product.ImagePath = imageFile.PhysicalPath;
+                        product.ImagePath = imageFile.Path;
                     }
                 }
                 if (product == null)

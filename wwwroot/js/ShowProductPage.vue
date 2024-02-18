@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="text-center">
-          <img :src="productImagenPath" class="rounded" alt="Imagen del producto">
+          <img :style="{ width: '120px' }" :src="productImagePath" class="rounded" alt="Imagen del producto" v-if="!isEmptyOrSpaces(productImagePath)" />
         </div>
         <button type="submit" class="btn btn-dark form-group col-md-12">Volver</button>
       </form>
@@ -57,7 +57,7 @@ export default {
       productCategoryID: 0,
       productCategory: '',
       productQuantity: '',
-      productImagenPath: ''
+      productImagePath: ''
     };
   },
   mounted() {
@@ -93,12 +93,13 @@ export default {
           throw new Error('Error en la petición al servidor');
         }
         const productDetails = await response.json();
+        console.log('Detalles del producto:', productDetails);
         this.productName = productDetails.name;
         this.productPrice = productDetails.price;
         this.productDescription = productDetails.description;
         this.productQuantity = productDetails.quantity;
         this.productCategoryID = productDetails.categoryId;
-        this.productImagenPath = productDetails.imagenPath;
+        this.productImagePath = productDetails.ImagePath;
         await this.getCategory(this.productCategoryID);
       } catch (error) {
         console.error('Error en la petición:', error);
@@ -109,6 +110,9 @@ export default {
     getBack() {
       this.$router.push('/admin');
     },
-  },
+    isEmptyOrSpaces(value) {
+      return value === null || value.match(/^ *$/) !== null;
+    }
+  }
 };
 </script>
