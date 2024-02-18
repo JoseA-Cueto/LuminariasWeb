@@ -142,6 +142,7 @@ export default {
 
         const data = await response.json();
         this.products = data;
+        console.log(products)
       } catch (error) {
         console.error('Error en la petición:', error);
       } finally {

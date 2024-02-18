@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LuminariasWeb.sln")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a957f723ccbe1b5566cf0c027f8ac88ef49ba008")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf2ea7bbf9a7c1c70f55c065508dc9a3ba1ce1c1")]
 [assembly: System.Reflection.AssemblyProductAttribute("LuminariasWeb.sln")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LuminariasWeb.sln")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
