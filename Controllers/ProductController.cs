@@ -26,6 +26,24 @@ namespace LuminariasWeb.sln.Controllers
             try
             {
                 var products = await _productService.GetProductsAsync();
+
+                foreach (var product in products)
+                {
+                    try
+                    {
+                        var imageFile = await _imageFileService.GetImageByProductIdAsync(product.Id);
+                        if (imageFile != null)
+                        {
+                            product.ImagePath = imageFile.PhysicalPath;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Manejo de errores si es necesario
+                        _logger.LogError(ex, $"Error al asignar el Path de imagen para el producto {product.Id}");
+                    }
+                }
+
                 return Ok(products);
             }
             catch (Exception ex)

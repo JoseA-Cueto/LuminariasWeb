@@ -32,8 +32,22 @@ namespace LuminariasWeb.sln.Services
             var product = await _productRepository.GetProductByIdAsync(productId);
             return _mapper.Map<ProductViewModel>(product);
         }
+        public async Task UpdateProductQuantityAsync(int productId, int quantityChange)
+        {
+            var product = await _productRepository.GetProductByIdAsync(productId);
+            if (product != null)
+            {
+                product.Quantity += quantityChange;
+                await _productRepository.UpdateProductAsync(product);
+            }
+            else
+            {
+                throw new ArgumentException("Product not found");
+            }
+        }
+    
 
-        public async Task<int> AddProductAsync(ProductViewModel productViewModel)
+    public async Task<int> AddProductAsync(ProductViewModel productViewModel)
         {
             var product = _mapper.Map<Product>(productViewModel);
             return await _productRepository.AddProductAsync(product);

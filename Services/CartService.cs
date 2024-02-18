@@ -1,14 +1,17 @@
+using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.Models;
 namespace LuminariasWeb.sln.Services
 {
     public class CartService : ICartService
     {
         private readonly List<CartItemViewModel> _cartItems;
+        private readonly IProductService _productService;
 
 
-        public CartService()
+        public CartService(IProductService productService)
         {
             _cartItems = new List<CartItemViewModel>();
+            _productService = productService;
         }
         public Task AddItemToCartAsync(CartItemViewModel item)
         {
@@ -41,6 +44,37 @@ namespace LuminariasWeb.sln.Services
 
                 return shoppingCart;
             });
+        }
+        public async Task ProcessPurchaseAsync(ShoppingCartViewModel cart)
+        {
+            foreach (var item in cart.Items)
+            {
+                var existingItem = _cartItems.FirstOrDefault(i => i.ProductId == item.ProductId);
+
+                if (existingItem != null)
+                {
+                    existingItem.Quantity -= item.Quantity;
+                    await _productService.UpdateProductQuantityAsync(existingItem.ProductId, -item.Quantity);
+                }
+            }
+
+           
+        }
+
+        public async Task CancelPurchaseAsync(ShoppingCartViewModel cart)
+        {
+            foreach (var item in cart.Items)
+            {
+                var existingItem = _cartItems.FirstOrDefault(i => i.ProductId == item.ProductId);
+
+                if (existingItem != null)
+                {
+                    existingItem.Quantity += item.Quantity;
+                    await _productService.UpdateProductQuantityAsync(existingItem.ProductId, item.Quantity);
+                }
+            }
+
+            
         }
 
     }

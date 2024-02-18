@@ -65,5 +65,9 @@ namespace LuminariasWeb.sln.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+        public async Task<ImageFile> GetImageByProductIdAsync(int productId)
+        {
+            return await _context.ImageFiles.FirstOrDefaultAsync(f => f.ProductId == productId);
+        }
     }
 }
