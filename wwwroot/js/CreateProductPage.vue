@@ -1,19 +1,19 @@
 <template>
   <div class="container">
     <div class="col-md-6">
-      <div v-if="showSuccessAlert" class="position-fixed top-0 start-0 m-3">
-        <div class="alert alert-primary" role="alert">
+      <div v-if="showSuccessAlert" class="position-fixed top-0 start-0 m-3 ">
+        <div class="alert alert-success" role="alert">
           Producto creado con éxito.
         </div>
       </div>
 
-      <div v-if="showErrorAlert" class="position-fixed top-0 start-0 m-3">
+      <div v-if="showErrorAlert" class="position-fixed top-0 start-0 m-3 ">
         <div class="alert alert-danger" role="alert">
           Error al crear el producto. Por favor, inténtalo de nuevo.
         </div>
       </div>
 
-      <h2 class="text-center mb-4">Crear Nuevo Producto</h2>
+      
       <div v-if="showProgressBar" class="progress">
         <div
           class="progress-bar progress-bar-striped progress-bar-animated"
@@ -70,7 +70,7 @@
         </div>
 
         <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-12">
             <label for="productCategory">Categoría</label>
             <select v-model="productCategory" class="form-control" id="productCategory" required>
               <option value="" disabled selected>Selecciona una categoría...</option>
@@ -82,7 +82,8 @@
           </div>
         </div>
 
-        <button type="submit" class="btn btn-dark form-group col-md-12">Crear Producto</button>
+        <button type="submit" class="btn btn-dark form-group col-md-12" >Crear Producto</button>
+        <button  v-if="isVisibleAccept" class="btn btn-success col-md-12 " data-bs-dismiss="modal"> Aceptar</button>
       </form>
     </div>
   </div>
@@ -92,6 +93,7 @@
 export default {
   data() {
     return {
+      isVisibleAccept: false,
       showSuccessAlert: false,
       showErrorAlert: false,
       showProgressBar: false,
@@ -146,7 +148,7 @@ export default {
         if (response.ok) {
           this.showSuccessAlert = true;
           setTimeout(() => {
-            this.$router.push('/admin');
+          
           }, 2000);
         } else {
           this.showErrorAlert = true;
@@ -157,6 +159,7 @@ export default {
         console.error('Error en la petición:', error);
       } finally {
         this.showProgressBar = false;
+        this.isVisibleAccept= true;
       }
     },
 

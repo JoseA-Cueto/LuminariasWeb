@@ -2,7 +2,7 @@
   <div class="container">
     <div class="col-md-6">
       <div v-if="showSuccessAlert" class="position-fixed top-0 start-0 m-3">
-        <div class="alert alert-primary" role="alert">
+        <div class="alert alert-success" role="alert">
           Categoría creada con éxito.
         </div>
       </div>
@@ -36,6 +36,7 @@
         </div>
 
         <button type="submit" class="btn btn-dark form-group col-md-12">Crear Categoría</button>
+        <button  v-if="isVisibleAccept" class="btn btn-success col-md-12 " data-bs-dismiss="modal"> Aceptar</button>
       </form>
     </div>
   </div>
@@ -45,6 +46,7 @@
 export default {
   data() {
     return {
+      isVisibleAccept: false,
       showSuccessAlert: false,
       showErrorAlert: false,
       showProgressBar: false,
@@ -91,6 +93,7 @@ export default {
         console.error('Error en la petición:', error);
       } finally {
         this.showProgressBar = false;
+        this.isVisibleAccept = true;
       }
     },
   },

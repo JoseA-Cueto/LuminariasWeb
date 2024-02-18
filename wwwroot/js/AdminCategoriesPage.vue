@@ -13,29 +13,34 @@
     </div>
 
     <div>
-      <table class="table">
-        <thead>
+      <table class="table table-striped table-hover">
+        <thead class="text-center">
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
-            <th scope="col" class="d-flex justify-content-end">Acciones</th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="category in categories" :key="category.id">
             <th scope="row">{{ category.id }}</th>
-            <td >{{ category.categoryName }}</td>
+            <td>{{ category.categoryName }}</td>
             <td>
-              <div class="d-flex justify-content-end">
-                <button @click="editCategory(category.id)" class="btn btn-success">
-                  <i class="material-icons">edit</i>
-                </button>
-                <button class="btn btn-danger" @click="deleteCategory(category.id)">
-                  <i class="material-icons">delete</i> 
-                </button>
-                <button class="btn btn-primary" @click="showCategory(category.id)">
-                  <i class="material-icons">info</i> 
-                </button>
+              <button class="btn btn-sm btn-dark" type="button" data-bs-toggle="collapse" :data-bs-target="'#actionsCollapse' + category.id" aria-expanded="false" aria-controls="'actionsCollapse' + category.id">
+                <i class="bi bi-three-dots-vertical"></i>
+              </button>
+              <div class="collapse" :id="'actionsCollapse' + category.id">
+                <div class="d-flex justify-content-end">
+                  <button @click="editCategory(category.id)" class="btn btn-sm btn-success">
+                    <i class="bi bi-pencil-square"></i>
+                  </button>
+                  <button class="btn btn-sm btn-danger" @click="deleteCategory(category.id)">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                  <button class="btn btn-sm btn-primary" @click="showCategory(category.id)">
+                    <i class="bi bi-eye"></i> 
+                  </button>
+                </div>
               </div>
             </td>
           </tr>
@@ -43,10 +48,9 @@
       </table>
     </div>
 
-    <div class="d-flex justify-content-center">
-      <div v-if="loading" class="spinner-border" role="status">
-        <span class="sr-only"></span>
-      </div>
+    <!-- Barra de carga -->
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
     </div>
   </div>
 </template>
@@ -111,7 +115,7 @@ export default {
       this.$router.push({ name: 'EditCategory', params: { id: categoryId } }); 
     },
     showCategory(categoryId) {
-       this.$router.push({ name: 'ShowCategory', params: { id: categoryId } });
+      this.$router.push({ name: 'ShowCategory', params: { id: categoryId } });
     },
   },
 };
