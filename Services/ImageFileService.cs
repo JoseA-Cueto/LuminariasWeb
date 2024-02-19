@@ -42,7 +42,7 @@ namespace LuminariasWeb.sln.Services
                 }
                 var splitedFileName = file.FileName.Split('.');
                 var fileNameResult = $"{String.Join(" ", splitedFileName, 0, splitedFileName.Length - 1)}-D{DateTime.Now.ToString("yyyy-MM-dd HHmm")}{Path.GetExtension(file.FileName)}";
-                var relativePath = "Upload/ImageFile/";
+                var relativePath = "/Upload/ImageFile/";
                 var physicalPath = Path.Combine(pathRoot, fileNameResult);
                 using (var stream = new FileStream(physicalPath, FileMode.Create))
                 {
