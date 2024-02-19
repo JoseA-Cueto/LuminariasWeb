@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-center">
-    <div id="myCarousel" class="carousel slide w-75 h-auto" data-bs-ride="carousel">
+    <div id="myCarousel" class="carousel slide w-75 h-auto shadow-lg  mb-5 " data-bs-ride="carousel">
       <!-- Indicadores -->
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></button>

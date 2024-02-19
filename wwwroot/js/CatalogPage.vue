@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar></NavBar>
+    <navBar></navBar>
     
     <div class="cat" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;">
       <div v-for="product in products" :key="product.id" class="card" style="with: 60%">
@@ -29,12 +29,12 @@
 </template>
 
 <script>
-import NavBar from './NavBar.vue';
+import navBar from './navBar.vue';
 import Footer from './Footer.vue';
 
 export default {
   components: {
-    NavBar,
+    navBar,
     Footer,
   },
   data() {

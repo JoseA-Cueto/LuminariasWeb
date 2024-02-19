@@ -24,8 +24,8 @@
         <tbody>
           <tr v-for="category in categories" :key="category.id">
             <th scope="row">{{ category.id }}</th>
-            <td>{{ category.categoryName }}</td>
-            <td>
+            <td class="align-middle text-center" >{{ category.categoryName }}</td>
+            <td class="align-middle text-center" >
               <button class="btn btn-sm btn-dark" type="button" data-bs-toggle="collapse" :data-bs-target="'#actionsCollapse' + category.id" aria-expanded="false" aria-controls="'actionsCollapse' + category.id">
                 <i class="bi bi-three-dots-vertical"></i>
               </button>
@@ -117,6 +117,8 @@ export default {
     showCategory(categoryId) {
       this.$router.push({ name: 'ShowCategory', params: { id: categoryId } });
     },
+    
   },
+  
 };
 </script>

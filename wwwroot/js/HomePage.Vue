@@ -1,29 +1,55 @@
 <template>
-    <div class="body">
+  
       <navBar></navBar>
-      <nav class="navigation">
-        <router-link to="/catalog" class="bnav">Ir al Catálogo</router-link>
-        <a href="#about" class="bnav">¿Quiénes Somos?</a>
-      </nav>
       <Carousel></Carousel>
-      <section class="Info">
-        <img src="../imgInfo.png" alt="">
-        <div class="infoText">
-          <h1 id="about">¿Quiénes somos?</h1>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae ad assumenda vero eaque, mollitia
-            iste ratione, iure, sunt earum dolore aspernatur sint obcaecati dolores numquam. Natus officiis beatae
-            quas velit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore porro assumenda repellendus,
-            nemo et iste aspernatur inventore dicta quaerat magnam odio temporibus delectus necessitatibus ratione
-            velit pariatur dignissimos eos natus.
-          </p>
-          <div class="buttons">
-            <router-link to="/access" class="btn btn-warning">Opciones de Administrador</router-link>
-          </div>
+      <ul class="nav nav-tabs bg-secondary" id="myTab" role="tablist">
+  <li class="nav-item " role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">¿Quienes Somos?</button>
+
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Contacto</button>
+
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Catalogo</button>
+
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+</div>
+
+
+        <!--Cards-->
+  <div class="card-group container-fluid pt-5 shadow-lg  mb-5 ">
+      <div class="card ">
+        <img src="../ExampleImg.jpg" class="img-thumbnail mx-3 mt-3" alt="">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          
         </div>
-      </section>
-      <Footer></Footer>
-    </div>
+      </div>
+      <div class="card px-4 pt- 3">
+        <img src="../ExampleImg.jpg" class="img-thumbnail mx-3 mt-3" alt="">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          
+        </div>
+      </div>
+      <div class="card px-4 pt- 3">
+        <img src="../ExampleImg.jpg" class="img-thumbnail mx-3 mt-3" alt="">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          
+        </div>
+      </div>
+</div>
   </template>
   
   <script>
@@ -41,68 +67,7 @@
   </script>
   
   <style scoped>
-     .body{
-        background-image: url('../OIG1.0CB9ZzXs6xTeIr5I.jpeg');
-        background-repeat: repeat;
-   }
-  
-   .Info{
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 70px;
-        background-color: #fff;
-        width: 70%;
-        margin: auto;
-    }
-    .Info h1, p{
-        color: #e6c369;
-        text-shadow: 2px 2px 2px 2px ;
-        
-    }
-    .Info img{
-        max-width: 40%;
-        padding: 10px;
-    }
-  
-    .navigation {
-      display: flex;
-      justify-content: center;
-      background-color: rgb(17, 17, 17);
-    }
-  
-    .bnav {
-      color: #e6c369;
-      padding: 10px;
-      text-decoration: none;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-  
-    .bnav:hover {
-      color: black;
-      background-color: #e6c369;
-    }
-  
-    .buttons {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-    }
-  
-    @media (max-width: 768px) {
-      .Info {
-        width: 90%;
-      }
-  
-      .Info img {
-        display: none;
-      }
-  
-      .Info .infoText {
-        padding: 20px;
-      }
-    }
+
   </style>
   
    

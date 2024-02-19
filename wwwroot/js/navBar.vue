@@ -24,7 +24,6 @@ export default {
 
 <style scoped>
     nav{
-        position: sticky;
         top: 0;
         width: 100%; 
         z-index: 1000; 
@@ -41,14 +40,14 @@ export default {
         align-items: center;
     }
     .logo img{
-        max-height: 75px;
+        max-height: 50px;
         width: auto;
         padding: 5px;
     }
     img{
-        max-height: 75px;
+        max-height: 60px;
         width: auto;
-        padding: 5px;
+       
     }
     .buys{
         color: white;

@@ -25,7 +25,7 @@
       <!-- Cuerpo de la tabla -->
       <tbody>
         <tr v-for="product in paginatedProducts" :key="product.id">
-          <td class="align-middle text-center" ><img :src="product.imagePath" :style="{ width: '120px' }" class="img-thumbnail" alt=""></td>
+          <td class="align-middle text-center" ><img :src="product.imagePath" :style="{ width: '120px' }" class="img-thumbnail border border-5" alt=""></td>
           <td class="align-middle text-center">{{ product.name }}</td>
           <td class="align-middle text-center">{{ product.price }}</td>
           <td class="align-middle text-center">{{ product.description }}</td>
