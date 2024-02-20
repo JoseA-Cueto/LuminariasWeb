@@ -2,23 +2,29 @@
   <div>
     <navBar></navBar>
     
-    <div class="mx-5 mt-3" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;">
-      <div v-for="product in products" :key="product.id" class="card" style="with: 60%">
-        <img class="card-img-top" :src="product.imagePath" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{ product.name }}</h5>
-          <p class="card-text">USD {{ product.price }}</p>
-          <button class="btn btn-primary mx-2px" @click="addToCart(product)">
-            <i class="material-icons">add_shopping_cart</i> 
-          </button>
-          <button class="btn btn-primary mr-20px" @click="showProduct(product.id)">
-            <i class="material-icons">info</i> 
-          </button>
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <div v-for="product in products" :key="product.id" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+          <div class="card">
+            <img class="card-img-top" :src="product.imagePath" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">USD {{ product.price }}</p>
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-primary mr-2 mx-3" @click="addToCart(product)">
+                  <i class="material-icons">add_shopping_cart</i> 
+                </button>
+                <button class="btn btn-primary mx-3" @click="showProduct(product.id)">
+                  <i class="material-icons">info</i> 
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center mt-3">
       <div v-if="loading" class="spinner-border text-primary" role="status">
         <span class="sr-only"></span>
       </div>
@@ -97,6 +103,3 @@ export default {
   },
 };
 </script>
-
-
-
