@@ -8,17 +8,17 @@
         <div class="card-body">
           <h5 class="card-title">{{ product.name }}</h5>
           <p class="card-text">USD {{ product.price }}</p>
-          <button class="btn btn-primary mx-2px " @click="addToCart">
-                <i class="material-icons">add_shopping_cart</i> 
-            </button>
+          <button class="btn btn-primary mx-2px" @click="addToCart(product)">
+            <i class="material-icons">add_shopping_cart</i> 
+          </button>
           <button class="btn btn-primary mr-20px" @click="showProduct(product.id)">
-                <i class="material-icons">info</i> 
-            </button>
+            <i class="material-icons">info</i> 
+          </button>
         </div>
       </div>
     </div>
 
-    <div class="d-flex justify-content-center" >
+    <div class="d-flex justify-content-center">
       <div v-if="loading" class="spinner-border text-primary" role="status">
         <span class="sr-only"></span>
       </div>
@@ -40,7 +40,7 @@ export default {
   data() {
     return {
       products: [],
-      loading: false, // Agregamos la variable de carga
+      loading: false,
     };
   },
   mounted() {
@@ -49,7 +49,7 @@ export default {
   methods: {
     async fetchProducts() {
       try {
-        this.loading = true; // Activamos el spinner al inicio de la petición
+        this.loading = true;
         const response = await fetch('../api/Product/GetAllProducts');
         if (!response.ok) {
           throw new Error('Error en la petición al servidor');
@@ -60,15 +60,36 @@ export default {
       } catch (error) {
         console.error('Error en la petición:', error);
       } finally {
-        this.loading = false; // Desactivamos el spinner al finalizar la petición
+        this.loading = false;
       }
     },
-    addToCart(productId) {
-      console.log(`Añadiendo al carrito el producto con ID ${productId}`);
+    async addToCart(product) {
+      const item = {
+        productId: product.id,
+        productName: product.name,
+        price: product.price,
+        quantity: 1 
+      };
+
+      try {
+        const response = await fetch('../api/Product/AddToCart', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(item)
+        });
+
+        if (!response.ok) {
+          throw new Error('Error al agregar el producto al carrito');
+        }
+
+        console.log('Producto agregado al carrito con éxito');
+      } catch (error) {
+        console.error('Error al agregar el producto al carrito:', error);
+      }
     },
-    editProduct(productId) {
-      console.log(`Editando el producto con ID ${productId}`);
-    },
+    
     showProduct(productId) {
        console.log(`Mostrando detalles`);
        //this.$router.push({ name: 'ShowProduct', params: { id: productId } });
@@ -76,5 +97,6 @@ export default {
   },
 };
 </script>
+
 
 
