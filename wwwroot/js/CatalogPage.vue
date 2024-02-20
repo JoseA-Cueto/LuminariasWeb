@@ -2,12 +2,12 @@
   <div>
     <navBar></navBar>
     
-    <div class="cat" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;">
+    <div class="mx-5 mt-3" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px;">
       <div v-for="product in products" :key="product.id" class="card" style="with: 60%">
-        <img class="card-img-top" src="../ExampleImg.jpg" alt="Card image cap">
+        <img class="card-img-top" :src="product.imagePath" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{ product.name }}</h5>
-          <p class="card-text">{{ product.price }}</p>
+          <p class="card-text">USD {{ product.price }}</p>
           <button class="btn btn-primary mx-2px " @click="addToCart">
                 <i class="material-icons">add_shopping_cart</i> 
             </button>
