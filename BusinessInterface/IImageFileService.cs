@@ -12,5 +12,6 @@ namespace LuminariasWeb.sln.BusinessInterface
         Task <ImageFile>Create(ImageFilesViewModel entity);
         Task UpdateImageFile(ProductViewModel productViewModel);
         Task<ImageFile> GetImageByProductIdAsync(int productId);
+        Task DeleteImageFileAsync(int imageId);
     }
 }

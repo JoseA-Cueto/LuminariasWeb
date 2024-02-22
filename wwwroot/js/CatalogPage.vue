@@ -78,7 +78,7 @@ export default {
       };
 
       try {
-        const response = await fetch('../api/Product/AddToCart', {
+          const response = await fetch('../api/cart/AddToCart', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

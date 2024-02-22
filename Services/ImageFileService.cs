@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.DataBaseInterface;
+using LuminariasWeb.sln.Interface;
 using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.Repositories;
 using LuminariasWeb.sln.ViewModels;
@@ -99,6 +100,9 @@ namespace LuminariasWeb.sln.Services
             }
         }
 
-
+        public async Task DeleteImageFileAsync(int imageId)
+        {
+            await _repository.DeleteAsync(imageId);
+        }
     }
 }

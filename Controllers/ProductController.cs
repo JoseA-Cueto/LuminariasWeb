@@ -145,12 +145,14 @@ namespace LuminariasWeb.sln.Controllers
             try
             {
                 var existingProduct = await _productService.GetProductByIdAsync(id);
+                var existingImage = await _imageFileService.GetImageByProductIdAsync(id);
                 if (existingProduct == null)
                 {
                     return NotFound();
                 }
 
                 await _productService.DeleteProductAsync(id);
+                await _imageFileService.DeleteImageFileAsync(id);
                 return Ok();
             }
             catch (Exception ex)
