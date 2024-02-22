@@ -38,7 +38,7 @@
 
 <div class="tab-pane fade d-flex justify-content-center align-items-center mt-2" id="contact" role="tabpanel" aria-labelledby="contact-tab">
     <router-link to="/catalog">
-        <button class="btn btn-primary">Ir al Catálogo</button>
+        <button class="btn btn-primary mb-5 pb-3 mt-5">Ir al Catálogo</button>
     </router-link>
 </div>
 

@@ -2,11 +2,65 @@
   <div>
     <navBar></navBar>
     
-    <div class="container-fluid mt-3">
+    <!-- Vista para dispositivos móviles -->
+    <div class="container-fluid mt-3 d-sm-none">
+      <table class="table table-striped table-hover">
+        <!-- Encabezados de la tabla -->
+        <thead class="text-center">
+          <tr>
+            <th scope="col">
+              Imagen
+            </th>
+            <th scope="col">
+            Nombre
+            </th>
+            <th scope="col">
+              Precio
+            </th>
+           
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+
+        <!-- Cuerpo de la tabla -->
+        <tbody>
+          <tr v-for="product in products" :key="product.id">
+            <td class="align-middle text-center" ><img :src="product.imagePath" :style="{ width: '120px' }" class="img-thumbnail border border-5" alt=""></td>
+            <td class="align-middle text-center">{{ product.name }}</td>
+            <td class="align-middle text-center">{{ product.price }}</td>
+            <td class="align-middle text-center">
+              <button class="btn btn-sm btn-dark" type="button" data-bs-toggle="collapse" :data-bs-target="'#actionsCollapse' + product.id" aria-expanded="false" aria-controls="'actionsCollapse' + product.id">
+                <i class="bi bi-three-dots-vertical"></i>
+              </button>
+              <div class="collapse" :id="'actionsCollapse' + product.id">
+                <button class="btn btn-sm btn-primary" 
+                @click="addToCart(product)">
+                <i class="bi bi-cart-plus"></i>
+                </button>
+                <button class="btn btn-sm btn-primary" 
+                @click="showProduct(product.id)"
+                data-bs-toggle="modal"
+                 data-bs-target="#ShowProduct">
+                  <i class="bi bi-eye"></i>
+                </button>
+                
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Vista para dispositivos grandes -->
+    <div class="container-fluid mt-3 d-none d-sm-block">
       <div class="row">
         <div v-for="product in products" :key="product.id" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
           <div class="card">
-            <img class="card-img-top" :src="product.imagePath" alt="Card image cap">
+            <img class="card-img-top" 
+              :src="product.imagePath"  
+              :style="{ width: '300px', aspectRatio: '1 / 1' }" 
+              alt="Card image cap">
+
             <div class="card-body">
               <h5 class="card-title">{{ product.name }}</h5>
               <p class="card-text">USD {{ product.price }}</p>
@@ -98,7 +152,7 @@ export default {
     
     showProduct(productId) {
        console.log(`Mostrando detalles`);
-       //this.$router.push({ name: 'ShowProduct', params: { id: productId } });
+       this.$router.push({ name: 'ShowProduct', params: { id: productId } });
     },
   },
 };
