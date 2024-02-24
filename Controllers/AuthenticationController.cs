@@ -2,19 +2,25 @@
 using LuminariasWeb.sln.Services;
 using LuminariasWeb.sln.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
 
 namespace LuminariasWeb.sln.Controllers
 {
     [Route("api/User")]
-    public class UsersController : ControllerBase
+    public class AuthenticationController : ControllerBase
     {
         private readonly IUserService _userService;
-        private readonly ILogger _logger; 
+        private readonly ILogger _logger;
+        private readonly string secretKey;
 
-        public UsersController(IUserService userService, ILogger logger) 
+        public AuthenticationController(IUserService userService, ILogger logger, IConfiguration config) 
         {
             _userService = userService;
             _logger = logger; 
+            secretKey = config.GetSection("Settings").GetSection("secretkey").ToString();
         }
 
         [HttpGet("GetAllUsers")]
@@ -32,10 +38,10 @@ namespace LuminariasWeb.sln.Controllers
                 return StatusCode(500);
             }
         }
-        [HttpPost("FindUser")]
+        [HttpPost("Validation")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> FindUser([FromBody] UserViewModel userViewModel)
+        public async Task<IActionResult> ValidationUser([FromBody] UserViewModel userViewModel)
         {
             try
             {
@@ -43,16 +49,30 @@ namespace LuminariasWeb.sln.Controllers
 
                 if (user != null)
                 {
-                    return Ok();
+                    var keyBytes = Encoding.ASCII.GetBytes(secretKey);
+                    var claims = new ClaimsIdentity();
+
+                    claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Name));
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = claims,
+                        Expires = DateTime.UtcNow.AddMinutes(10),
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(keyBytes),SecurityAlgorithms.HmacSha256Signature)                      
+                    };
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var tokenConfig = tokenHandler.CreateToken(tokenDescriptor);
+                    string tokenCreated = tokenHandler.WriteToken(tokenConfig);
+                    return Ok(new { token = tokenCreated });
                 }
                 else
                 {
-                    return NotFound();
+                    return StatusCode(401, new {token = ""});
                 }
             }
+
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error al obtener todos los usuarios");
+                _logger.LogError(ex, "Error al validar al usuario");
                 return StatusCode(500);
             }
         }

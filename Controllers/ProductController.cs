@@ -1,6 +1,7 @@
 ﻿using LuminariasWeb.sln.BusinessInterface;
 using LuminariasWeb.sln.Services;
 using LuminariasWeb.sln.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LuminariasWeb.sln.Controllers
@@ -18,7 +19,7 @@ namespace LuminariasWeb.sln.Controllers
             _logger = logger;
             _imageFileService = imageFileService;
         }
-
+        
         [HttpGet("GetAllProducts")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<ProductViewModel>>> GetAllProducts()
@@ -81,7 +82,7 @@ namespace LuminariasWeb.sln.Controllers
                 return StatusCode(500);
             }
         }
-
+        [Authorize]
         [HttpPost("AddProduct")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -108,7 +109,7 @@ namespace LuminariasWeb.sln.Controllers
                 return StatusCode(500);
             }
         }
-
+        [Authorize]
         [HttpPut("UpdateProduct")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -135,7 +136,7 @@ namespace LuminariasWeb.sln.Controllers
         }
 
 
-
+        [Authorize]
         [HttpDelete("DeleteProduct/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
