@@ -24,14 +24,17 @@
   </p>
   </div>
   <div class="tab-pane fade grid mt-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <div class="row">
-        <div class="col-md-6 text-center">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-4 text-center">
             <h2>Telefono</h2>
             <h3>55555555</h3>
         </div>
-        <div class="col-md-6 text-center">
+        <div class="col-md-4 text-center">
             <h2>Direccion</h2>
             <h3>Calle1/Calle2 y Calle 3 numero 5</h3>
+        </div>
+        <div class="col-md-4 text-center">
+            <a href="https://wa.me/5355555555"> <button class="btn btn-success"> <i class="bi bi-whatsapp"> ¡Chatea con nosotros! </i> </button></a>
         </div>
     </div>
 </div>

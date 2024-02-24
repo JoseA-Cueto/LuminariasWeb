@@ -2,7 +2,7 @@
     <nav>
       <div class="logo">
         <router-link to="/access">
-        <button><img src="../FAVICON.png" alt=""></button>
+        <button class="logb"><img src="../FAVICON.png" alt=""></button>
       </router-link>
       </div>
       <img src="../TEXTO.png" alt="">
@@ -73,7 +73,10 @@
     max-height: 60px;
     width: auto;
   }
-  
+  .logb{
+    background: none;
+    border: none;
+  }
   .buys {
     color: white;
     display: flex;
