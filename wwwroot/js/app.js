@@ -16,11 +16,10 @@ import CreateProductPage from './CreateProductPage.vue';
 import EditProductPage from './EditProductPage.vue';
 import ShowProductPage from './ShowProductPage.vue';
 import AdminCategoriesPage from './AdminCategoriesPage.vue';
-import AdminProductsPage from './AdminProductsPage.vue'
-import EditCategoryPage from './EditCategoryPage.vue'
-import ShowCategoryPage from './ShowCategoryPage.vue'
-import CreateCategoryPage from './CreateCategoryPage.vue'
-
+import AdminProductsPage from './AdminProductsPage.vue';
+import EditCategoryPage from './EditCategoryPage.vue';
+import ShowCategoryPage from './ShowCategoryPage.vue';
+import CreateCategoryPage from './CreateCategoryPage.vue';
 
 // Crea la aplicación Vue
 const app = createApp({
@@ -41,8 +40,6 @@ const app = createApp({
     'admin-products-page': AdminProductsPage,
     'edit-category-page': EditCategoryPage,
     'show-category-page': ShowCategoryPage,
-  
-
   }
 });
 
@@ -53,17 +50,26 @@ const router = createRouter({
     { path: '/', component: HomePage },
     { path: '/catalog', component: CatalogPage },
     { path: '/access', component: LogIn },
-    { path: '/admin', component: AdminPage },
-    { path: '/admin/categories', component: AdminCategoriesPage },
-    { path: '/createproduct', component: CreateProductPage },
-    { path: '/createcategory', component: CreateCategoryPage },
-    { path: '/editproduct/:id', name: 'EditProduct', component: EditProductPage, props: true },
-    { path: '/editcategory/:id', name: 'EditCategory', component: EditCategoryPage, props: true },
-    { path: '/showproduct/:id', name: 'ShowProduct', component: ShowProductPage, props: true },
-    { path: '/showcategory/:id', name: 'ShowCategory', component: ShowCategoryPage, props: true },
-     
-
+    { path: '/admin', component: AdminPage, meta: { requiresAuth: true } },
+    { path: '/admin/categories', component: AdminCategoriesPage, meta: { requiresAuth: true } },
+    { path: '/createproduct', component: CreateProductPage, meta: { requiresAuth: true } },
+    { path: '/createcategory', component: CreateCategoryPage, meta: { requiresAuth: true } },
+    { path: '/editproduct/:id', name: 'EditProduct', component: EditProductPage, props: true, meta: { requiresAuth: true } },
+    { path: '/editcategory/:id', name: 'EditCategory', component: EditCategoryPage, props: true, meta: { requiresAuth: true } },
+    { path: '/showproduct/:id', name: 'ShowProduct', component: ShowProductPage, props: true, meta: { requiresAuth: true } },
+    { path: '/showcategory/:id', name: 'ShowCategory', component: ShowCategoryPage, props: true, meta: { requiresAuth: true } },
   ]
+});
+
+// Implementa guards de navegación para verificar la autenticación
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = localStorage.getItem('token') !== null; // Verifica si el token está presente en localStorage
+
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    next('/access'); // Si la ruta requiere autenticación y el usuario no está autenticado, redirige a la página de acceso
+  } else {
+    next(); // De lo contrario, permite la navegación normalmente
+  }
 });
 
 app.use(router);
