@@ -4,9 +4,11 @@ using LuminariasWeb.sln.Interface;
 using LuminariasWeb.sln.Models;
 using LuminariasWeb.sln.Repositories;
 using LuminariasWeb.sln.ServiceExtensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,28 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddLuminariasWebServices();
+
+builder.Configuration.AddJsonFile("appsettings.json");
+var secretkey = builder.Configuration.GetSection("Settings").GetSection("secretkey").ToString();
+var keyBytes = Encoding.UTF8.GetBytes(secretkey);
+
+builder.Services.AddAuthentication(config =>
+{
+    config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(config =>
+{
+    config.RequireHttpsMetadata = false;
+    config.SaveToken = true;
+    config.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(keyBytes),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+    };
+});
+
 var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c =>

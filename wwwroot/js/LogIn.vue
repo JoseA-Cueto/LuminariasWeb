@@ -48,7 +48,7 @@ export default {
     async login() {
       this.showProgressBar = true;
       
-      const url = '../api/User/FindUser';
+          const url = '../api/User/Validation';
       const data = {
         method: 'POST',
         headers: {

@@ -15,12 +15,14 @@ namespace LuminariasWeb.sln.Services
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
         private readonly AppDbContext _dbContext;
+        private readonly IEncryptionService _encryptionService;
 
-        public UserService(IUserRepository userRepository, IMapper mapper, AppDbContext dbContext)
+        public UserService(IUserRepository userRepository, IMapper mapper, AppDbContext dbContext, IEncryptionService encryptionService)
         {
             _userRepository = userRepository;
             _mapper = mapper;
             _dbContext = dbContext;
+            _encryptionService = encryptionService;
         }
 
         public async Task<IEnumerable<UserViewModel>> GetUsersAsync()
@@ -30,11 +32,17 @@ namespace LuminariasWeb.sln.Services
         }
         public async Task<User> FindUserAsync(UserViewModel userViewModel)
         {
-            var entity = await _dbContext.Users.FirstOrDefaultAsync(u => u.Name == userViewModel.Name && u.Password == userViewModel.Password);
+            // Encripta la contraseña proporcionada por el usuario
+            string encryptedPassword = _encryptionService.EncryptPassword(userViewModel.Password);
+
+            
+            var entity = await _dbContext.Users.FirstOrDefaultAsync(u => u.Name == userViewModel.Name && u.Password == encryptedPassword);
+
             return entity;
         }
+    
 
-        public async Task<UserViewModel> GetUserByIdAsync(int userId)
+    public async Task<UserViewModel> GetUserByIdAsync(int userId)
         {
             var user = await _userRepository.GetUserByIdAsync(userId);
             return _mapper.Map<UserViewModel>(user);
@@ -43,6 +51,7 @@ namespace LuminariasWeb.sln.Services
         public async Task AddUserAsync(UserViewModel userViewModel)
         {
             var user = _mapper.Map<User>(userViewModel);
+            user.Password = _encryptionService.EncryptPassword(user.Password);
             await _userRepository.AddUserAsync(user);
         }
 

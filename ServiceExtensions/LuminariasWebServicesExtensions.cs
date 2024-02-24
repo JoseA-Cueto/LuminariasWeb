@@ -35,6 +35,8 @@ namespace LuminariasWeb.sln.ServiceExtensions
              //ImageFile
             services.AddScoped<IImageFileService, ImageFileService>();
             services.AddScoped<IImageFileRepository, ImageFileRepository>();
+            //Encryption
+            services.AddScoped<IEncryptionService, EncryptionService>();
                 
         }
     }
