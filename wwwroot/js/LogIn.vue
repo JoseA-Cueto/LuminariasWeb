@@ -48,7 +48,7 @@ export default {
     async login() {
       this.showProgressBar = true;
       
-          const url = '../api/User/Validation';
+      const url = '../api/User/Validation';
       const data = {
         method: 'POST',
         headers: {
@@ -61,6 +61,9 @@ export default {
         const response = await fetch(url, data);
 
         if (response.ok) {
+          const responseData = await response.json();
+          const token = responseData.token;
+          localStorage.setItem('token', token); // Guardar token en localStorage
           this.showSuccessAlert = true;
           setTimeout(() => {
             this.showSuccessAlert = false;

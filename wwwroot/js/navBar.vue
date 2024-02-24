@@ -1,9 +1,9 @@
 <template>
     <nav>
       <div class="logo">
-        <routerlink to="/access">
-        <img src="../FAVICON.png" alt="">
-      </routerlink>
+        <router-link to="/access">
+        <button><img src="../FAVICON.png" alt=""></button>
+      </router-link>
       </div>
       <img src="../TEXTO.png" alt="">
       <div class="buys">
