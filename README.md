@@ -19,7 +19,7 @@ Responsive Design: Ensures optimal user experience on both desktop and mobile de
 Node.js14.x or higher
 
 ## Installation
-git clone https://github.com/yourusername/repository-name.git
+git clone https://github.com/JoseA-Cueto/LuminariasWeb.git
 ## Install backend dependencies:
 dotnet restore
 ## Install frontend dependencies:
