@@ -1,1 +1,1 @@
-Proyecto web con .net core (MVC)
+This project combines the power of .NET Core (MVC) and Vue.jsto build a modern and efficient web application. It uses .NET Core (MVC) on the backend to handle server logic and HTTP requests, and Vue.json the frontend to create an interactive and responsive user interface.
